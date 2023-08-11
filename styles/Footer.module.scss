@@ -1,0 +1,11 @@
+@use "variables";
+
+.footer_section {
+    position: fixed;
+    bottom: 0px;
+    padding-bottom: 3px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: variables.$white;
+}

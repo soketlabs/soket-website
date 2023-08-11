@@ -1,0 +1,27 @@
+@use "variables";
+
+.header_container {
+    margin-bottom: 10px;
+    padding-top: 10px;
+    background-color: variables.$white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    nav {
+        width: fit-content;
+        align-self: center;
+        ul {
+            width: fit-content;
+            li {
+                font-size: 1.2rem;
+                list-style: none;
+                width: fit-content;
+                display: inline-block;
+                margin: 0 10px;
+                a {
+                    color: #111111;
+                }
+            }
+        }
+    }
+}

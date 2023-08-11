@@ -1,0 +1,7 @@
+@use "variables";
+
+.layout_section {
+    margin: 0 8%;
+    color: variables.$text_default_color;
+    padding-bottom: 60px;
+}

@@ -1,0 +1,24 @@
+@use "variables";
+
+.text_box {
+    display: inline-block;
+    background-color: variables.$gray;
+    width: 350px;
+    padding: 30px;
+    border-radius: 7px;
+    text-align: left;
+    h3 {
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+        min-height: 50px;
+    }
+    p {
+        font-size: 1.3rem;
+        line-height: 1.9rem;
+        font-weight: 100;
+    }
+}
+
+.link {
+    cursor: pointer;
+}
