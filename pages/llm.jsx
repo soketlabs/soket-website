@@ -32,7 +32,7 @@ export default function LanguageModel() {
                 </Grid>
                 <Grid item xs={12} md={6} lg={4}>
                     <TextBox
-                        title="Interlanguage Knowledge Transfer"
+                        title="Inter Language Knowledge Transfer"
                         description="Building foundational language models for 22 scheduled Indian languages"
                     />
                 </Grid>
