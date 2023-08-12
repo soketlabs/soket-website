@@ -12,12 +12,18 @@ export default function LanguageModel() {
             
             <h3 className={styles.topic_heading}>LLM FOR INDIC LANGUAGES</h3>
             
-            <h1>Open Source Products <small>(to be released)</small></h1>
+            <h1 className={styles.page_section_title}>Open Source Products <small className={styles.tag}>(to be released)</small></h1>
             <Grid container spacing={4}>
                 <Grid item xs={12} md={6} lg={4}>
                     <TextBox
                         title="Mutilingual Tokenizer"
                         description="An efficient tokenizer for multi-lingual encoding"
+                    />
+                </Grid>
+                <Grid item xs={12} md={6} lg={4}>
+                    <TextBox
+                        title="BHASA-HI-7B-8K-Base"
+                        description="A 7B transformer model with a context length of 8K pre-trained on Hindi"
                     />
                 </Grid>
                 <Grid item xs={12} md={6} lg={4}>
@@ -36,7 +42,7 @@ export default function LanguageModel() {
 
             <div className={styles.space}> </div>
             
-            <h1>Research Interests</h1>
+            <h1 className={styles.page_section_title}>Research Interests</h1>
             <Grid container spacing={4}>
                 <Grid item xs={12} md={6} lg={4}>
                     <TextBox

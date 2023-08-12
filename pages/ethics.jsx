@@ -10,7 +10,7 @@ export default function Ethics() {
     return (
         <section className={styles.language_model_container}>
             <h3 className={styles.topic_heading}>ETHICS OF AI</h3>
-            <h1>Research Interests</h1>
+            <h1 className={styles.page_section_title}>Research Interests</h1>
             <Grid container spacing={4}>
                 <Grid item xs={12} md={6} lg={4}>
                     <TextBox
