@@ -1,0 +1,33 @@
+@use "variables";
+
+.company_container {
+    margin-top: 180px;
+    p {
+        font-size: 2.7rem;
+        line-height: 4.2rem;
+        text-align: center;
+        padding: 0 140px;
+        margin: 40px 0;
+        span.highlight {
+            background-color: variables.$primary_color;
+            color: #fff;
+            padding: 0 6px;
+            border-radius: 3px;
+        }
+
+        span.bold {
+            font-weight: 900;
+        }
+    }
+}
+
+@media (max-width: variables.$sm) {
+    .company_container {
+        margin-top: 0px;
+        p {
+            padding: 0 10px;
+            font-size: 1.6rem;
+            line-height: 2.5rem;
+        }
+    }
+}

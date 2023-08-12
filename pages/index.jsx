@@ -25,7 +25,8 @@ export default function Home() {
                             <Grid item xs={12} md={6}>
                                 <TextBox 
                                     title="Research on ethical AI"
-                                    description="Building foundational language models for 22 scheduled Indian languages"
+                                    description="AGI ethics involves alignment, safety, transparency, fairness, collaboration, and global cooperation"
+                                    link={"/ethics"}
                                 />
                             </Grid>
                         </Grid>
