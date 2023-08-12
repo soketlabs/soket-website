@@ -45,7 +45,7 @@ export default function Ethics() {
                 <Grid item xs={12} md={6} lg={4}>
                     <TextBox
                         title="Benefit Sharing"
-                        description="Address the potential economic and societal impacts of AGI by considering mechanisms for equitable distribution of benefits and resources. This could involve strategies such as wealth redistribution or investment in social programs."
+                        description="Address the potential economic and societal impacts of AGI by considering mechanisms for equitable distribution of benefits and resources."
                     />
                 </Grid>
                 <Grid item xs={12} md={6} lg={4}>
