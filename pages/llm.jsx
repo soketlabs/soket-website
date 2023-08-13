@@ -14,25 +14,25 @@ export default function LanguageModel() {
             
             <h1 className={styles.page_section_title}>Open Source Products <small className={styles.tag}>(to be released)</small></h1>
             <Grid container spacing={4}>
-                <Grid item xs={12} md={6} lg={4}>
+                <Grid item xs={12} sm={6} md={4} lg={4}>
                     <TextBox
                         title="Mutilingual Tokenizer"
                         description="An efficient tokenizer for multi-lingual encoding"
                     />
                 </Grid>
-                <Grid item xs={12} md={6} lg={4}>
+                <Grid item xs={12} sm={6} md={4} lg={4}>
                     <TextBox
                         title="BHASA-HI-7B-8K-Base"
                         description="A 7B transformer model with a context length of 8K pre-trained on Hindi"
                     />
                 </Grid>
-                <Grid item xs={12} md={6} lg={4}>
+                <Grid item xs={12} sm={6} md={4} lg={4}>
                     <TextBox
                         title="BHASA-7B-8K-Base"
                         description="A 7B transformer model with a context length of 8K pre-trained on 22 scheduled languages of India"
                     />
                 </Grid>
-                <Grid item xs={12} md={6} lg={4}>
+                <Grid item xs={12} sm={6} md={4} lg={4}>
                     <TextBox
                         title="BHASA-7B-8K-Instruct"
                         description="A 7B transformer model instruction tuned to align with human intents"

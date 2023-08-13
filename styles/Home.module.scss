@@ -42,3 +42,13 @@
         }
     }
 }
+
+@media (min-width: variables.$sm) and (max-width: variables.$lg) {
+    .home_section {
+        .hero_section {
+            .summary_container {
+                margin: 50px 4%;
+            }
+        }
+    }
+}
