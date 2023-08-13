@@ -22,19 +22,19 @@ export default function LanguageModel() {
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={4}>
                     <TextBox
-                        title="BHASA-HI-7B-8K-Base"
+                        title="BHASHA-HI-7B-8K-Base"
                         description="A 7B transformer model with a context length of 8K pre-trained on Hindi"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={4}>
                     <TextBox
-                        title="BHASA-7B-8K-Base"
+                        title="BHASHA-7B-8K-Base"
                         description="A 7B transformer model with a context length of 8K pre-trained on 22 scheduled languages of India"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={4}>
                     <TextBox
-                        title="BHASA-7B-8K-Instruct"
+                        title="BHASHA-7B-8K-Instruct"
                         description="A 7B transformer model instruction tuned to align with human intents"
                     />
                 </Grid>
