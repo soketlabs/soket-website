@@ -29,7 +29,7 @@ export default function Team() {
                 </Grid>
             </Grid> */}
 
-            <h3 className={styles.call}>If our AGI vision aligns with yours, please feel free to get in touch with us at <a href="mailto:hire@soket.ai">hire@soket.ai</a></h3>
+            <h3 className={styles.call}>If our AGI vision aligns with yours, please feel free to get in touch with us at <a href="mailto:careers@soket.ai">careers@soket.ai</a></h3>
         </section>
     )
 }
