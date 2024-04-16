@@ -33,7 +33,7 @@ export default function Header() {
                     <Link href="/company">
                         <li>company</li>
                     </Link>
-                    <Link href="/blogs/bhasha_wiki_dataset">
+                    <Link href="/blogs/bhasha_wiki">
                         <li>blog</li>
                     </Link>
                     <Link href="/llm">
