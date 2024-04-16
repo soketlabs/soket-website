@@ -14,6 +14,10 @@ export default function Header() {
             <Link className={className} href="/">
                 <Image
                     priority
+                    style={{
+                        height: '70px',
+                        width: '150px'
+                    }}
                     src={SoketLogo}
                     alt="Soket Labs Logo"
                 />
@@ -28,6 +32,9 @@ export default function Header() {
                 <ul>
                     <Link href="/company">
                         <li>company</li>
+                    </Link>
+                    <Link href="/blogs/bhasha_wiki_dataset">
+                        <li>blog</li>
                     </Link>
                     <Link href="/llm">
                         <li>llm</li>
