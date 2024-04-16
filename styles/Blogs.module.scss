@@ -55,3 +55,13 @@
         font-size: 0.8rem;
     }
 }
+
+@media (max-width: variables.$md) {
+    .Blogs {
+        margin-top: 100px;
+        padding: 0 25px;
+        table {
+            font-size: 0.6rem;
+        }
+    }
+}
