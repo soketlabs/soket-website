@@ -10,8 +10,8 @@
         line-height: 3rem;
     }
     p {
-        font-size: 1.1rem;
-        line-height: 2rem;
+        font-size: 1rem;
+        line-height: 1.8rem;
         margin-bottom: 30px;
     }
     h2 {
@@ -26,7 +26,7 @@
     ul {
         margin-bottom: 30px;
         li {
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.8rem;
         }
     }
@@ -51,6 +51,50 @@
         tbody {
             td {
                 padding: 3px 0;
+            }
+        }
+    }
+    .sample_table {
+        table {
+            width: 100%;
+            margin: 20px 0;
+            font-size: 0.7rem;
+            thead {
+                text-align: left;
+                padding-bottom: 4px;
+                background-color: #1111110f;
+                th {
+                    padding: 3px 0;
+                }
+            }
+            tbody {
+                td {
+                    padding: 10px 5px;
+                    min-width: 200px;
+                }
+            }
+        }
+    }
+    .bench_table {
+        table {
+            width: 100%;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            thead {
+                text-align: left;
+                font-size: 0.7rem;
+                padding-bottom: 4px;
+                background-color: #1111110f;
+                th {
+                    padding: 3px 0;
+                }
+            }
+            tbody {
+                td {
+                    font-family: monospace;
+                    font-size: 0.8rem;
+                    padding: 5px 5px;
+                }
             }
         }
     }
