@@ -86,7 +86,7 @@
                 padding-bottom: 4px;
                 background-color: #1111110f;
                 th {
-                    padding: 3px 0;
+                    padding: 3px 5px;
                 }
             }
             tbody {
@@ -94,6 +94,10 @@
                     font-family: monospace;
                     font-size: 0.8rem;
                     padding: 5px 5px;
+                    b {
+                        color: #C56F34;
+                        font-size: 0.85rem;
+                    }
                 }
             }
         }
@@ -109,6 +113,13 @@
         padding: 0 25px;
         table {
             font-size: 0.6rem;
+        }
+        .table_wrapper {
+            width: 100%;
+            overflow: scroll;
+            table {
+                width: 100%;
+            }
         }
     }
 }
