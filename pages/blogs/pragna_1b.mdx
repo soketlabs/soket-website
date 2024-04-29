@@ -11,7 +11,13 @@ import styles from '@/styles/Blogs.module.scss';
 
 # Introducing Pragna-1B: Soket AI Labs' Multilingual Language Model for Indian Languages
 
-![pragna-1b on huggingface](/images/blog_bhasha_wiki/cover.png)
+<div className={styles.cover_wrapper}>
+
+![pragna-1b on huggingface](/images/blog_pragna/logo.jpg)
+
+</div>
+
+### Available on Huggingface 🤗: [soketlabs/pragna-1b](https://huggingface.co/soketlabs/pragna-1b)
  
 ## Introduction: Unleashing the Power of Multilingual AI
 
@@ -150,6 +156,10 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 
 </div>
 
+### Research Preview: [spaces/pragna-chat](https://huggingface.co/spaces/soketlabs/pragna-chat)
+
+#### Disclaimer: An initial checkpoint of the instruction tuned model is made available as a research preview. It is hereby cautioned that the model has the potential to produce hallucinatory and plausible yet inaccurate statements. Users are advised to exercise discretion when utilizing the generated content.
+
 
 ## Performance and Benchmarking
 
@@ -186,7 +196,7 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 
 </div>
 
-#### Eval numbers for Hindi and Gujarati are taken from Indic LLM Leaderboard and English from HF's Open LLM Leaderboard. We are running benchmarks for Bangla and will be updated soon.
+#### Eval numbers for Hindi and Gujarati are taken from [Indic LLM Leaderboard](https://huggingface.co/spaces/Cognitive-Lab/indic_llm_leaderboard) and English from [HF's Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard). We are running benchmarks for Bangla and will be updated soon.
 
 Pragna-1b, boasting 1.25 billion parameters, demonstrates performance akin to that of more expansive models such as OpenHathi-7b and Llama-2-7b, and falls within a comparable range with gemma-7b. However, there is a trade-off in English language proficiency when compared to the base model, TinyLlama. This difference arises from the model's integration of extensive information from three Indian languages into the same parameter space. Essentially, Pragna-1b manages to encapsulate a vast corpus of global knowledge, totaling close to 1 TiB, within a remarkably constrained latent space of just 2.3 GiB (BFloat16).
 
