@@ -21,11 +21,11 @@ import styles from '@/styles/Blogs.module.scss';
  
 ## Introduction: Unleashing the Power of Multilingual AI
 
-We at Soket AI Labs are thrilled to unveil our first open source multilingual model, Pragna-1B available in four Indian languages - Hindi, Gujarati, Bangla and English. The model is designed to cater to the rich tapestry of Indian languages, significantly expanding the horizons of AI inclusivity and accessibility. As we step into an era where technology transcends linguistic boundaries, Pragna-1B emerges as a beacon of innovation, ready to bridge language barriers and enhance user engagement across diverse linguistic landscapes.
+<i>We at Soket AI Labs are thrilled to unveil India's first open source multilingual model, <b>Pragna-1B</b> available in four Indian languages - Hindi, Gujarati, Bangla and English.</i> The model is designed to cater to the rich tapestry of Indian languages, significantly expanding the horizons of AI inclusivity and accessibility. As we step into an era where technology transcends linguistic boundaries, Pragna-1B emerges as a beacon of innovation, ready to bridge language barriers and enhance user engagement across diverse linguistic landscapes.
 
 ## Highlights of Pragna-1B:
 
-- **Architecture:** Pragna-1B features a Transformer Encoder-only model with 1.25 billion parameters, with a context length of 2048 tokens.
+- **Architecture:** Pragna-1B features a Transformer Decoder-only model with 1.25 billion parameters, with a context length of 2048 tokens.
 - **Designed for Edge AI:** Engineered to deliver state-of-the-art performance for vernacular languages in the smallest form factor, ideal for deployment on-device.
 - **Small Language Model (SLM) with Robust Capabilities:** Even with 1.25 parameters, Pragna-1B’s performance is comparable to larger 7 billion parameter sized models, offering comprehensive multilingual support for English, Hindi, Bangla, and Gujarati.
 - **Culturally Contextualised Training:** The model has been meticulously trained on curated datasets specifically designed to encompass the Indian context, ensuring accurate and culturally relevant outputs.
@@ -86,7 +86,7 @@ Graph above shows the fertility score for six Indian languages when tokenized us
 
 The quality and quantity of training data are crucial in imparting linguistic and semantic understanding into any language model. One significant challenge in developing language models for Indian languages is the scarcity of large-scale corpora. With all 22 scheduled Indian languages representing less than 1% of internet-scale datasets like mC4, we were compelled to create "Bhasha," a series of high-quality datasets designed for pretraining and instruction fine-tuning of Indian models.
 
-[**Bhasha-wiki:**](https://soket.ai/blogs/bhasha_wiki_dataset) This dataset comprises 44.1 million Wikipedia articles translated into six major Indian languages from 6.3 million English articles. With over 45.1 billion Indic tokens, Bhasha-wiki serves as a foundational resource for linguistic and AI research. It supports a broad spectrum of applications, including machine translation, natural language processing, and language model training.
+[**Bhasha-wiki:**](https://soket.ai/blogs/bhasha_wiki_dataset) Starting with 6.3 million English Wikipedia articles, we translated these into six Indian languages to create a dataset of 44.1 million articles. With over 45.1 billion Indic tokens, Bhasha-wiki serves as a foundational resource for linguistic and AI research. It supports a broad spectrum of applications, including machine translation, natural language processing, and language model training.
 
 [**Bhasha-wiki-indic:**](https://soket.ai/blogs/bhasha_wiki_dataset) A refined subset of the Bhasha-wiki, Bhasha-wiki-indic is curated to enrich models with an in-depth understanding of the Indian context. This subset specifically includes content of significant relevance to India, aiming to develop culturally resonant AI applications.
 
@@ -135,9 +135,10 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 | Prime minister Modi | Prime minister Modi's visit to China: PM Modi is scheduled to arrive in Beijing on Thursday. PM Narendra Modi will be the first Indian prime minister to visit China since former President Mao Zedong, who visited India in 1959 and was assassinated by Chinese soldiers a year later. The two leaders are expected to discuss regional security issues such as terrorism, trade and energy cooperation during their talks. |
 | महात्मा गांधी | महात्मा गांधी एक स्वतंत्र व्यक्ति, एक आत्मनिर्भर और एक अत्यंत लोकप्रिय नेता थे। उन्होंने अपने जीवनकाल में देश को एक नई दिशा देने के लिए बहुत कुछ किया। समाज के विभिन्न क्षेत्रों में उनके योगदान के लिए उन्हें सम्मानित किया गया था। |
 | ब्रिटिश राजशाही | ब्रिटिश राजशाही के विघटन के बाद, इंग्लैंड और वेल्स में ब्रिटेन की संसद का गठन हुआ। संसद ने 1807 में अपने पहले अधिनियम, "द क्राउन की विधेयक" (एक्ट ऑफ द डेमोक्रैटिक) को मंजूरी दी, जिसमें प्रत्येक राज्य से एक निर्वाचित सदस्य चुना गया। |
-| মহাত্মা গান্ধী | মহাত্মা গান্ধী ছিলেন আন্তর্জাতিক সমাজতান্ত্রিক আন্দোলনের অন্যতম প্রধান নেতা। তিনি ভারতের স্বাধীনতা সংগ্রামে তাঁর ভূমিকা অপরিসীম। ১৯৪৭ সালের ১৫ আগস্ট ভারতে বিপ্লব ঘটে। ১৯৪৮ সালে মহাত্মা গান্ধীর মৃত্যু হয়। এরপর থেকে মহাত্মা আর দেখা যায় না। |
-| নরেন্দ্র মোদীর জন্ম | নরেন্দ্র মোদীর জন্মদিনের শুভেচ্ছা জানিয়েছেন অমিতাভ বচ্চন। প্রসঙ্গত, গোটা দেশ জুড়ে চলছে নববর্ষ উৎসব। আর এই উৎসবে নিজেকে সামিল করতে চান না কেউই। এমনটাই জানালেন বলিউড অভিনেত্রী সারা আলি খান। |
-| એક વખત | ક વખતે, તેમણે તેમના મિત્ર અને સહાયક વિલિયમ હેનરી મેકડોનાલ્ડ સાથે મળીને "ધ ઓરિજિનલ મેન ઓફ ધ ડેડ" નામના પુસ્તકનું નિર્માણ કર્યું હતું; તે 1961માં પ્રકાશિત થયું હતું. 1958માં, તેમણે ધ ન્યૂ યોર્કર માટે લેખક અને સંપાદક પિતા તરીકે કામ કર્યું હતું. |
+| মহাত্মা গান্ধী | মহাত্মা গান্ধী ছিলেন আন্তর্জাতিক সমাজতান্ত্রিক আন্দোলনের অন্যতম প্রধান নেতা। তিনি ভারতের স্বাধীনতা সংগ্রামে তাঁর ভূমিকা অপরিসীম। ১৯৪৭ সালের ১৫ আগস্ট ভারতে বিপ্লব ঘটে। ১৯৪৮ সালে মহাত্মা গান্ধীর মৃত্যু হয়। |
+| ভারতের স্বাধীনতা দিবসে | ভারতের স্বাধীনতা দিবসে (১৫ আগস্ট) সকাল থেকেই আলোচনা চলছে দেশজুড়ে। সেইসঙ্গে সামাজিক যোগাযোগ মাধ্যমেও ভাইরাল হয়েছে ভারতীয় নাগরিকদের একটি ছবি যা দেখলে মনে হবে একজন বিপ্লবী। |
+| ભારતમાં સ્વતંત્રતા દિવસ | ભારતમાં સ્વતંત્રતા દિવસ પર દેશભરમાં વિવિધ કાર્યક્રમો યોજાયા હતા. આ દરમિયાન ઘણા લોકો પોતાના પરિવાર સાથે એકસાથે જોવા મળ્યા હતા.<br/><br/> દેશના વડાપ્રધાન નરેન્દ્ર મોદીએ ભારતના સ્વાતંત્ર્ય દિવસ પર પોતાના ઘરે એક ખાસ વીડિયો શેર કર્યો છે. |
+| ક વખતે | ક વખતે, તેમણે તેમના મિત્ર અને સહાયક વિલિયમ હેનરી મેકડોનાલ્ડ સાથે મળીને "ધ ઓરિજિનલ મેન ઓફ ધ ડેડ" નામના પુસ્તકનું નિર્માણ કર્યું હતું; તે 1961માં પ્રકાશિત થયું હતું. 1958માં, તેમણે ધ ન્યૂ યોર્કર માટે લેખક અને સંપાદક પિતા તરીકે કામ કર્યું હતું. |
 | એક સમયે એક રાજા જંગલમાં રહેતો હતો. તેમણે | એક સમયે એક રાજા જંગલમાં રહેતો હતો. તેમણે, એક દિવસ રાજાને કહ્યું, "હું તમને મારી જાતને એક સ્ત્રી તરીકે આપું છું." રાજા ખુશ થયો. તેમણે તેને તેના ઘરમાં લઈ ગયા. તે દિવસે રાણી પોતાના પતિ સાથે ઘરે આવી અને કહ્યું કે તે તેની પાસે છે. રાજાએ તેને પૂછ્યું કે શું તેણે તેની સાથે લગ્ન કર્યા છે ? રાજા અને રાણીએ પૂછ્યું - હા. ત્યારે તેમણે કહ્યું કે, "તમે મને તમારી સાથે લગ્ન કરવાનું વચન આપ્યું છે. હવે મારે તમારા પર વિશ્વાસ રાખવો જોઈએ નહીં". |
 
 </div>
@@ -157,6 +158,9 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 | আমাকে ভারত সম্পর্কে বলুন | ভারত একটি বিশাল এবং বৈচিত্র্যময় দেশ যা বৈচিত্র্যময় সাংস্কৃতিক ও ধর্মীয় দৃষ্টিভঙ্গি প্রদান করে। এটি বিভিন্ন ভাষার কেন্দ্রীভূত কাঠামো এবং বিভিন্ন ধর্মীয় পদ্ধতির জন্য পরিচিত। |
 | বৈজ্ঞানিক অর্জন মানে কি? | বৈজ্ঞানিক অর্জনগুলি গণনা, যোগাযোগ এবং বৈজ্ঞানিক সংস্থার মাধ্যমে বা ব্যক্তিগতভাবে অর্জিত বিভিন্ন অর্জন হতে পারে। |
 | ભારતની રાજધાની શું છે? | દિલ્હીનું રાજધાની સ્થાન છે. |
+| મને ભારત વિશે કહો | ભારત એક વિશાળ અને વૈવિધ્યસભર દેશ છે જે વિવિધ રાજકીય પ્રદેશો અને વ્યવસાયિક વિભાગો છે. તે દક્ષિણ એશિયામાં આવેલો છે અને માનવતાવાદી અને આર્થિક બાબતોમાં સક્રિય રીતે ભાગ લે છે. |
+| દિલ્હી ક્યાં છે અને તે શેના માટે પ્રખ્યાત છે? | દિલ્હીનું સ્થાન ભારતના દિલ્હીમાં છે. તે તેની સાંસ્કૃતિક અને ઐતિહાસિક મહત્વ માટે જાણીતું છે. | 
+| কলকাতার ঐতিহাসিক তাৎপর্য কী। বিস্তারিত বলুন। | কলকাতা, ভারতের একটি ঐতিহাসিক শহর। এটি ভারতীয় উপমহাদেশের বৃহত্তম শহরগুলির মধ্যে একটি। শহরের অভ্যন্তরীণ অঞ্চলে বিভিন্ন প্রাকৃতিক দৃশ্য এবং প্রাসাদ রয়েছে যা এটিকে বিশ্বের সেরা শহর করে তুলেছে। এই শহরে বেশ কয়েকটি প্রাচীন এবং মধ্যযুগীয় স্থাপত্যের উদাহরণ রয়েছে এবং এখানে অনেক বৈচিত্র্যময় জীবনযাত্রা রয়েছে। |
 
 </div>
 </div>
