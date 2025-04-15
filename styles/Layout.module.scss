@@ -1,14 +1,13 @@
 @use "variables";
 
 .layout_section {
-    margin: 0 8%;
+    margin: 0 0%;
     color: variables.$text_default_color;
-    padding-bottom: 60px;
 }
 
 @media (max-width: variables.$sm) {
     .layout_section {
-        margin: 0 5px;
+        margin: 0 0px;
         padding-bottom: 7px;
     }
 }
