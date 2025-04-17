@@ -6,6 +6,7 @@ const ArrowLink = ({ href, children, variant = 'black', icon }) => {
   return (
     <Link 
       href={href} 
+      target='_blank'
       className={`flex gap-4 font-geist-mono underline items-center text-sm font-medium transition-colors ${textColorClass}`}
     >
       <span className='flex items-center gap-1'>

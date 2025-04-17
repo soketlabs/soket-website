@@ -1,4 +1,4 @@
-import {
+    import {
     Grid
 } from '@mui/material';
 
@@ -16,7 +16,7 @@ export default function Home() {
         <>
             <section className={styles.home_section}>
                 <section className={styles.hero_section}>
-                    <h1 className='lg:text-[72px] tracking-tightest mb-4 leading-tighter tracking-tight font-affairs'>Advancing AI Research <br /> Towards Ethical AGI</h1>
+                    <h1 className='lg:text-[72px] tracking-tightest mb-4 leading-tight tracking-tight font-affairs'>Advancing AI Research <br /> Towards Ethical AGI</h1>
                     <p className='px-4 lg:px-10 lg:w-1/2 mx-auto text-center mb-10'>
                         At Soket AI, we build efficient, accessible AI rooted in human values - safe, transparent, and fair on the path to AGI.
                     </p>

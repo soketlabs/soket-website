@@ -43,7 +43,7 @@ const AboutSoket = () => {
                 serve India's needs while competing globally.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
-                <ArrowLink href="/join" variant="white">
+                <ArrowLink href="https://eka.soket.ai/" variant="white">
                   JOIN THE INITIATIVE
                 </ArrowLink>
                 <ArrowLink 
@@ -99,7 +99,7 @@ const AboutSoket = () => {
                 OpenAI-compatible and supporting complex workflows, it 
                 integrates in just 1-4 weeks.
               </p>
-              <ArrowLink href="/tensor-studio">
+              <ArrowLink href="https://tensorstudio.ai/">
                 TRY TENSOR STUDIO
               </ArrowLink>
             </div>
@@ -124,7 +124,7 @@ const AboutSoket = () => {
                 it's ideal for NLP, translation, and conversational AI systems 
                 tailored to the Indian linguistic landscape
               </p>
-              <ArrowLink href="/pragna">
+              <ArrowLink href="https://huggingface.co/soketlabs/pragna-1b">
                 EXPLORE PRAGNA
               </ArrowLink>
             </div>
@@ -141,7 +141,7 @@ const AboutSoket = () => {
               </div>
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-2 h-2 bg-transparent flex-shrink-0"></div>
-                <p className="text-white opacity-60 text-base text-left">Let me know if you have any questions about Artifact.</p>
+                <p className="text-white opacity-60 text-base text-left">Let us know if you have any questions.</p>
               </div>
             </div>
             <Button href="mailto:careers@soket.ai" variant="white" borderTopColor="#1B41FF">
