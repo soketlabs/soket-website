@@ -44,7 +44,7 @@ const AboutSoket = () => {
                   JOIN THE INITIATIVE
                 </ArrowLink>
                 <ArrowLink 
-                  href="https://discord.gg/soket" 
+                  href="https://discord.gg/gZDPz7zE" 
                   variant="white"
                   // icon={<DiscordIcon variant="white" />}
                 >
