@@ -15,7 +15,7 @@ const AboutSoket = () => {
         {/* Section Header */}
         <div className="mb-8 text-left">
           <p className="text-sm font-geist-mono text-gray-600 mb-4">// ABOUT SOKET AI</p>
-          <h2 className="text-4xl md:text-6xl font-affairs lg:mb-8">
+          <h2 className="text-4xl md:text-6xl font-space-grotesk lg:mb-8">
             Building AI for Humanity,<br />
             Not Just Technology
           </h2>
@@ -34,13 +34,10 @@ const AboutSoket = () => {
                   height={48}
                 />
               </div>
-              <h3 className="text-4xl mb-4 text-left">Project Eka</h3>
+              <h3 className="text-4xl mb-4 text-left">Project EKΛ</h3>
               <p className="text-gray-300 mb-8 text-left">
-                Our ambitious initiative developing sovereign AI models tailored 
-                for India's unique linguistic and socio-economic landscape. By 
-                uniting researchers, engineers, and institutions nationwide, 
-                we're creating multilingual, high-efficiency AI models that 
-                serve India's needs while competing globally.
+              EKΛ is India’s bold leap toward sovereign, inclusive intelligence—crafting foundational AI that speaks every language, reflects every culture, and empowers every citizen.
+              Rooted in our diversity and driven by innovation, we’re building the world’s most humane and multilingual AI—made in India, for a wiser world.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
                 <ArrowLink href="https://eka.soket.ai/" variant="white">
@@ -49,7 +46,7 @@ const AboutSoket = () => {
                 <ArrowLink 
                   href="https://discord.gg/soket" 
                   variant="white"
-                  icon={<DiscordIcon variant="white" />}
+                  // icon={<DiscordIcon variant="white" />}
                 >
                   JOIN DISCORD
                 </ArrowLink>
@@ -59,7 +56,7 @@ const AboutSoket = () => {
             {/* Right Content */}
             <div className="relative md:absolute md:bottom-0 md:right-0 w-full md:w-1/2 h-[300px] md:h-full mt-8 md:mt-0">
               <Image 
-                src="/images/project-eka-visual.png" 
+                src="/images/project_eka_abstract.png" 
                 alt="Project Eka Visual" 
                 fill
                 className="object-contain object-right-bottom k"
@@ -93,14 +90,10 @@ const AboutSoket = () => {
             <div className="lg:w-4/5">
               <h3 className="text-3xl mb-4 text-left">Realtime Speech API</h3>
               <p className="text-black opacity-70 mb-8 text-left">
-                Our Realtime Speech API delivers human-like, multilingual 
-                voice interactions with &lt;500ms latency. Features include tool 
-                calling and Speech RAG for smart, context-aware responses. 
-                OpenAI-compatible and supporting complex workflows, it 
-                integrates in just 1-4 weeks.
+              Talk to your software like you talk to people. Our Realtime Speech API lets you build smart, natural voice agents that understand, respond, and take action instantly—across any language or platform.
               </p>
               <ArrowLink href="https://tensorstudio.ai/">
-                TRY TENSOR STUDIO
+                TRY ON TENSORSTUDIO
               </ArrowLink>
             </div>
           </div>
@@ -136,7 +129,7 @@ const AboutSoket = () => {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-6 md:mb-0">
               <div className="flex items-center gap-2 mb-1">
-                <div className="w-2 h-2 bg-white flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-white flex-shrink-0 md:mt-0 md:self-auto mt-2 self-baseline"></div>
                 <h3 className="text-base text-left">Want to join us in our innovation and progress towards artificial intelligence?</h3>
               </div>
               <div className="flex items-center gap-2 mb-1">
