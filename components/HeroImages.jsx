@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import COOMFramework from './COOMFramework';
 
 const HeroImages = () => {
   return (
@@ -25,12 +26,19 @@ const HeroImages = () => {
 
       {/* Right section */}
       <div className="relative aspect-[1/1] rounded-[6px] overflow-hidden">
-        <Image 
-          src="/images/hero-3.png" 
-          alt="The COOM Framework" 
-          fill
-          className="object-cover"
-        />
+        <div className="grid grid-rows-2 h-full gap-6">
+          <div className="relative rounded-[6px] overflow-hidden">
+            <Image 
+              src="/images/hero-3.png" 
+              alt="AI Innovation" 
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="relative rounded-[6px] overflow-hidden">
+              <COOMFramework />
+          </div>
+        </div>
       </div>
     </div>
   );

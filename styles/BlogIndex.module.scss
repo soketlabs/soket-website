@@ -1,0 +1,282 @@
+@use "variables";
+
+.blog_index {
+  margin-top: 120px;
+  padding: 0 8%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  color: variables.$text_default_color;
+
+  .header {
+    text-align: center;
+    margin-bottom: 80px;
+
+    .title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 4.5rem;
+      font-weight: 900;
+      margin: 0 0 24px 0;
+      line-height: 1.1;
+      color: variables.$text_default_color;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-family: "Geist", sans-serif;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: variables.$text_default_color;
+      margin: 0 auto;
+      max-width: 700px;
+      font-weight: 400;
+    }
+  }
+
+  .blogs_list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    grid-auto-rows: min-content;
+  }
+
+  .blog_card {
+    display: block;
+    text-decoration: none;
+    color: variables.$text_default_color;
+    padding: 40px;
+    border: 2px solid #e5e5e5;
+    transition: all 0.3s ease;
+    position: relative;
+    background: white;
+
+    &:hover {
+      border-color: #1b41ff;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(27, 65, 255, 0.1);
+
+      .read_more {
+        color: #1b41ff;
+        transform: translateX(8px);
+      }
+
+      .blog_title {
+        color: #1b41ff;
+      }
+    }
+
+    &.blog_card_wide {
+      grid-column: span 2;
+    }
+
+    &.blog_card_narrow {
+      grid-column: span 1;
+    }
+
+    .blog_cover {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      margin: -40px -40px 32px -40px;
+      overflow: hidden;
+      background: #f7f7f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .cover_image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+    }
+
+    &.blog_card_narrow {
+      .blog_cover {
+        // height: 200px;
+        width: 120%;
+        margin: -40px -40px 24px -40px;
+      }
+    }
+
+    .blog_meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+
+      .blog_date {
+        font-family: "Geist Mono", monospace;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .blog_number {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #e5e5e5;
+        line-height: 1;
+      }
+    }
+
+    .blog_title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 20px 0;
+      line-height: 1.2;
+      color: variables.$text_default_color;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
+    }
+
+    &.blog_card_narrow {
+      .blog_title {
+        font-size: 2rem;
+      }
+
+      .blog_description {
+        font-size: 1rem;
+      }
+    }
+
+    .blog_description {
+      font-family: "Geist", sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: #4a4a4a;
+      margin: 0 0 20px 0;
+      font-weight: 400;
+    }
+
+    .read_more {
+      font-family: "Geist", sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: variables.$text_default_color;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+@media (max-width: variables.$md) {
+  .blog_index {
+    margin-top: 100px;
+    padding: 0 24px;
+
+    .header {
+      margin-bottom: 60px;
+
+      .title {
+        font-size: 3rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .subtitle {
+        font-size: 1.125rem;
+        padding: 0 10px;
+      }
+    }
+
+    .blogs_list {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .blog_card {
+      padding: 32px 24px;
+
+      &.blog_card_wide,
+      &.blog_card_narrow {
+        grid-column: span 1;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      .blog_cover {
+        height: 180px;
+        margin: -32px -24px 24px -24px;
+      }
+
+      .blog_meta {
+        margin-bottom: 20px;
+
+        .blog_date {
+          font-size: 0.8rem;
+        }
+
+        .blog_number {
+          font-size: 1.25rem;
+        }
+      }
+
+      .blog_title {
+        font-size: 1.75rem;
+        line-height: 1.3;
+        margin-bottom: 16px;
+      }
+
+      .blog_description {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 16px;
+      }
+
+      .read_more {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+@media (min-width: variables.$md) and (max-width: variables.$lg) {
+  .blog_index {
+    padding: 0 6%;
+    max-width: 1000px;
+
+    .header {
+      .title {
+        font-size: 3.5rem;
+      }
+    }
+
+    .blogs_list {
+      gap: 32px;
+    }
+
+    .blog_card {
+      padding: 32px;
+
+      .blog_cover {
+        height: 220px;
+        margin: -32px -32px 28px -32px;
+      }
+
+      &.blog_card_wide {
+        .blog_title {
+          font-size: 2.25rem;
+        }
+      }
+
+      &.blog_card_narrow {
+        .blog_title {
+          font-size: 1.75rem;
+        }
+
+        .blog_cover {
+          height: 180px;
+        }
+      }
+    }
+  }
+}

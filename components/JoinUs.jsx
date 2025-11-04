@@ -29,13 +29,12 @@ const JoinUs = () => {
 
         {/* Content */}
         <div className="max-w-3xl mx-auto text-center mx-[8%] px-4 py-32 lg:py-32">
-          <h2 className="text-4xl md:text-6xl font-affairs mb-8 pt-6">
+          <h2 className="text-4xl md:text-6xl font-space-grotesk mb-8 pt-6">
             Join Us on the Journey<br />
             to Ethical AGI
           </h2>
           <p className="lg:text-xl mb-12 text-white">
-            Whether you're a researcher looking to collaborate, a business seeking AI solutions, 
-            or a developer interested in our open-source projects, we invite you to connect with Soketlabs.
+            Whether you're a researcher, a business, or a builder—if you're excited about ethical, multilingual AI, let's create together. Join us at Soket and be part of the future we're shaping.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-10">
             {/* <Button href="/research" variant="white">

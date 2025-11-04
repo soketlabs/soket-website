@@ -26,6 +26,8 @@ module.exports = {
         'affairs': ['Affairs', 'serif'],
         'affairs-italic': ['Affairs', 'serif'],
         'affairs-mono': ['Affairs Mono', 'monospace'],
+        'ibm-plex-mono': ['IBM Plex Mono', 'monospace'],
+        'space-grotesk': ['Space Grotesk', 'sans-serif'],
       },
       colors: {
         'soket-gray': '#F7F7F7',

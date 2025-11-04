@@ -8,10 +8,9 @@ const AIForHumanity = () => {
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Column */}
           <div className='text-left'>
-            <p className="text-sm font-geist-mono text-gray-600 mb-4">// ABOUT SOKET AI</p>
-            <h2 className="text-4xl md:text-6xl font-affairs lg:mb-8">
-              Building AI for Humanity,<br />
-              Not Just Technology
+            <p className="text-sm font-geist-mono text-gray-600 mb-4">// AI FOR HUMANITY</p>
+            <h2 className="text-4xl md:text-6xl font-space-grotesk lg:mb-8">
+            Human-Centered AI for a Fairer, Smarter Future
             </h2>
           </div>
 
@@ -21,7 +20,7 @@ const AIForHumanity = () => {
               We believe in building AI technologies that are not just powerful, but also responsible—prioritizing human well-being, transparency, and fairness in all our innovations.
             </p>
             <Button href="mailto:careers@soket.ai" variant="black">
-              GET IN TOUCH
+              EXPLORE
             </Button>
           </div>
         </div>
