@@ -1,8 +1,11 @@
-import Head from 'next/head'
-import styles from '@/styles/Blogs.module.scss';
+import Head from "next/head";
+import styles from "@/styles/Blogs.module.scss";
 
 <Head>
-    <title>Introducing Pragna-1B: Soket AI Labs' Multilingual Language Model for Indian Languages</title>
+  <title>
+    Introducing Pragna-1B: Soket AI Labs' Multilingual Language Model for Indian
+    Languages
+  </title>
 </Head>
 
 <div className={styles.Blogs}>
@@ -12,16 +15,24 @@ import styles from '@/styles/Blogs.module.scss';
 # Introducing Pragna-1B: Soket AI Labs' Multilingual Language Model for Indian Languages
 
 <div className={styles.cover_wrapper}>
-
-![pragna-1b on huggingface](/images/blog_pragna/logo.jpg)
-
+  ![pragna-1b on huggingface](/images/blog_pragna/logo.jpg)
 </div>
 
 ### Available on Huggingface 🤗: [soketlabs/pragna-1b](https://huggingface.co/soketlabs/pragna-1b)
- 
+
 ## Introduction: Unleashing the Power of Multilingual AI
 
-<i>We at Soket AI Labs are thrilled to unveil India's first open source multilingual model, <b>Pragna-1B</b> available in four Indian languages - Hindi, Gujarati, Bangla and English.</i> The model is designed to cater to the rich tapestry of Indian languages, significantly expanding the horizons of AI inclusivity and accessibility. As we step into an era where technology transcends linguistic boundaries, Pragna-1B emerges as a beacon of innovation, ready to bridge language barriers and enhance user engagement across diverse linguistic landscapes.
+<i>
+  We at Soket AI Labs are thrilled to unveil India's first open source
+  multilingual model, <b>Pragna-1B</b> available in four Indian languages -
+  Hindi, Gujarati, Bangla and English.
+</i>{" "}
+
+The model is designed to cater to the rich tapestry of Indian languages, significantly
+expanding the horizons of AI inclusivity and accessibility. As we step into an era
+where technology transcends linguistic boundaries, Pragna-1B emerges as a beacon
+of innovation, ready to bridge language barriers and enhance user engagement across
+diverse linguistic landscapes.
 
 ## Highlights of Pragna-1B:
 
@@ -35,6 +46,7 @@ import styles from '@/styles/Blogs.module.scss';
 ## Architecture Overview
 
 Pragna-1B is a decoder-only transformer model inspired by TinyLlama, featuring the following specifications:
+
 - **Layers:** 22
 - **Attention Heads:** 32
 - **Context Length:** 2048
@@ -48,7 +60,7 @@ Pragna-1B is trained on our proprietary platform, GenAI Studio, a modular AI Dev
 
 ## Developing an Efficient Tokenizer for Indian Languages
 
-Pragna employs a Byte-Pair Encoding (BPE) tokenizer, specifically trained for handling Indian languages. The tokenizer was trained on six Indian languages—Hindi, Bangla, Urdu, Tamil, Kannada, and Gujarati—before combining them into a unified tokenizer. This unification was achieved through a union set operation, which ensures each language is represented equitably. The merging rules were selected to optimise compression of  text into tokens, effectively making the vocabulary size 69,632.
+Pragna employs a Byte-Pair Encoding (BPE) tokenizer, specifically trained for handling Indian languages. The tokenizer was trained on six Indian languages—Hindi, Bangla, Urdu, Tamil, Kannada, and Gujarati—before combining them into a unified tokenizer. This unification was achieved through a union set operation, which ensures each language is represented equitably. The merging rules were selected to optimise compression of text into tokens, effectively making the vocabulary size 69,632.
 
 The tokenizer demonstrates its efficiency through its fertility score, a metric that measures the average number of tokens produced per word. This score is crucial as it reflects the tokenizer's ability to compress text into tokens—computer representable integers—with a lower score indicating more efficient tokenization. Notably, our tokenizer not only performs comparably to those designed for English but excels in processing Hindi, Bangla, Gujarati, Tamil, Kannada, and Urdu as shown in the graph below. For example, the Gemma-7b model produces 5.8 tokens per word whereas Pragna-1b generates 2.8 tokens per word for Kannada almost doubling the throughput just with tokenization.
 
@@ -61,23 +73,23 @@ Graph above shows the fertility score for six Indian languages when tokenized us
 <div className={styles.bench_table}>
 <div className={styles.table_wrapper}>
 
-|                                  |   en |   hi |    kn |    bn |    gu |    ta |   ur |
-|:---------------------------------|-----:|-----:|------:|------:|------:|------:|-----:|
-| soketlabs/pragna-1b              | 2.1  | <b>2.26</b> |  <b>2.85</b> |  <b>3.3</b>  |  <b>2.41</b> |  2.94 | <b>1.87</b> |
-| meta-llama/Llama-2-7b            | 2.03 | 6.24 | 20.22 |  9.12 | 16.36 | 10.66 | 5.49 |
-| meta-llama/Llama-3-8b            | 1.76 | 3.07 | 14.68 |  8.6  | 10.96 | 11.4  | 3.3  |
-| openai/gpt-2                     | 1.78 | 8.89 | 22.28 | 14.2  | 17.12 | 23.08 | 6.68 |
-| openai/gpt-3.5                   | 1.78 | 5.73 | 14.68 |  8.68 | 10.96 | 11.41 | 4.68 |
-| openai/gpt-4                     | 1.78 | 5.73 | 14.68 |  8.68 | 10.96 | 11.41 | 4.68 |
-| google/gemma-7b                  | <b>1.74</b> | 2.52 |  5.81 |  4.2  |  4.57 |  4.39 | 2.34 |
-| microsoft/phi-2                  | 1.78 | 8.89 | 22.28 | 14.2  | 17.12 | 23.08 | 6.68 |
-| microsoft/phi-3-mini             | 2.03 | 6.24 | 20.22 |  9.12 | 16.36 | 10.66 | 5.49 |
-| sarvamai/OpenHathi-7B-Hi         | 2.03 | 2.35 | 20.22 |  9.12 | 16.36 | 10.66 | 5.48 |
-| mistralai/Mistral-7B             | 2.04 | 5.97 | 11.72 |  7.93 | 13.5  | 10.15 | 5.15 |
-| GenVRadmin/AryaBhatta-GemmaUltra | <b>1.74</b> | 2.52 |  5.81 |  4.2  |  4.57 |  4.39 | 2.34 |
-| TinyLlama/TinyLlama-1.1B         | 2.03 | 6.24 | 20.22 |  9.12 | 16.36 | 10.66 | 5.49 |
-| Tensoic/Kan-LLaMA-7B             | 1.9  | 5.56 |  2.94 |  7.38 |  6.95 |  8.59 | 5.37 |
-| abhinand/tamil-llama-7b          | 1.91 | 6.14 | 20.07 |  8.99 | 16.23 |  <b>2.55</b> | 5.38 |
+|                                  |          en |          hi |          kn |         bn |          gu |          ta |          ur |
+| :------------------------------- | ----------: | ----------: | ----------: | ---------: | ----------: | ----------: | ----------: |
+| soketlabs/pragna-1b              |         2.1 | <b>2.26</b> | <b>2.85</b> | <b>3.3</b> | <b>2.41</b> |        2.94 | <b>1.87</b> |
+| meta-llama/Llama-2-7b            |        2.03 |        6.24 |       20.22 |       9.12 |       16.36 |       10.66 |        5.49 |
+| meta-llama/Llama-3-8b            |        1.76 |        3.07 |       14.68 |        8.6 |       10.96 |        11.4 |         3.3 |
+| openai/gpt-2                     |        1.78 |        8.89 |       22.28 |       14.2 |       17.12 |       23.08 |        6.68 |
+| openai/gpt-3.5                   |        1.78 |        5.73 |       14.68 |       8.68 |       10.96 |       11.41 |        4.68 |
+| openai/gpt-4                     |        1.78 |        5.73 |       14.68 |       8.68 |       10.96 |       11.41 |        4.68 |
+| google/gemma-7b                  | <b>1.74</b> |        2.52 |        5.81 |        4.2 |        4.57 |        4.39 |        2.34 |
+| microsoft/phi-2                  |        1.78 |        8.89 |       22.28 |       14.2 |       17.12 |       23.08 |        6.68 |
+| microsoft/phi-3-mini             |        2.03 |        6.24 |       20.22 |       9.12 |       16.36 |       10.66 |        5.49 |
+| sarvamai/OpenHathi-7B-Hi         |        2.03 |        2.35 |       20.22 |       9.12 |       16.36 |       10.66 |        5.48 |
+| mistralai/Mistral-7B             |        2.04 |        5.97 |       11.72 |       7.93 |        13.5 |       10.15 |        5.15 |
+| GenVRadmin/AryaBhatta-GemmaUltra | <b>1.74</b> |        2.52 |        5.81 |        4.2 |        4.57 |        4.39 |        2.34 |
+| TinyLlama/TinyLlama-1.1B         |        2.03 |        6.24 |       20.22 |       9.12 |       16.36 |       10.66 |        5.49 |
+| Tensoic/Kan-LLaMA-7B             |         1.9 |        5.56 |        2.94 |       7.38 |        6.95 |        8.59 |        5.37 |
+| abhinand/tamil-llama-7b          |        1.91 |        6.14 |       20.07 |       8.99 |       16.23 | <b>2.55</b> |        5.38 |
 
 </div>
 </div>
@@ -107,6 +119,7 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 **Continual Pretraining:** We subsequently enabled all 1.25 billion parameters for further training, focusing on three languages—Hindi, Bangla, and Gujarati—due to compute limitations. We maintained high, equal sampling probabilities for these languages while incorporating data from SlimPajama, predominantly in English. The model processed approximately 150 billion tokens (3.15 trillion considering the base model) over about 8,000 GPU-hours. Training specifics included 3,000 hours on 4xA100-40 GiB and 5,000 hours on 8xA100-80 GiB systems.
 
 **Training Parameters:**
+
 - **Precision:** BFloat16
 - **Batch Size:** 2k - 2.5k
 - **Context Length:** 2,048
@@ -117,7 +130,7 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 
 **Instruction Fine-Tuning:** The model is undergoing supervised fine-tuning across multiple tasks, including conversation, question-answering, summarization, and paraphrasing using Bhasha-SFT which comprises over 13 million instances of instruction-response data in three Indian languages from Aya Collection, Indic-align, and Samvaad.
 
-**Ethics and Safety Alignment:** Safety and ethics alignment is an important part of the supervised fine–tuning step. To make sure Pragna is aligned to human values, we have been working on building our own datasets specifically curated to prevent the model from generating unethical or potentially harmful content.  This data is being exposed to the model during SFT.
+**Ethics and Safety Alignment:** Safety and ethics alignment is an important part of the supervised fine–tuning step. To make sure Pragna is aligned to human values, we have been working on building our own datasets specifically curated to prevent the model from generating unethical or potentially harmful content. This data is being exposed to the model during SFT.
 
 **Ongoing Developments and Community Engagement:** As the model is currently undergoing further instruction tuning and safety alignment, we plan to release pragna-1b-it model weights to the community under an open-source licence soon. An initial research preview of the instruction-tuned model is available via a chat interface, though it is not recommended for production use due to its tendency to generate convincing yet factually incorrect information. We eagerly anticipate feedback from the community to further refine and enhance our models.
 
@@ -128,18 +141,18 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 <div className={styles.sample_table}>
 <div className={styles.table_wrapper}>
 
-| Context | Tokens Predicted |
-|---------|------------------|
-| India is one of the most | India is one of the most exciting places to travel to in Asia. The country hosts a wide variety of cultures and offers a plethora of attractions across the country. There's a lot you can do here and the tourists are always on the lookout for the new things to do and see. If you're looking to travel to India for your next adventure, you'll be pleased to know that you can find a ton of things to do in the country. From the temples to the beaches, there's a lot you can see and do here. One of the best things for visitors to do in India is to visit Jaipur. The capital city of Rajputana, Jaipur is a beautiful city that's known as the "City of Lives". |
-| नरेंद्र मोदी का जन्म | नरेंद्र मोदी का जन्मदिन आज मनाया जा रहा है। इस मौके पर प्रधानमंत्री नरेंद्र मोदी ने ट्वीट कर लिखा कि 'आज देश को एक नया संसद भवन मिला है, जिसे आप लोगों ने बधाई दी है। भारत और भारतवासियों को यह संसद बहुत ही महत्त्वपूर्ण है और इसका उपयोग देश के विकास में बहुत अधिक योगदान देगा। आज हमारे देश में एक संसद बनी हुई है जो हमारे देश की लोकतांत्रिक प्रक्रियाओं को मजबूत बनाती है। |
-| Prime minister Modi | Prime minister Modi's visit to China: PM Modi is scheduled to arrive in Beijing on Thursday. PM Narendra Modi will be the first Indian prime minister to visit China since former President Mao Zedong, who visited India in 1959 and was assassinated by Chinese soldiers a year later. The two leaders are expected to discuss regional security issues such as terrorism, trade and energy cooperation during their talks. |
-| महात्मा गांधी | महात्मा गांधी एक स्वतंत्र व्यक्ति, एक आत्मनिर्भर और एक अत्यंत लोकप्रिय नेता थे। उन्होंने अपने जीवनकाल में देश को एक नई दिशा देने के लिए बहुत कुछ किया। समाज के विभिन्न क्षेत्रों में उनके योगदान के लिए उन्हें सम्मानित किया गया था। |
-| ब्रिटिश राजशाही | ब्रिटिश राजशाही के विघटन के बाद, इंग्लैंड और वेल्स में ब्रिटेन की संसद का गठन हुआ। संसद ने 1807 में अपने पहले अधिनियम, "द क्राउन की विधेयक" (एक्ट ऑफ द डेमोक्रैटिक) को मंजूरी दी, जिसमें प्रत्येक राज्य से एक निर्वाचित सदस्य चुना गया। |
-| মহাত্মা গান্ধী | মহাত্মা গান্ধী ছিলেন আন্তর্জাতিক সমাজতান্ত্রিক আন্দোলনের অন্যতম প্রধান নেতা। তিনি ভারতের স্বাধীনতা সংগ্রামে তাঁর ভূমিকা অপরিসীম। ১৯৪৭ সালের ১৫ আগস্ট ভারতে বিপ্লব ঘটে। ১৯৪৮ সালে মহাত্মা গান্ধীর মৃত্যু হয়। |
-| ভারতের স্বাধীনতা দিবসে | ভারতের স্বাধীনতা দিবসে (১৫ আগস্ট) সকাল থেকেই আলোচনা চলছে দেশজুড়ে। সেইসঙ্গে সামাজিক যোগাযোগ মাধ্যমেও ভাইরাল হয়েছে ভারতীয় নাগরিকদের একটি ছবি যা দেখলে মনে হবে একজন বিপ্লবী। |
-| ભારતમાં સ્વતંત્રતા દિવસ | ભારતમાં સ્વતંત્રતા દિવસ પર દેશભરમાં વિવિધ કાર્યક્રમો યોજાયા હતા. આ દરમિયાન ઘણા લોકો પોતાના પરિવાર સાથે એકસાથે જોવા મળ્યા હતા.<br/><br/> દેશના વડાપ્રધાન નરેન્દ્ર મોદીએ ભારતના સ્વાતંત્ર્ય દિવસ પર પોતાના ઘરે એક ખાસ વીડિયો શેર કર્યો છે. |
-| ક વખતે | ક વખતે, તેમણે તેમના મિત્ર અને સહાયક વિલિયમ હેનરી મેકડોનાલ્ડ સાથે મળીને "ધ ઓરિજિનલ મેન ઓફ ધ ડેડ" નામના પુસ્તકનું નિર્માણ કર્યું હતું; તે 1961માં પ્રકાશિત થયું હતું. 1958માં, તેમણે ધ ન્યૂ યોર્કર માટે લેખક અને સંપાદક પિતા તરીકે કામ કર્યું હતું. |
-| એક સમયે એક રાજા જંગલમાં રહેતો હતો. તેમણે | એક સમયે એક રાજા જંગલમાં રહેતો હતો. તેમણે, એક દિવસ રાજાને કહ્યું, "હું તમને મારી જાતને એક સ્ત્રી તરીકે આપું છું." રાજા ખુશ થયો. તેમણે તેને તેના ઘરમાં લઈ ગયા. તે દિવસે રાણી પોતાના પતિ સાથે ઘરે આવી અને કહ્યું કે તે તેની પાસે છે. રાજાએ તેને પૂછ્યું કે શું તેણે તેની સાથે લગ્ન કર્યા છે ? રાજા અને રાણીએ પૂછ્યું - હા. ત્યારે તેમણે કહ્યું કે, "તમે મને તમારી સાથે લગ્ન કરવાનું વચન આપ્યું છે. હવે મારે તમારા પર વિશ્વાસ રાખવો જોઈએ નહીં". |
+| Context                                  | Tokens Predicted                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| India is one of the most                 | India is one of the most exciting places to travel to in Asia. The country hosts a wide variety of cultures and offers a plethora of attractions across the country. There's a lot you can do here and the tourists are always on the lookout for the new things to do and see. If you're looking to travel to India for your next adventure, you'll be pleased to know that you can find a ton of things to do in the country. From the temples to the beaches, there's a lot you can see and do here. One of the best things for visitors to do in India is to visit Jaipur. The capital city of Rajputana, Jaipur is a beautiful city that's known as the "City of Lives". |
+| नरेंद्र मोदी का जन्म                     | नरेंद्र मोदी का जन्मदिन आज मनाया जा रहा है। इस मौके पर प्रधानमंत्री नरेंद्र मोदी ने ट्वीट कर लिखा कि 'आज देश को एक नया संसद भवन मिला है, जिसे आप लोगों ने बधाई दी है। भारत और भारतवासियों को यह संसद बहुत ही महत्त्वपूर्ण है और इसका उपयोग देश के विकास में बहुत अधिक योगदान देगा। आज हमारे देश में एक संसद बनी हुई है जो हमारे देश की लोकतांत्रिक प्रक्रियाओं को मजबूत बनाती है।                                                                                                                                                                                                                                                                                             |
+| Prime minister Modi                      | Prime minister Modi's visit to China: PM Modi is scheduled to arrive in Beijing on Thursday. PM Narendra Modi will be the first Indian prime minister to visit China since former President Mao Zedong, who visited India in 1959 and was assassinated by Chinese soldiers a year later. The two leaders are expected to discuss regional security issues such as terrorism, trade and energy cooperation during their talks.                                                                                                                                                                                                                                                 |
+| महात्मा गांधी                            | महात्मा गांधी एक स्वतंत्र व्यक्ति, एक आत्मनिर्भर और एक अत्यंत लोकप्रिय नेता थे। उन्होंने अपने जीवनकाल में देश को एक नई दिशा देने के लिए बहुत कुछ किया। समाज के विभिन्न क्षेत्रों में उनके योगदान के लिए उन्हें सम्मानित किया गया था।                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ब्रिटिश राजशाही                          | ब्रिटिश राजशाही के विघटन के बाद, इंग्लैंड और वेल्स में ब्रिटेन की संसद का गठन हुआ। संसद ने 1807 में अपने पहले अधिनियम, "द क्राउन की विधेयक" (एक्ट ऑफ द डेमोक्रैटिक) को मंजूरी दी, जिसमें प्रत्येक राज्य से एक निर्वाचित सदस्य चुना गया।                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| মহাত্মা গান্ধী                           | মহাত্মা গান্ধী ছিলেন আন্তর্জাতিক সমাজতান্ত্রিক আন্দোলনের অন্যতম প্রধান নেতা। তিনি ভারতের স্বাধীনতা সংগ্রামে তাঁর ভূমিকা অপরিসীম। ১৯৪৭ সালের ১৫ আগস্ট ভারতে বিপ্লব ঘটে। ১৯৪৮ সালে মহাত্মা গান্ধীর মৃত্যু হয়।                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ভারতের স্বাধীনতা দিবসে                   | ভারতের স্বাধীনতা দিবসে (১৫ আগস্ট) সকাল থেকেই আলোচনা চলছে দেশজুড়ে। সেইসঙ্গে সামাজিক যোগাযোগ মাধ্যমেও ভাইরাল হয়েছে ভারতীয় নাগরিকদের একটি ছবি যা দেখলে মনে হবে একজন বিপ্লবী।                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ભારતમાં સ્વતંત્રતા દિવસ                  | ભારતમાં સ્વતંત્રતા દિવસ પર દેશભરમાં વિવિધ કાર્યક્રમો યોજાયા હતા. આ દરમિયાન ઘણા લોકો પોતાના પરિવાર સાથે એકસાથે જોવા મળ્યા હતા.<br/><br/> દેશના વડાપ્રધાન નરેન્દ્ર મોદીએ ભારતના સ્વાતંત્ર્ય દિવસ પર પોતાના ઘરે એક ખાસ વીડિયો શેર કર્યો છે.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ક વખતે                                   | ક વખતે, તેમણે તેમના મિત્ર અને સહાયક વિલિયમ હેનરી મેકડોનાલ્ડ સાથે મળીને "ધ ઓરિજિનલ મેન ઓફ ધ ડેડ" નામના પુસ્તકનું નિર્માણ કર્યું હતું; તે 1961માં પ્રકાશિત થયું હતું. 1958માં, તેમણે ધ ન્યૂ યોર્કર માટે લેખક અને સંપાદક પિતા તરીકે કામ કર્યું હતું.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| એક સમયે એક રાજા જંગલમાં રહેતો હતો. તેમણે | એક સમયે એક રાજા જંગલમાં રહેતો હતો. તેમણે, એક દિવસ રાજાને કહ્યું, "હું તમને મારી જાતને એક સ્ત્રી તરીકે આપું છું." રાજા ખુશ થયો. તેમણે તેને તેના ઘરમાં લઈ ગયા. તે દિવસે રાણી પોતાના પતિ સાથે ઘરે આવી અને કહ્યું કે તે તેની પાસે છે. રાજાએ તેને પૂછ્યું કે શું તેણે તેની સાથે લગ્ન કર્યા છે ? રાજા અને રાણીએ પૂછ્યું - હા. ત્યારે તેમણે કહ્યું કે, "તમે મને તમારી સાથે લગ્ન કરવાનું વચન આપ્યું છે. હવે મારે તમારા પર વિશ્વાસ રાખવો જોઈએ નહીં".                                                                                                                                                                                                                                   |
 
 </div>
 </div>
@@ -149,18 +162,18 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 <div className={styles.sample_table}>
 <div className={styles.table_wrapper}>
 
-| Instruction | Response |
-|---------|------------------|
-| Tell me about India | India is a vast and diverse country located in South Asia. It is the seventh-largest country in the world by land area and is also the most populous country, with over 1.4 billion people as of my last update. Here are some key points about India: <br/><br/>Inchurching History: Modern India has a long and rich history that spans thousands of years. It was under various empires for many centuries before it became part of the British Empire in the 18th century. The Indian Rebellion of 1857 was a significant event that led to the independence of India from British rule and its unification into one nation. <br/><br/>Economy: India's economy is one of the largest in the world, with economic growth reportedly averaging around 7% per year since 1990. It is considered one of the most advanced economies in the world and hosts several multinational companies, including Tata Motors, Airtel, HCL Teletracns, and Infosys among others. <br/><br/>Society: India's society is diverse and pluralistic, with individuals belonging to different religions, ethnicies, and social classes. It faces challenges such as poverty, inequality, and environmental degradation. |
-| मुझे भारत के बारे में बताओ? | भारत दक्षिण एशिया में स्थित एक विशाल और वैश्विक देश है। यह भूमि क्षेत्र के हिसाब से दुनिया का सातवां सबसे बड़ा देश है और सबसे अधिक आबादी वाला देश है, जहां मेरी पिछली अद्यतन जानकारी के अनुसार 12.2 करोड़ लोग हैं। वे हिंदू समुदाय का नेतृत्व करते हैं, और एक संघीय संसदीय लोकतांत्रिक गणराज्य है। |
-| भारत के प्रधान मंत्री कौन हैं | नरेंद्र मोदी भारत के वर्तमान प्रधानमंत्री हैं। |
-| भारत को आजादी कब मिली | 1942 में भारत के स्वतंत्रता संग्राम के दौरान भारत ने अपनी सार्वजनिक रूप से घोषित स्वतंत्रता के लिए लड़ाई लड़ी थी। यह युद्ध 1947 तक चला, तब भारत की स्थापना हुई और इसे भारतीय संविधान द्वारा मान्यता प्राप्त हुई। |
-| আমাকে ভারত সম্পর্কে বলুন | ভারত একটি বিশাল এবং বৈচিত্র্যময় দেশ যা বৈচিত্র্যময় সাংস্কৃতিক ও ধর্মীয় দৃষ্টিভঙ্গি প্রদান করে। এটি বিভিন্ন ভাষার কেন্দ্রীভূত কাঠামো এবং বিভিন্ন ধর্মীয় পদ্ধতির জন্য পরিচিত। |
-| বৈজ্ঞানিক অর্জন মানে কি? | বৈজ্ঞানিক অর্জনগুলি গণনা, যোগাযোগ এবং বৈজ্ঞানিক সংস্থার মাধ্যমে বা ব্যক্তিগতভাবে অর্জিত বিভিন্ন অর্জন হতে পারে। |
-| ભારતની રાજધાની શું છે? | દિલ્હીનું રાજધાની સ્થાન છે. |
-| મને ભારત વિશે કહો | ભારત એક વિશાળ અને વૈવિધ્યસભર દેશ છે જે વિવિધ રાજકીય પ્રદેશો અને વ્યવસાયિક વિભાગો છે. તે દક્ષિણ એશિયામાં આવેલો છે અને માનવતાવાદી અને આર્થિક બાબતોમાં સક્રિય રીતે ભાગ લે છે. |
-| દિલ્હી ક્યાં છે અને તે શેના માટે પ્રખ્યાત છે? | દિલ્હીનું સ્થાન ભારતના દિલ્હીમાં છે. તે તેની સાંસ્કૃતિક અને ઐતિહાસિક મહત્વ માટે જાણીતું છે. | 
-| কলকাতার ঐতিহাসিক তাৎপর্য কী। বিস্তারিত বলুন। | কলকাতা, ভারতের একটি ঐতিহাসিক শহর। এটি ভারতীয় উপমহাদেশের বৃহত্তম শহরগুলির মধ্যে একটি। শহরের অভ্যন্তরীণ অঞ্চলে বিভিন্ন প্রাকৃতিক দৃশ্য এবং প্রাসাদ রয়েছে যা এটিকে বিশ্বের সেরা শহর করে তুলেছে। এই শহরে বেশ কয়েকটি প্রাচীন এবং মধ্যযুগীয় স্থাপত্যের উদাহরণ রয়েছে এবং এখানে অনেক বৈচিত্র্যময় জীবনযাত্রা রয়েছে। |
+| Instruction                                   | Response                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Tell me about India                           | India is a vast and diverse country located in South Asia. It is the seventh-largest country in the world by land area and is also the most populous country, with over 1.4 billion people as of my last update. Here are some key points about India: <br/><br/>Inchurching History: Modern India has a long and rich history that spans thousands of years. It was under various empires for many centuries before it became part of the British Empire in the 18th century. The Indian Rebellion of 1857 was a significant event that led to the independence of India from British rule and its unification into one nation. <br/><br/>Economy: India's economy is one of the largest in the world, with economic growth reportedly averaging around 7% per year since 1990. It is considered one of the most advanced economies in the world and hosts several multinational companies, including Tata Motors, Airtel, HCL Teletracns, and Infosys among others. <br/><br/>Society: India's society is diverse and pluralistic, with individuals belonging to different religions, ethnicies, and social classes. It faces challenges such as poverty, inequality, and environmental degradation. |
+| मुझे भारत के बारे में बताओ?                   | भारत दक्षिण एशिया में स्थित एक विशाल और वैश्विक देश है। यह भूमि क्षेत्र के हिसाब से दुनिया का सातवां सबसे बड़ा देश है और सबसे अधिक आबादी वाला देश है, जहां मेरी पिछली अद्यतन जानकारी के अनुसार 12.2 करोड़ लोग हैं। वे हिंदू समुदाय का नेतृत्व करते हैं, और एक संघीय संसदीय लोकतांत्रिक गणराज्य है।                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| भारत के प्रधान मंत्री कौन हैं                 | नरेंद्र मोदी भारत के वर्तमान प्रधानमंत्री हैं।                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| भारत को आजादी कब मिली                         | 1942 में भारत के स्वतंत्रता संग्राम के दौरान भारत ने अपनी सार्वजनिक रूप से घोषित स्वतंत्रता के लिए लड़ाई लड़ी थी। यह युद्ध 1947 तक चला, तब भारत की स्थापना हुई और इसे भारतीय संविधान द्वारा मान्यता प्राप्त हुई।                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| আমাকে ভারত সম্পর্কে বলুন                      | ভারত একটি বিশাল এবং বৈচিত্র্যময় দেশ যা বৈচিত্র্যময় সাংস্কৃতিক ও ধর্মীয় দৃষ্টিভঙ্গি প্রদান করে। এটি বিভিন্ন ভাষার কেন্দ্রীভূত কাঠামো এবং বিভিন্ন ধর্মীয় পদ্ধতির জন্য পরিচিত।                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| বৈজ্ঞানিক অর্জন মানে কি?                      | বৈজ্ঞানিক অর্জনগুলি গণনা, যোগাযোগ এবং বৈজ্ঞানিক সংস্থার মাধ্যমে বা ব্যক্তিগতভাবে অর্জিত বিভিন্ন অর্জন হতে পারে।                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ભારતની રાજધાની શું છે?                        | દિલ્હીનું રાજધાની સ્થાન છે.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| મને ભારત વિશે કહો                             | ભારત એક વિશાળ અને વૈવિધ્યસભર દેશ છે જે વિવિધ રાજકીય પ્રદેશો અને વ્યવસાયિક વિભાગો છે. તે દક્ષિણ એશિયામાં આવેલો છે અને માનવતાવાદી અને આર્થિક બાબતોમાં સક્રિય રીતે ભાગ લે છે.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| દિલ્હી ક્યાં છે અને તે શેના માટે પ્રખ્યાત છે? | દિલ્હીનું સ્થાન ભારતના દિલ્હીમાં છે. તે તેની સાંસ્કૃતિક અને ઐતિહાસિક મહત્વ માટે જાણીતું છે.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| কলকাতার ঐতিহাসিক তাৎপর্য কী। বিস্তারিত বলুন।  | কলকাতা, ভারতের একটি ঐতিহাসিক শহর। এটি ভারতীয় উপমহাদেশের বৃহত্তম শহরগুলির মধ্যে একটি। শহরের অভ্যন্তরীণ অঞ্চলে বিভিন্ন প্রাকৃতিক দৃশ্য এবং প্রাসাদ রয়েছে যা এটিকে বিশ্বের সেরা শহর করে তুলেছে। এই শহরে বেশ কয়েকটি প্রাচীন এবং মধ্যযুগীয় স্থাপত্যের উদাহরণ রয়েছে এবং এখানে অনেক বৈচিত্র্যময় জীবনযাত্রা রয়েছে।                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 </div>
 </div>
@@ -169,37 +182,40 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 
 #### Disclaimer: An initial checkpoint of the instruction tuned model is made available as a research preview. It is hereby cautioned that the model has the potential to produce hallucinatory and plausible yet inaccurate statements. Users are advised to exercise discretion when utilizing the generated content.
 
-
 ## Performance and Benchmarking
 
 <div className={styles.bench_table}>
 <div className={styles.table_wrapper}>
 
 ### Hindi
-|  | Arc-Easy | Arc-Challenge | Hellaswag | Average |
-|--------------|----------|---------------|-----------|---------|
-| pragna-1b | 0.33 | 0.22 | 0.35 | 0.30 |
-| sarvamai/OpenHathi-7B-Hi-v0.1-Base | 0.3582 | 0.2645 | 0.4315 | 0.35 |
-| meta-llama/Llama-2-7b-hf | 0.295 | 0.2406 | 0.3789 | 0.30 |
-| google/gemma-7b | <b>0.5926</b> | <b>0.4258</b> | <b>0.6341</b> | <b>0.55</b> |
-| meta-llama/Meta-Llama-3-8B | 0.5354 | 0.3541 | 0.6072 | 0.50 |
+
+|                                    | Arc-Easy      | Arc-Challenge | Hellaswag     | Average     |
+| ---------------------------------- | ------------- | ------------- | ------------- | ----------- |
+| pragna-1b                          | 0.33          | 0.22          | 0.35          | 0.30        |
+| sarvamai/OpenHathi-7B-Hi-v0.1-Base | 0.3582        | 0.2645        | 0.4315        | 0.35        |
+| meta-llama/Llama-2-7b-hf           | 0.295         | 0.2406        | 0.3789        | 0.30        |
+| google/gemma-7b                    | <b>0.5926</b> | <b>0.4258</b> | <b>0.6341</b> | <b>0.55</b> |
+| meta-llama/Meta-Llama-3-8B         | 0.5354        | 0.3541        | 0.6072        | 0.50        |
 
 ### Gujarati
-|  | Arc-Easy | Arc-Challenge | Hellaswag | Average |
-|--------------|----------|---------------|-----------|---------|
-| pragna-1b | 0.32 | 0.22 | 0.37 | 0.30 |
+
+|                 | Arc-Easy      | Arc-Challenge | Hellaswag     | Average     |
+| --------------- | ------------- | ------------- | ------------- | ----------- |
+| pragna-1b       | 0.32          | 0.22          | 0.37          | 0.30        |
 | google/gemma-7b | <b>0.4954</b> | <b>0.3208</b> | <b>0.5673</b> | <b>0.46</b> |
+
 </div>
 
 ### English
+
 <div className={styles.table_wrapper}>
 
-|  | Arc | Hellaswag | MMLU | TruthfulQA | Winogrande | GSM8K | Average |
-|----------------|-----|-----------|------|------------|------------|-------|---------|
-| pragna-1b | 0.3 | 0.51 | 0.27 | 0.38 | 0.56 | 0 | 0.34 |
-| TinyLlama/TinyLlama-1.1B-Chat-v1.0 | 0.36 | 0.61 | 0.25 | 0.37 | 0.61 | 0.02 | 0.37 |
+|                                     | Arc        | Hellaswag   | MMLU        | TruthfulQA  | Winogrande  | GSM8K       | Average     |
+| ----------------------------------- | ---------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| pragna-1b                           | 0.3        | 0.51        | 0.27        | 0.38        | 0.56        | 0           | 0.34        |
+| TinyLlama/TinyLlama-1.1B-Chat-v1.0  | 0.36       | 0.61        | 0.25        | 0.37        | 0.61        | 0.02        | 0.37        |
 | meta-llama/Meta-Llama-3-8B-Instruct | <b>0.6</b> | <b>0.82</b> | <b>0.67</b> | <b>0.51</b> | <b>0.77</b> | <b>0.68</b> | <b>0.66</b> |
-| meta-llama/Llama-2-7b-hf | 0.53 | 0.78 | 0.46 | 0.39 | 0.74 | 0.14 | 0.51 |
+| meta-llama/Llama-2-7b-hf            | 0.53       | 0.78        | 0.46        | 0.39        | 0.74        | 0.14        | 0.51        |
 
 </div>
 
@@ -209,14 +225,13 @@ We have also incorporated external datasets like [SlimPajama](https://huggingfac
 
 Pragna-1b, boasting 1.25 billion parameters, demonstrates performance akin to that of more expansive models such as OpenHathi-7b and Llama-2-7b, and falls within a comparable range with gemma-7b. However, there is a trade-off in English language proficiency when compared to the base model, TinyLlama. This difference arises from the model's integration of extensive information from three Indian languages into the same parameter space. Essentially, Pragna-1b manages to encapsulate a vast corpus of global knowledge, totaling close to 1 TiB, within a remarkably constrained latent space of just 2.3 GiB (BFloat16).
 
-These are preliminary benchmarking results for Pragna-1B. However, for Indian language benchmarking, we have to be careful in interpreting these figures, as the quality of benchmarking data is currently suboptimal. This limitation largely stems from the reliance on datasets generated through machine translations. We are  working to develop comprehensive benchmarks that assess both the linguistic understanding and contextual intelligence of large language models across a variety of fields and tasks for all Indian languages.
+These are preliminary benchmarking results for Pragna-1B. However, for Indian language benchmarking, we have to be careful in interpreting these figures, as the quality of benchmarking data is currently suboptimal. This limitation largely stems from the reliance on datasets generated through machine translations. We are working to develop comprehensive benchmarks that assess both the linguistic understanding and contextual intelligence of large language models across a variety of fields and tasks for all Indian languages.
 
 ![pragna-1b on huggingface](/images/blog_pragna/speedup.png)
 
 Pragna-1B achieves substantial speed enhancements, demonstrating approximately 3x, 7x, 3x, and 6.5x acceleration for Hindi, Kannada, Bangla, and Gujarati, respectively, relative to Llama-2-7B when considering efficient tokenization alone. The actual throughput and speed improvements are expected to be even greater, owing to reduced computational demands facilitated by a parameter count nearly 7 times lower than that of Llama-2-7B.
 
 ## Future Work
-
 
 **Alignment for Factual Accuracy:** While the model demonstrates good linguistic understanding, it is imperative to align it more closely with factual veracity. Addressing instances of factual hallucination remains a top priority, as we strive to ensure that the model consistently delivers accurate and reliable information.
 
@@ -233,10 +248,5 @@ Pragna-1B achieves substantial speed enhancements, demonstrating approximately 3
 ## Conclusion
 
 Pragna-1B's introduction holds significant promise for India, promising to revolutionize sectors like education, governance, and commerce. By supporting Indian languages, it fosters inclusivity, expands access to information, and empowers communities in the digital economy. As it evolves, Pragna-1B can bridge linguistic divides, foster cross-cultural understanding, and drive socioeconomic development, making a lasting impact on India's digital landscape.
-
-
-
-
- 
 
 </div>
