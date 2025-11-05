@@ -4,6 +4,16 @@ import styles from "@/styles/BlogIndex.module.scss";
 
 const blogs = [
   {
+    slug: "dhrith",
+    title:
+      "Dhrith: Emotionally Intelligent ASR for India’s Multilingual Voices",
+    date: "6th November, 2025",
+    description:
+      "Dhrith is our next-generation ASR model that listens beyond words. It understands emotion, rhythm, and code-switched language — capturing not just what is said, but how it's said. Built for India's multilingual reality, Dhrith brings emotional intelligence to speech recognition.",
+    span: 2, // spans 2 columns
+    // cover: "/images/blog_dhrith/cover.png", // optional cover image
+  },
+  {
     slug: "pragna_1b",
     title:
       "Introducing Pragna-1B: Soket AI Labs' Multilingual Language Model for Indian Languages",
