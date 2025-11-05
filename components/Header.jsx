@@ -8,6 +8,13 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBlogDropdownOpen, setIsBlogDropdownOpen] = useState(false);
   const blogDropdownRef = useRef(null);
+  const blogLinks = [
+    { href: "/blogs", label: "all posts" },
+    { href: "/blogs/dhrith", label: "dhrith-asr" },
+    { href: "/blogs/pragna_1b", label: "pragna-1b" },
+    { href: "/blogs/bhasha_sft", label: "bhasha sft" },
+    { href: "/blogs/bhasha_wiki", label: "bhasha wiki" },
+  ];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -108,50 +115,19 @@ export default function Header() {
                   isBlogDropdownOpen ? styles.dropdown_open : ""
                 }`}
               >
-                <li>
-                  <Link
-                    href="/blogs"
-                    onClick={() => {
-                      closeMobileMenu();
-                      closeBlogDropdown();
-                    }}
-                  >
-                    all posts
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blogs/pragna_1b"
-                    onClick={() => {
-                      closeMobileMenu();
-                      closeBlogDropdown();
-                    }}
-                  >
-                    pragna-1b
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blogs/bhasha_sft"
-                    onClick={() => {
-                      closeMobileMenu();
-                      closeBlogDropdown();
-                    }}
-                  >
-                    bhasha sft
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blogs/bhasha_wiki"
-                    onClick={() => {
-                      closeMobileMenu();
-                      closeBlogDropdown();
-                    }}
-                  >
-                    bhasha wiki
-                  </Link>
-                </li>
+                {blogLinks.map(({ href, label }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      onClick={() => {
+                        closeMobileMenu();
+                        closeBlogDropdown();
+                      }}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </li>
             {/* <Link href="/llm">
