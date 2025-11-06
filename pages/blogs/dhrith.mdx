@@ -55,6 +55,7 @@ By combining linguistic understanding with affective cues, Dhrith enriches conve
 | <b className={styles.highlight}>Soket Dhrith</b> | <b className={styles.highlight}>Finally verification successful हुआ, success rate 98.7% था। शायद server overload हो गया था। [resigned tone]</b> |
 | Sarvam Sarika 2.5                                |                                                              फाइनली वेरिफिकेशन सक्सेसफुल हुआ, सक्सेस रेट 98.7% था। शायद सर्वर ओवरलोड हो गया था। |
 | Deepgram Nova 2                                  |                             finally verification successful हुआ success rate ninety eight point seven percent था शायद server overload हो गया था |
+| OpenAI GPT-4o-Mini Transcribe                    |                                                             आखिरकार वेरीफिकेशन सक्सेसफुल हुआ, सक्सेस रेट 98.7% था। शायद सर्वर ओवरलोड हो गया था। |
 
 <hr />
 
@@ -184,7 +185,7 @@ Note: Expression tags were removed before post-processing to compute WER/CER wit
 
 ### Key Insights
 
-- **Competitive Accuracy**: Dhrith achieves second-best WER and CER across the entire benchmark, surpassing all models except Gemini 2.5 Flash (which benefits from thinking-tokens).
+- **Competitive Accuracy**: Dhrith achieves second-best WER and CER across the entire benchmark, surpassing all models except Gemini 2.5 Flash.
 - **Multilingual Robustness**: Despite being trained primarily for Hindi-English, Dhrith maintains high NWER and NCER performance, indicating strong resilience to filler noise and dialectal variation.
 - **Emotion and Expression Awareness**: With an Expression Tagging (ET) density of 61.34%, Dhrith is the only open Indian ASR model capable of consistently annotating emotional context — far outperforming all others except Gemini
 - **Code-Mix Fidelity**: Dhrith records a Code-Mix Density of 90.44%, demonstrating exceptional sensitivity to India’s bilingual conversational flow — a crucial feature for real-world deployment in call centers, virtual assistants, and entertainment domains.
@@ -213,6 +214,7 @@ Our ongoing research is focused on:
 1. Expanding Dhrith’s emotional intelligence, with a richer understanding of tone, sentiment, and prosody
 2. Adding more Indian languages, including Tamil, Telugu, Bengali, Marathi, and Malayalam, each with native code-mixing support
 3. Advancing real-time emotional ASR for interactive conversational platforms
+4. Expression tagging degrades in noisy environment. More annotated data would be needed to capture expressions in this setup.
 
 And soon, we’ll open public APIs and developer access, allowing partners, startups, and enterprises to integrate Dhrith into their products and workflows.
 
