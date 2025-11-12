@@ -31,7 +31,7 @@ const blogs = [
     description:
       "We at Soket AI Labs are thrilled to unveil India's first open source multilingual model, Pragna-1B available in four Indian languages - Hindi, Gujarati, Bangla and English. The model is designed to cater to the rich tapestry of Indian languages, significantly expanding the horizons of AI inclusivity and accessibility.",
     span: 2, // spans 2 columns
-    cover: "/images/blog_pragna/logo.jpg", // optional cover image
+    cover: "/images/blog_pragna/pragna_blog_center.png", // optional cover image
   },
   {
     slug: "bhasha_sft",
