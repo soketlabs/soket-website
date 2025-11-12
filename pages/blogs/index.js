@@ -4,13 +4,23 @@ import styles from "@/styles/BlogIndex.module.scss";
 
 const blogs = [
   {
+    slug: "coshe_eval",
+    title:
+      "CoSHE-Eval: A Code-Switching ASR Benchmark for Hindi–English Speech",
+    date: "12th November, 2025",
+    description:
+      "CoSHE-Eval is a 30-hour Hindi–English code-switching evaluation dataset designed to benchmark ASR systems under realistic multilingual speech conditions. Built using a hybrid pipeline of Gemini-based bilingual transcription and human verification, it captures natural Hinglish mixing and emotional tone tags.",
+    span: 1, // spans 2 columns
+    // cover: "/images/blog_dhrith/cover.png", // optional cover image
+  },
+  {
     slug: "dhrith",
     title:
       "Dhrith: Emotionally Intelligent ASR for India’s Multilingual Voices",
     date: "6th November, 2025",
     description:
       "Dhrith is our next-generation ASR model that listens beyond words. It understands emotion, rhythm, and code-switched language — capturing not just what is said, but how it's said. Built for India's multilingual reality, Dhrith brings emotional intelligence to speech recognition.",
-    span: 2, // spans 2 columns
+    span: 1, // spans 2 columns
     // cover: "/images/blog_dhrith/cover.png", // optional cover image
   },
   {

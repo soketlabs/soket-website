@@ -10,6 +10,7 @@ export default function Header() {
   const blogDropdownRef = useRef(null);
   const blogLinks = [
     { href: "/blogs", label: "all posts" },
+    { href: "/blogs/coshe_eval", label: "coshe-eval" },
     { href: "/blogs/dhrith", label: "dhrith-asr" },
     { href: "/blogs/pragna_1b", label: "pragna-1b" },
     { href: "/blogs/bhasha_sft", label: "bhasha sft" },
