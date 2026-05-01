@@ -1,0 +1,95 @@
+import JobPostLayout from "@/components/JobPostLayout";
+import { jobsBySlug } from "@/data/jobs";
+
+<JobPostLayout job={jobsBySlug["cluster-admin"]}>
+# About the Role
+
+We are seeking a **Cluster Admin** to own and operate our high-performance compute (HPC) infrastructure powering large-scale AI and machine learning workloads. The role focuses on managing a **SLURM-based GPU cluster built on NVIDIA H100 GPUs**, ensuring reliability, performance, and efficient resource utilization for research and production workloads.
+
+You will work closely with **AI researchers, ML engineers, and infrastructure teams** to maintain cluster stability, optimize scheduling, monitor workloads, and continuously improve the compute environment. This role requires strong expertise in **Linux systems, GPU infrastructure, distributed computing, and cluster orchestration**.
+
+The ideal candidate enjoys working at the intersection of **systems engineering, AI infrastructure, and large-scale computing operations**.
+
+---
+
+# Responsibilities
+
+### Cluster Infrastructure Management
+
+- Manage and maintain a **large-scale SLURM cluster with NVIDIA H100 GPUs**
+- Configure and optimize **SLURM scheduling policies, partitions, quotas, and priorities**
+- Monitor cluster performance, utilization, and system health
+- Troubleshoot GPU, networking, and node-level issues
+
+### Systems Administration
+
+- Maintain **Linux-based HPC systems**
+- Manage **compute nodes, login nodes, and storage infrastructure**
+- Implement system updates, security patches, and kernel upgrades
+- Configure **high-speed networking (InfiniBand / RoCE)**
+
+### GPU & AI Workload Optimization
+
+- Support AI training workloads including **distributed training frameworks (PyTorch, DeepSpeed, Ray, etc.)**
+- Optimize GPU utilization, memory usage, and job scheduling
+- Assist researchers in debugging distributed training failures
+
+### Monitoring & Observability
+
+- Implement monitoring and alerting using tools such as:
+  - Prometheus
+  - Grafana
+  - NVIDIA DCGM
+  - Node exporters
+
+- Track GPU usage, job failures, queue wait times, and cluster health metrics
+
+### Reliability & Automation
+
+- Automate infrastructure management using tools such as:
+  - Ansible
+  - Terraform
+  - Bash/Python scripting
+
+- Maintain cluster provisioning workflows
+- Improve reliability through automated recovery and diagnostics
+
+### User Support & Documentation
+
+- Provide technical support to researchers and engineers using the cluster
+- Maintain internal documentation on:
+  - Job submission workflows
+  - Best practices for distributed training
+  - Resource allocation policies
+
+# You May Be a Good Fit If You
+
+- Have experience managing **SLURM-based HPC clusters**
+- Are comfortable administering **large Linux systems environments**
+- Have experience with **GPU compute infrastructure (A100/H100 preferred)**
+- Understand distributed training systems such as **PyTorch Distributed, NCCL, or DeepSpeed**
+- Have experience with **InfiniBand or high-performance networking**
+- Are comfortable debugging **performance issues in GPU workloads**
+- Have experience writing **automation scripts in Python or Bash**
+- Are familiar with monitoring stacks such as **Prometheus, Grafana, and DCGM**
+- Enjoy working closely with **researchers and ML engineers**
+
+---
+
+# Role Details
+
+- **Location:** Bengaluru, India (On-site or Hybrid)
+- **Compensation:**
+  Competitive salary based on experience + performance bonuses + equity (if applicable)
+- **Minimum Education:**
+  Bachelor’s degree in Computer Science, Electrical Engineering, or related field (or equivalent experience)
+- **Experience:**
+  3–8 years of experience in **HPC, systems engineering, or large-scale infrastructure management**
+- **Visa Sponsorship:**
+  Available for exceptional candidates (case-by-case basis)
+
+---
+
+If you are passionate about building and maintaining **world-class AI infrastructure**, we would love to hear from you.
+
+</JobPostLayout>

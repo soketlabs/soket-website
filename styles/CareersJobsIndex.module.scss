@@ -1,0 +1,220 @@
+@use "variables";
+
+.careers_index {
+  --job-cols: minmax(200px, 1.1fr) 2.2fr 1.35fr 140px;
+
+  margin-top: 110px;
+  margin-bottom: 100px;
+  padding: 0 4%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: variables.$text_default_color;
+
+  .back_link {
+    display: inline-block;
+    font-family: "Geist Mono", monospace;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    color: #555;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 4.3rem;
+    line-height: 1;
+    margin-bottom: 38px;
+  }
+
+  .table_header {
+    display: grid;
+    grid-template-columns: var(--job-cols);
+    gap: 18px;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 14px;
+    margin-bottom: 0;
+
+    span {
+      font-family: "Geist Mono", monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+  }
+
+  .team_section {
+    border-bottom: 1px solid #efefef;
+  }
+
+  .team_header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: var(--job-cols);
+    gap: 18px;
+    align-items: center;
+    padding: 18px 0 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: inherit;
+    font: inherit;
+
+    &:hover .team_title {
+      color: variables.$brand_color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid variables.$brand_color;
+      outline-offset: 2px;
+    }
+  }
+
+  .team_title {
+    grid-column: 1;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.35;
+    transition: color 0.2s ease;
+  }
+
+  .team_meta {
+    grid-column: 4;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Geist", sans-serif;
+    font-size: 0.95rem;
+    color: #5b5b5b;
+  }
+
+  .team_toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.25rem;
+    font-size: 1.1rem;
+    line-height: 1;
+    color: variables.$text_default_color;
+  }
+
+  .roles {
+    padding-bottom: 8px;
+  }
+
+  .role_row {
+    display: grid;
+    grid-template-columns: var(--job-cols);
+    gap: 18px;
+    align-items: center;
+    padding: 12px 0;
+    border-top: 1px solid #f4f4f4;
+  }
+
+  .role {
+    grid-column: 2;
+    color: variables.$text_default_color;
+    font-family: "Charter", "Georgia", "Cambria", "Times New Roman", Times,
+      serif;
+    font-size: 1.15rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .location {
+    grid-column: 3;
+    font-family: "Geist", sans-serif;
+    color: #5b5b5b;
+    font-size: 1rem;
+  }
+
+  .apply_button {
+    grid-column: 4;
+    justify-self: end;
+    text-decoration: none;
+    border: 1px solid #dbdbdb;
+    color: #666;
+    font-family: "Geist", sans-serif;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    padding: 7px 14px;
+    text-align: center;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: variables.$text_default_color;
+      border-color: #bfbfbf;
+    }
+  }
+}
+
+@media (max-width: variables.$md) {
+  .careers_index {
+    padding: 0 24px;
+    margin-top: 95px;
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 24px;
+    }
+
+    .table_header {
+      display: none;
+    }
+
+    .team_header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 0 12px;
+    }
+
+    .team_title {
+      font-size: 1.05rem;
+      grid-column: auto;
+    }
+
+    .team_meta {
+      grid-column: auto;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .role_row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 14px 0;
+    }
+
+    .role {
+      grid-column: 1;
+      font-size: 1.05rem;
+    }
+
+    .location {
+      grid-column: 1;
+      font-size: 0.95rem;
+    }
+
+    .apply_button {
+      grid-column: 1;
+      justify-self: start;
+    }
+  }
+}
