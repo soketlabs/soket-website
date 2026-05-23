@@ -10,8 +10,8 @@ export const jobs = [
       "https://northstarz.ai/ats/#/careers/24b0d23e-66aa-46a1-b7cd-158736ca9027/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
     summary: "Manage and maintain a large-scale SLURM cluster",
     salary: {
-      min: 1500000,
-      max: 2500000,
+      min: 1000000,
+      max: 2000000,
     },
   },
   // {
