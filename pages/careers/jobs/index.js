@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useCallback, useMemo, useState } from "react";
+import SocialMeta from "@/components/SocialMeta";
 import { jobs } from "@/data/jobs";
 import styles from "@/styles/CareersJobsIndex.module.scss";
 
@@ -32,7 +33,13 @@ export default function CareersJobsIndex() {
   }, []);
 
   return (
-    <main className={styles.careers_index}>
+    <>
+      <SocialMeta
+        title="Careers at Soket AI"
+        description="Join our team building frontier AI from India. Open roles in research, infrastructure, and applied ML."
+        path="/careers/jobs"
+      />
+      <main className={styles.careers_index}>
       {/* <Link href="/" className={styles.back_link}>
         ← Back to Careers
       </Link> */}
@@ -100,5 +107,6 @@ export default function CareersJobsIndex() {
         );
       })}
     </main>
+    </>
   );
 }

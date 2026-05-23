@@ -1,21 +1,32 @@
-import { useMemo } from "react";
-import dynamic from "next/dynamic";
+import HpcInfrastructureEngineer from "@/content/jobs/hpc_infrastructure_engineer.mdx";
+import SocialMeta from "@/components/SocialMeta";
 import { jobs, jobsBySlug } from "@/data/jobs";
+import { jobShareDescription } from "@/lib/site";
 
-export default function JobPostingPage({ slug }) {
-  const JobContent = useMemo(
-    () =>
-      dynamic(() => import(`@/content/jobs/${slug}.mdx`), {
-        loading: () => null,
-      }),
-    [slug]
-  );
+const jobComponents = {
+  hpc_infrastructure_engineer: HpcInfrastructureEngineer,
+};
 
-  if (!jobsBySlug[slug]) {
+export default function JobPostingPage({ job }) {
+  const JobContent = jobComponents[job.slug];
+
+  if (!JobContent) {
     return null;
   }
 
-  return <JobContent />;
+  const title = `${job.title} | Soket AI Careers`;
+  const description = jobShareDescription(job);
+
+  return (
+    <>
+      <SocialMeta
+        title={title}
+        description={description}
+        path={`/careers/jobs/${job.slug}`}
+      />
+      <JobContent />
+    </>
+  );
 }
 
 export async function getStaticPaths() {
@@ -30,13 +41,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  if (!jobsBySlug[params.slug]) {
+  const job = jobsBySlug[params.slug];
+
+  if (!job) {
     return { notFound: true };
   }
 
   return {
     props: {
-      slug: params.slug,
+      job,
     },
   };
 }

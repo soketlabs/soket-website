@@ -1,15 +1,9 @@
-import Head from "next/head";
 import Link from "next/link";
 import styles from "@/styles/JobPost.module.scss";
 
 export default function JobPostLayout({ job, children }) {
   return (
     <>
-      <Head>
-        <title>{`${job.title} | Soket AI Careers`}</title>
-        <meta name="description" content={job.summary} />
-      </Head>
-
       <article className={styles.job_post}>
         <Link href="/careers/jobs" className={styles.back_link}>
           ← Back to jobs
