@@ -2,8 +2,6 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "@/styles/JobPost.module.scss";
 
-const ABOUT_SOKET_COPY = `Soket is an AI research firm headquartered in Bengaluru with a mission to build efficient and generalized intelligence for humanity. We are focused on advancing frontier AI research through the development of large-scale foundation models that are open, energy-efficient, multilingual, and responsible by design. Our work places a strong emphasis on India and the Global South, where access to high-quality AI systems remains limited despite immense linguistic and cultural diversity.`;
-
 export default function JobPostLayout({ job, children }) {
   return (
     <>
@@ -68,7 +66,24 @@ export default function JobPostLayout({ job, children }) {
             <h1 id="about-soket-heading" className={styles.section_title}>
               About Soket AI
             </h1>
-            <p className={styles.about_lead}>{ABOUT_SOKET_COPY}</p>
+            <p className={styles.about_lead}>
+              Soket is an AI research firm headquartered in Bengaluru with a
+              mission to build efficient and generalized intelligence for
+              humanity. We are focused on advancing frontier AI research through
+              the development of large-scale foundation models in math, code and
+              reasoning that are open, energy-efficient, multilingual, and
+              responsible by design. Funded and supported by the{" "}
+              <Link
+                href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2227612&reg=3&lang=2"
+                target="_blank"
+                style={{ textDecoration: "underline" }}
+              >
+                IndiaAI Mission
+              </Link>
+              , Government of India. Our work places a strong emphasis on India
+              and the Global South, where access to high-quality AI systems
+              remains limited despite immense linguistic and cultural diversity.
+            </p>
             {/* </section> */}
 
             <br />
@@ -113,7 +128,7 @@ export default function JobPostLayout({ job, children }) {
               intelligence is baked into large models and work across the entire
               stack that powers modern AI systems. You will work with
               supercomputing-scale GPU clusters and tackle challenging problems
-              in peetabyte scale data aggregation and processing, distributed
+              in petabyte scale data aggregation and processing, distributed
               training, model architectures, infrastructure, inference
               optimization, and large-scale AI deployment. <br />
               <br />
