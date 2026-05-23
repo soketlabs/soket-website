@@ -1,24 +1,17 @@
+import { useMemo } from "react";
+import dynamic from "next/dynamic";
 import { jobs, jobsBySlug } from "@/data/jobs";
-import ResearchManagerInterpretability from "@/content/jobs/research-manager-interpretability.mdx";
-import ResearchScientistInterpretability from "@/content/jobs/research-scientist-interpretability.mdx";
-import ResearchEngineerLlm from "@/content/jobs/research-engineer-llm.mdx";
-import SpeechMlEngineer from "@/content/jobs/speech-ml-engineer.mdx";
-import ProductDesigner from "@/content/jobs/product-designer.mdx";
-import ClusterAdmin from "@/content/jobs/cluster-admin.mdx";
-
-const jobContentBySlug = {
-  "cluster-admin": ClusterAdmin,
-  "research-manager-interpretability": ResearchManagerInterpretability,
-  "research-scientist-interpretability": ResearchScientistInterpretability,
-  "research-engineer-llm": ResearchEngineerLlm,
-  "speech-ml-engineer": SpeechMlEngineer,
-  "product-designer": ProductDesigner,
-};
 
 export default function JobPostingPage({ slug }) {
-  const JobContent = jobContentBySlug[slug];
+  const JobContent = useMemo(
+    () =>
+      dynamic(() => import(`@/content/jobs/${slug}.mdx`), {
+        loading: () => null,
+      }),
+    [slug]
+  );
 
-  if (!JobContent) {
+  if (!jobsBySlug[slug]) {
     return null;
   }
 

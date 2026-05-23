@@ -4,7 +4,7 @@
   --job-cols: minmax(200px, 1.1fr) 2.2fr 1.35fr 140px;
 
   margin-top: 110px;
-  margin-bottom: 100px;
+  margin-bottom: 400px;
   padding: 0 4%;
   max-width: 1600px;
   margin-left: auto;
@@ -26,7 +26,7 @@
 
   h1 {
     font-family: "Space Grotesk", sans-serif;
-    font-size: 4.3rem;
+    font-size: 3.2rem;
     line-height: 1;
     margin-bottom: 38px;
   }
@@ -46,7 +46,6 @@
       text-transform: uppercase;
       color: #666;
     }
-
   }
 
   .team_section {
@@ -123,8 +122,8 @@
   .role {
     grid-column: 2;
     color: variables.$text_default_color;
-    font-family: "Charter", "Georgia", "Cambria", "Times New Roman", Times,
-      serif;
+    font-family:
+      "Charter", "Georgia", "Cambria", "Times New Roman", Times, serif;
     font-size: 1.15rem;
     text-decoration: none;
 

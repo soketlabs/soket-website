@@ -19,9 +19,9 @@ export default function CareersJobsIndex() {
 
   const [openTeams, setOpenTeams] = useState(() =>
     teamNames.reduce((acc, name) => {
-      acc[name] = true;
+      acc[name] = false;
       return acc;
-    }, {})
+    }, {}),
   );
 
   const toggleTeam = useCallback((teamName) => {
@@ -33,9 +33,9 @@ export default function CareersJobsIndex() {
 
   return (
     <main className={styles.careers_index}>
-      <Link href="/" className={styles.back_link}>
+      {/* <Link href="/" className={styles.back_link}>
         ← Back to Careers
-      </Link>
+      </Link> */}
       <h1>Join our team</h1>
 
       <div className={styles.table_header}>
