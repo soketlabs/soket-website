@@ -7,7 +7,7 @@ export const jobs = [
     employmentType: "Full-time",
     postedDate: "May 1, 2026",
     applyUrl:
-      "https://northstarz.ai/ats/#/careers/24b0d23e-66aa-46a1-b7cd-158736ca9027/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
+      "https://northstarz.ai/ats/#/careers/911af2cf-d032-4ea1-8e39-d2f018241408/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
     summary: "Manage and maintain a large-scale SLURM cluster",
     salary: {
       min: 1000000,
