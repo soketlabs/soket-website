@@ -131,6 +131,9 @@ export default function Header() {
                 ))}
               </ul>
             </li>
+            <Link href="/project-eka" onClick={closeMobileMenu}>
+              <li>project eka</li>
+            </Link>
             <Link href="/careers/jobs" onClick={closeMobileMenu}>
               <li>careers</li>
             </Link>
@@ -168,13 +171,13 @@ export default function Header() {
                     </div> */}
 
           {/* Get In Touch Button */}
-          <Button
+          {/* <Button
             href="mailto:careers@soket.ai"
             variant="black"
             onClick={closeMobileMenu}
           >
             GET IN TOUCH
-          </Button>
+          </Button> */}
         </nav>
       </div>
     </header>

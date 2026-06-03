@@ -57,6 +57,37 @@ export default function JobPostLayout({ job, children }) {
               className={styles.about_card}
               aria-labelledby="about-soket-heading"
             > */}
+
+            <aside className={styles.apply_encouragement} role="note">
+              <span className={styles.apply_encouragement_icon} aria-hidden>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  <path
+                    d="M12 8v5M12 16h.01"
+                    stroke="currentColor"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+              <p className={styles.apply_encouragement_text}>
+                We highly encourage you to apply even if you do not match all
+                the criteria mentioned in this job description. You can also
+                apply for a different role that you think you are a good fit
+                for.
+              </p>
+            </aside>
+
             <h1 id="about-soket-heading" className={styles.section_title}>
               About Soket AI
             </h1>
@@ -96,12 +127,20 @@ export default function JobPostLayout({ job, children }) {
 
             {job.salary && (
               <>
-                <h1 id="about-soket-heading" className={styles.section_title}>
-                  Annual Salary Range
-                </h1>
-                <p className={styles.about_lead}>
-                  Rs {job.salary.min.toLocaleString("en-IN")} - Rs{" "}
-                  {job.salary.max.toLocaleString("en-IN")} INR
+                <h2 className={styles.section_title}>Compensation</h2>
+                <p className={styles.compensation_amount}>
+                  Rs {job.salary.min.toLocaleString("en-IN")} – Rs{" "}
+                  {job.salary.max.toLocaleString("en-IN")}{" "}
+                  {job.equity !== undefined && (
+                    <span className={styles.compensation_equity}>
+                      {" "}
+                       (Includes Equity Benefits)
+                      {/* {job.equity.min / 1e5} to{" "} */}
+                      {/* {job.equity.max / 1e5} lakh equity benefits] */}
+                      <br/><small>Compensation will be commensurate with industry standards and will be determined based on the candidate's current compensation, relevant experience, skills, and overall qualifications.</small>
+                    </span>
+                    
+                  )}
                 </p>
               </>
             )}

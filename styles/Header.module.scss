@@ -79,6 +79,7 @@
         color: #03040d;
         font-family: "Geist Mono", sans-serif;
         // text-transform: capitalize;
+        padding: 0 4px;
       }
       a:hover li {
         text-decoration: underline;
@@ -93,7 +94,7 @@
 
       .dropdown_container {
         position: relative;
-        margin: 0 10px;
+        margin: 0 15px;
       }
 
       .dropdown_trigger {
@@ -235,7 +236,9 @@
             visibility: hidden;
             max-height: 0;
             overflow: hidden;
-            transition: opacity 0.2s ease, visibility 0.2s ease,
+            transition:
+              opacity 0.2s ease,
+              visibility 0.2s ease,
               max-height 0.2s ease;
 
             &.dropdown_open {

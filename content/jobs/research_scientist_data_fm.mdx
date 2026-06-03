@@ -1,0 +1,42 @@
+import JobPostLayout from "@/components/JobPostLayout";
+import { jobsBySlug } from "@/data/jobs";
+
+<JobPostLayout job={jobsBySlug["research_scientist_data_fm"]}>
+
+# Workloads you would be involved in
+
+- Lead capability-driven data strategy for frontier foundation model development across pretraining and post-training stages.
+- Design and own end-to-end datasets that improve model capabilities in code generation, mathematical reasoning, multi-step problem solving, and agentic tool use.
+- Define data mixture strategies, inclusion/exclusion policies, and quality standards that improve reasoning depth, robustness, and model generalisation.
+- Build scalable synthetic data generation and execution-grounded training systems inspired by modern LLM frameworks, including self-play, self-improvement, programmatic task generation, and automated code test-case creation.
+- Design and maintain sandboxed execution environments where model outputs can be executed, verified, critiqued, and incorporated into iterative training loops.
+- Establish large-scale data curation and evaluation infrastructure involving filtering, deduplication, contamination detection, and reasoning trace validation.
+- Design annotation systems, quality rubrics, and human/AI-in-the-loop workflows to create high-signal datasets for pretraining, supervised fine-tuning, and reinforcement learning.
+- Drive the data → model → evaluation feedback loop by diagnosing capability gaps and mapping failures to targeted data interventions.
+- Design and run controlled experiments across synthetic versus curated data, process versus outcome supervision, and post-training alignment methodologies.
+- Develop post-training datasets and workflows for supervised fine-tuning, preference optimisation, and reinforcement learning from human or AI feedback.
+- Build systems that improve long-horizon reasoning, execution-grounded decision-making, and tool-augmented model behaviour.
+- Provide hands-on technical leadership by building systems, writing production-grade code, mentoring teams, and translating research and product goals into scalable data systems that improve real-world model performance.
+
+# You are a good fit if you:
+
+- Hold a Master’s or PhD in Computer Science or related fields (PhD preferred).
+- Have 6+ years of experience in AI research, data systems, machine learning infrastructure, or related domains.
+- Possess strong expertise in Python and demonstrate sound understanding of programming concepts across systems languages such as C++, Rust, Go, Java, JavaScript, or TypeScript.
+- Have deep understanding of LLM training pipelines, synthetic data systems, and modern post-training methodologies.
+- Enjoy designing high-quality datasets and building scalable systems that directly improve model capabilities.
+- Have experience bridging research and engineering by converting experimental ideas into reliable, production-scale systems.
+- Enjoy working across the full lifecycle of data strategy, from acquisition and curation to evaluation and model alignment.
+
+# You are a strong candidate if you have experience with:
+
+- Deep learning and model development frameworks such as PyTorch, Hugging Face Transformers, Hugging Face Datasets, vLLM, lm-evaluation-harness, and SGLang.
+- Large-scale training and inference ecosystems including TensorFlow, JAX, DeepSpeed, Megatron-LM, Megatron-Core, TRL, verl, NeMo-RL, TensorRT-LLM, ONNX Runtime, Triton Inference Server, and llama.cpp.
+- Synthetic data and execution sandbox frameworks such as OpenSandBox, NemoGym, Magpie, and Math-Verify.
+- Distributed infrastructure and MLOps tooling including Docker, Kubernetes, Apache Spark, Ray, Prometheus, and Grafana.
+- Version control and CI/CD systems including Git, GitHub, GitHub Actions, Jenkins, and related engineering workflows.
+- Experiment tracking and evaluation tooling such as Weights & Biases and MLflow.
+- Publication experience at leading AI and NLP conferences such as ACL, EMNLP, and ICML.
+- Demonstrable software or research impact through public adoption (for example GitHub adoption, contributors, or downloads) or internal production-scale systems such as GPU clusters, data pipelines, or inference infrastructure.
+
+</JobPostLayout>
