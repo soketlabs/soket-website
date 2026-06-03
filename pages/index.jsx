@@ -16,14 +16,13 @@ export default function Home() {
         <section className={styles.hero_section}>
           <Link
             href="/careers/jobs"
-            className={`${styles.talent_banner} group mx-auto mb-8 flex max-w-2xl flex-wrap items-center justify-center gap-x-2 gap-y-1 px-5 py-3 text-sm transition-all duration-300 md:max-w-3xl md:text-base`}
+            className={`${styles.talent_banner} group mx-auto mb-8 inline-flex items-center gap-3 px-4 py-2.5 text-sm transition-all duration-300 md:gap-4 md:px-5 md:py-3 md:text-base`}
           >
             <span className={styles.talent_banner_dot} aria-hidden="true" />
-            <span className="font-geist text-[#1e1e1e]">
-              We&apos;re on the lookout for exceptional talent to build the
-              frontiers of AI in India with us.
+            <span className={`${styles.talent_banner_text} font-geist`}>
+              We&apos;re hiring exceptional talent.
             </span>
-            <span className="font-geist-mono text-sm font-medium text-[#1B41FF] transition-colors group-hover:underline underline-offset-4 md:text-base">
+            <span className={`${styles.talent_banner_cta} font-geist-mono`}>
               Head to careers →
             </span>
           </Link>

@@ -22,12 +22,12 @@ export const jobs = [
     employmentType: "Full-time",
     postedDate: "May 25, 2026",
     applyUrl:
-      "https://northstarz.ai/ats/#/careers/c93cca34-4ce5-454a-be99-e89351420419/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
+      "https://northstarz.ai/ats/#/careers/f5acd1eb-bfa9-48de-a70e-230ad325d64c/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
     summary:
       "Design, curate, validate, and continuously improve high-quality datasets powering large-scale AI systems.",
     salary: {
-      min: 2200000,
-      max: 3200000,
+      min: 1800000,
+      max: 2500000,
     },
   },
   {
