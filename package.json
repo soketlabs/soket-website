@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy": "npm run build && rm -rf docs && cp -R out docs && cp CNAME docs/CNAME",
     "start": "next start",
     "lint": "next lint"
   },
