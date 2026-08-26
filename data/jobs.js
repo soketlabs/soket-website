@@ -115,6 +115,18 @@ export const jobs = [
     },
     equity: true,
   },
+  {
+    slug: "full_stack_developer",
+    team: "AI Infrastructure",
+    title: "Software Engineer – Backend & Platform",
+    location: "Bengaluru, India",
+    employmentType: "Full-time",
+    postedDate: "Aug 25, 2026",
+    applyUrl:
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/1591df77-1e21-4317-80b1-a9856a284a3f",
+    summary:
+      "Build and scale the platform powering Tensorstudio — Soket's AI API and developer platform.",
+  },
 ];
 
 export const jobsBySlug = jobs.reduce((accumulator, job) => {

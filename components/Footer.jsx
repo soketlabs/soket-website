@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { contactEmails } from "@/data/contact";
 
 const Footer = () => {
   const socialLinks = [
@@ -74,11 +75,25 @@ const Footer = () => {
 
   return (
     <footer className="bg-soket-dark py-7">
-      <div className="mx-5 lg:mx-[8%] flex flex-col md:flex-row justify-between items-center">
-        <p className="text-white/80 text-sm lg:text-base font-geist-mono mb-4 md:mb-0 text-center lg:text-left">
-          © 2026 SOKET AI. ALL RIGHTS RESERVED
-        </p>
-        <div className="flex space-x-6">
+      <div className="mx-5 lg:mx-[8%] flex flex-col gap-5 md:gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/80 text-sm lg:text-base font-geist-mono text-center lg:text-left">
+            © 2026 SOKET AI. ALL RIGHTS RESERVED
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 font-geist-mono text-sm">
+            {contactEmails.map(({ address }) => (
+              <Link
+                key={address}
+                href={`mailto:${address}`}
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                {address}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="flex justify-center md:justify-end">
+          <div className="flex space-x-6">
           {socialLinks.map((item) => (
             <Link
               key={item.name}
@@ -91,6 +106,7 @@ const Footer = () => {
               {item.icon}
             </Link>
           ))}
+          </div>
         </div>
       </div>
     </footer>

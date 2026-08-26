@@ -137,6 +137,9 @@ export default function Header() {
             <Link href="/careers/jobs" onClick={closeMobileMenu}>
               <li>careers</li>
             </Link>
+            <Link href="/contact" onClick={closeMobileMenu}>
+              <li>contact us</li>
+            </Link>
             {/* <Link href="/llm">
                             <li>llm</li>
                         </Link>
