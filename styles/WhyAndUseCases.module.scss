@@ -1,0 +1,82 @@
+@use "variables";
+
+.section {
+  padding: 1rem 0 2.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: left;
+
+  .card {
+    min-height: 200px;
+  }
+}
+
+.card {
+  .headline {
+    max-width: 22rem;
+  }
+
+  .description {
+    max-width: 32rem;
+  }
+}
+
+.pull {
+  margin: 0.85rem 0 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+  max-width: 32rem;
+}
+
+.useCases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.35rem;
+}
+
+.pill {
+  background: #ffffff;
+  color: variables.$text_default_color;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    .card {
+      min-height: 227px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 1.5rem 0 3.5rem;
+  }
+
+  .grid {
+    gap: 16px;
+
+    .card {
+      min-height: 253px;
+    }
+  }
+}

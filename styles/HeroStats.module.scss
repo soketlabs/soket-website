@@ -1,0 +1,233 @@
+@use "variables";
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  min-height: 220px;
+  padding: 1.75rem 1.75rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  width: 100%;
+}
+
+.headline {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 2.6vw, 2.85rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  margin: 0 0 0.65rem;
+}
+
+.unit {
+  display: block;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin: -0.35rem 0 0.7rem;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin: 0;
+  max-width: 16.5rem;
+}
+
+.dark {
+  background: #000000;
+  color: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+  .description {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .unit {
+    color: rgba(255, 255, 255, 0.55);
+  }
+}
+
+.gray {
+  background: #f0f0f0;
+  color: variables.$text_default_color;
+
+  .description {
+    color: rgba(30, 30, 30, 0.58);
+  }
+
+  .unit {
+    color: rgba(30, 30, 30, 0.55);
+  }
+}
+
+.blue {
+  background: variables.$brand_color;
+  color: #ffffff;
+  box-shadow: 0 12px 32px rgba(27, 65, 255, 0.22);
+
+  .description {
+    color: rgba(255, 255, 255, 0.82);
+  }
+}
+
+.blueMono {
+  background: #f0f0f0;
+  color: variables.$brand_color;
+
+  .headline {
+    color: variables.$text_default_color;
+  }
+
+  .description {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
+    color: variables.$brand_color;
+    max-width: 18rem;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.85rem;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  background: variables.$brand_color;
+  flex-shrink: 0;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.pill {
+  background: #ffffff;
+  color: variables.$text_default_color;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.01em;
+  padding: 0.28rem 0.7rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.langHeadline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.45rem;
+  margin-bottom: 0.65rem;
+}
+
+.langValue {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.7rem, 2.2vw, 2.35rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.langDot {
+  color: rgba(30, 30, 30, 0.28);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.rings,
+.dots,
+.pixels {
+  pointer-events: none;
+  position: absolute;
+}
+
+.rings {
+  inset: -20% -10% -40% 20%;
+  background: repeating-radial-gradient(
+    circle at 70% 85%,
+    transparent 0,
+    transparent 42px,
+    rgba(0, 0, 0, 0.045) 42px,
+    rgba(0, 0, 0, 0.045) 43.5px
+  );
+}
+
+.dots {
+  width: 92px;
+  height: 92px;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.28) 1.4px,
+    transparent 1.5px
+  );
+  background-size: 11px 11px;
+  mask-image: radial-gradient(circle, black 42%, transparent 72%);
+}
+
+.pixels {
+  width: 120px;
+  height: 120px;
+  right: 0;
+  bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    min-height: 250px;
+    padding: 1.85rem 1.9rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .card {
+    min-height: 268px;
+  }
+}

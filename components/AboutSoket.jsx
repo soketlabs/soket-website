@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Button from "./Button";
 import ArrowLink from "./ArrowLink";
 
 const DiscordIcon = ({ variant = "black" }) => (
@@ -101,77 +100,49 @@ const AboutSoket = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-          {/* Dhrith Card */}
+          {/* Loop Card */}
           <div className="bg-soket-gray rounded-lg p-6 lg:pt-16 text-left">
             <div className="mb-6">
               <Image
-                src="/images/speech-icon.svg"
-                alt="Dhrith Icon"
+                src="/images/open-source-icon.svg"
+                alt="Loop Icon"
                 width={48}
                 height={48}
               />
             </div>
             <div className="lg:w-4/5">
-              <h3 className="text-3xl mb-4 text-left">Dhrith</h3>
-              <p className="text-black opacity-70 mb-8 text-left">
-                Our next-generation ASR model listens beyond words —
-                understanding emotion, rhythm, and code-switched language to
-                deliver transcription with linguistic precision and emotional
-                depth, built for India&apos;s multilingual voices.
+              <h3 className="text-3xl mb-2 text-left">Loop</h3>
+              <p className="text-sm font-geist-mono text-soket-blue mb-4">
+                Research Preview available
               </p>
-              <ArrowLink href="/blogs/dhrith">READ THE BLOG</ArrowLink>
+              <p className="text-black opacity-70 mb-8 text-left">
+                Soket&apos;s harness for running models on serious work. Tool
+                use, evaluation, and control in one loop, on your
+                infrastructure.
+              </p>
+              <ArrowLink href="https://github.com/soketlabs/loop">
+                CHECK OUT LOOP
+              </ArrowLink>
             </div>
           </div>
 
-          {/* Pragna-1B Card */}
+          {/* Inference Platform Card */}
           <div className="bg-soket-gray rounded-lg p-6 lg:pt-16 text-left">
             <div className="mb-6">
               <Image
-                src="/images/pragna-icon.svg"
-                alt="Pragna Icon"
+                src="/images/global-ai-icon.svg"
+                alt="Inference Platform Icon"
                 width={48}
                 height={48}
               />
             </div>
             <div className="lg:w-4/5">
-              <h3 className="text-3xl mb-4 text-left">Pragna-1B</h3>
+              <h3 className="text-3xl mb-4 text-left">Inference Platform</h3>
               <p className="text-black opacity-70 mb-8 text-left">
-                Our 1.25 Billion Parameter open-source multilingual foundational
-                model built from scratch in collaboration with Google Cloud.
-                Supporting Hindi, Gujarati, Bangla, and English, it's ideal for
-                NLP, translation, and conversational AI systems tailored to the
-                Indian linguistic landscape
+                Soket&apos;s inference platform for EKA and selected open
+                models. Serve, route, and evaluate under your control.
               </p>
-              <ArrowLink href="/blogs/pragna_1b">EXPLORE PRAGNA</ArrowLink>
             </div>
-          </div>
-        </div>
-
-        {/* Join Section */}
-        <div className="mt-8 bg-soket-blue text-white rounded-lg p-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-6 md:mb-0">
-              <div className="flex items-center gap-2 mb-1">
-                <div className="w-2 h-2 bg-white flex-shrink-0 md:mt-0 md:self-auto mt-2 self-baseline"></div>
-                <h3 className="text-base text-left">
-                  Want to join us in our innovation and progress towards
-                  artificial intelligence?
-                </h3>
-              </div>
-              <div className="flex items-center gap-2 mb-1">
-                <div className="w-2 h-2 bg-transparent flex-shrink-0"></div>
-                <p className="text-white opacity-60 text-base text-left">
-                  Let us know if you have any questions.
-                </p>
-              </div>
-            </div>
-            <Button
-              href="/careers/jobs"
-              variant="white"
-              borderTopColor="#1B41FF"
-            >
-              JOIN OUR TEAM
-            </Button>
           </div>
         </div>
       </div>
