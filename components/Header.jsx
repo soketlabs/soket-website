@@ -1,21 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/Button";
-import styles from "@/styles/Header.module.scss";
 import { useState, useEffect, useRef } from "react";
+import { homeContent } from "@/data/content";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isBlogDropdownOpen, setIsBlogDropdownOpen] = useState(false);
-  const blogDropdownRef = useRef(null);
-  const blogLinks = [
-    { href: "/blogs", label: "all posts" },
-    { href: "/blogs/coshe_eval", label: "coshe-eval" },
-    { href: "/blogs/dhrith", label: "dhrith-asr" },
-    { href: "/blogs/pragna_1b", label: "pragna-1b" },
-    { href: "/blogs/bhasha_sft", label: "bhasha sft" },
-    { href: "/blogs/bhasha_wiki", label: "bhasha wiki" },
-  ];
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [bannerDismissed, setBannerDismissed] = useState(true); // Start hidden to prevent flash
+  const [bannerLoaded, setBannerLoaded] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const { nav } = homeContent;
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -23,166 +18,263 @@ export default function Header() {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
-    setIsBlogDropdownOpen(false);
+    setOpenDropdown(null);
   };
 
-  const toggleBlogDropdown = () => {
-    setIsBlogDropdownOpen(!isBlogDropdownOpen);
+  const toggleDropdown = (label) => {
+    setOpenDropdown(openDropdown === label ? null : label);
   };
 
-  const closeBlogDropdown = () => {
-    setIsBlogDropdownOpen(false);
-  };
-
-  // Close menu when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      const nav = document.querySelector(`.${styles.nav}`);
-      const button = document.querySelector(`.${styles.mobile_menu_button}`);
-
-      if (
-        nav &&
-        button &&
-        !nav.contains(event.target) &&
-        !button.contains(event.target)
-      ) {
-        closeMobileMenu();
-      }
-
-      // Close blog dropdown when clicking outside
-      if (
-        blogDropdownRef.current &&
-        !blogDropdownRef.current.contains(event.target)
-      ) {
-        closeBlogDropdown();
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpenDropdown(null);
       }
     };
 
-    if (isMobileMenuOpen || isBlogDropdownOpen) {
-      document.addEventListener("click", handleClickOutside);
-    }
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
 
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isMobileMenuOpen, isBlogDropdownOpen]);
+  // Check if banner was previously dismissed - only on client side
+  useEffect(() => {
+    const dismissed = localStorage.getItem("hiring-banner-dismissed");
+    setBannerDismissed(!!dismissed);
+    setBannerLoaded(true);
+  }, []);
+
+  const dismissBanner = () => {
+    setBannerDismissed(true);
+    localStorage.setItem("hiring-banner-dismissed", "true");
+  };
 
   return (
-    <header className={styles.header_container}>
-      <div className={styles.header_inner}>
-        <div className={styles.primary_logo_container}>
-          <Link href="/" onClick={closeMobileMenu}>
-            <Image
-              priority
-              style={{
-                height: "70px",
-                width: "150px",
-              }}
-              src="/images/Soket-Logo.svg"
-              alt="Soket Labs Logo"
-              width={150}
-              height={70}
-            />
-          </Link>
+    <>
+      {/* Hiring Banner - only show after client-side check */}
+      {bannerLoaded && !bannerDismissed && (
+        <div className="bg-ink text-white py-2.5 px-4 relative">
+          <div className="container-content flex items-center justify-center gap-3 text-sm">
+            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" aria-hidden="true" />
+            <span className="font-geist text-white/90">{nav.banner.text}</span>
+            <Link
+              href={nav.banner.href}
+              className="font-geist-mono text-xs uppercase tracking-label text-white font-medium hover:text-soket-blue transition-colors underline underline-offset-2"
+            >
+              {nav.banner.cta} →
+            </Link>
+            <button
+              onClick={dismissBanner}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white p-1 transition-colors"
+              aria-label="Dismiss banner"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L13 13M1 13L13 1"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Main Header */}
+      <header className="bg-paper/95 backdrop-blur-sm border-b border-hairline sticky top-0 z-50">
+        <div className="container-content">
+          <div className="flex items-center justify-between h-16 lg:h-20">
+            {/* Logo */}
+            <Link href="/" onClick={closeMobileMenu} className="flex-shrink-0 flex items-center gap-3">
+              <Image
+                priority
+                src="/images/Soket-Logo.svg"
+                alt="Soket AI"
+                width={120}
+                height={28}
+                className="h-7 w-auto"
+              />
+            </Link>
+
+            {/* Desktop Navigation */}
+            <nav
+              className="hidden lg:flex items-center"
+              ref={dropdownRef}
+            >
+              <div className="flex items-center gap-1 bg-paper border border-hairline rounded-full px-2 py-1">
+                {nav.links.map((link) =>
+                  link.dropdown ? (
+                    <div key={link.label} className="relative">
+                      <button
+                        onClick={() => toggleDropdown(link.label)}
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-full text-ink hover:bg-hairline/50 transition-colors font-geist text-sm"
+                        aria-expanded={openDropdown === link.label}
+                      >
+                        {link.label}
+                        <svg
+                          width="10"
+                          height="6"
+                          viewBox="0 0 10 6"
+                          fill="none"
+                          className={`transition-transform ${
+                            openDropdown === link.label ? "rotate-180" : ""
+                          }`}
+                        >
+                          <path
+                            d="M1 1L5 5L9 1"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                      {openDropdown === link.label && (
+                        <div className="absolute top-full left-0 mt-2 bg-paper border border-hairline min-w-[180px] py-2 rounded-lg shadow-lg">
+                          {link.dropdown.map((item) => (
+                            <Link
+                              key={item.label}
+                              href={item.href}
+                              className="block px-4 py-2.5 text-sm text-ink hover:text-soket-blue hover:bg-hairline/50 transition-colors"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      className="px-4 py-2 rounded-full text-ink hover:bg-hairline/50 transition-colors font-geist text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
+              </div>
+            </nav>
+
+            {/* CTA Button */}
+            <Link
+              href={nav.cta.href}
+              className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 bg-ink text-white hover:bg-soket-blue transition-colors font-geist text-sm rounded-full"
+            >
+              {nav.cta.label}
+            </Link>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden p-2 text-ink"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path d="M6 6L18 18M6 18L18 6" strokeLinecap="round" />
+                </svg>
+              ) : (
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path d="M4 6H20M4 12H20M4 18H20" strokeLinecap="round" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
 
-        <button
-          className={styles.mobile_menu_button}
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          <span className={styles.hamburger}></span>
-        </button>
-
-        <nav
-          className={`${styles.nav} ${isMobileMenuOpen ? styles.nav_open : ""}`}
-        >
-          <ul>
-            {/* <Link href="/company">
-                            <li>company</li>
-                        </Link> */}
-            <li className={styles.dropdown_container} ref={blogDropdownRef}>
-              <button
-                className={styles.dropdown_trigger}
-                onClick={toggleBlogDropdown}
-                aria-expanded={isBlogDropdownOpen}
-                aria-haspopup="true"
-              >
-                blogs
-                <span className={styles.dropdown_arrow}>▼</span>
-              </button>
-              <ul
-                className={`${styles.dropdown_menu} ${
-                  isBlogDropdownOpen ? styles.dropdown_open : ""
-                }`}
-              >
-                {blogLinks.map(({ href, label }) => (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      onClick={() => {
-                        closeMobileMenu();
-                        closeBlogDropdown();
-                      }}
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <nav className="lg:hidden bg-paper border-t border-hairline">
+            <div className="container-content py-4 space-y-1">
+              {nav.links.map((link) =>
+                link.dropdown ? (
+                  <div key={link.label}>
+                    <button
+                      onClick={() => toggleDropdown(link.label)}
+                      className="flex items-center justify-between w-full py-3 text-ink font-geist"
                     >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-            <Link href="/project-eka" onClick={closeMobileMenu}>
-              <li>project eka</li>
-            </Link>
-            <Link href="/careers/jobs" onClick={closeMobileMenu}>
-              <li>careers</li>
-            </Link>
-            <Link href="/contact" onClick={closeMobileMenu}>
-              <li>contact us</li>
-            </Link>
-            {/* <Link href="/llm">
-                            <li>llm</li>
-                        </Link>
-                        <Link href="/ethics">
-                            <li>ethics</li>
-                        </Link>
-                        <Link href="/research">
-                            <li>research</li>
-                        </Link>
-                        <Link href="/team">
-                            <li>team</li>
-                        </Link>
-                        <Link href="/contact">
-                            <li>contact</li>
-                        </Link> */}
-          </ul>
-          {/* <div className={styles.social_container}>
-                        <Link href="https://github.com/soketlabs" target="_blank">
-                            <Image
-                                priority
-                                src={GithubLogo}
-                                alt="Github Logo"
-                            />
-                        </Link>
-                        <Link href="https://huggingface.co/soketlabs" target="_blank">
-                            <Image
-                                priority
-                                src={HFLogo}
-                                alt="HuggingFace Logo"
-                            />
-                        </Link>
-                    </div> */}
-
-          {/* Get In Touch Button */}
-          {/* <Button
-            href="mailto:careers@soket.ai"
-            variant="black"
-            onClick={closeMobileMenu}
-          >
-            GET IN TOUCH
-          </Button> */}
-        </nav>
-      </div>
-    </header>
+                      {link.label}
+                      <svg
+                        width="10"
+                        height="6"
+                        viewBox="0 0 10 6"
+                        fill="none"
+                        className={`transition-transform ${
+                          openDropdown === link.label ? "rotate-180" : ""
+                        }`}
+                      >
+                        <path
+                          d="M1 1L5 5L9 1"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    {openDropdown === link.label && (
+                      <div className="pl-4 space-y-1 border-l border-hairline ml-2">
+                        {link.dropdown.map((item) => (
+                          <Link
+                            key={item.label}
+                            href={item.href}
+                            className="block py-2 text-muted hover:text-soket-blue transition-colors"
+                            onClick={closeMobileMenu}
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="block py-3 text-ink hover:text-soket-blue transition-colors font-geist"
+                    onClick={closeMobileMenu}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
+              <div className="pt-4 border-t border-hairline mt-4">
+                <Link
+                  href={nav.cta.href}
+                  className="inline-flex items-center justify-center w-full px-5 py-3 border border-ink text-ink hover:border-soket-blue hover:text-soket-blue transition-colors font-geist"
+                  onClick={closeMobileMenu}
+                >
+                  {nav.cta.label}
+                </Link>
+              </div>
+            </div>
+          </nav>
+        )}
+      </header>
+    </>
   );
 }
