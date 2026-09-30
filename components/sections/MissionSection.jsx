@@ -48,34 +48,53 @@ const MissionSection = () => {
 
         {/* Flow Diagram */}
         <FadeIn delay={150}>
-          <div className="bg-paper border border-hairline p-6 lg:p-8 mb-8 overflow-x-auto">
-          <div className="flex items-center gap-3 min-w-max">
-            {mission.flow.map((step, index) => (
-              <div key={step} className="flex items-center gap-3">
-                <span className="font-geist-mono text-xs uppercase tracking-label text-ink whitespace-nowrap">
-                  {step}
-                </span>
-                {index < mission.flow.length - 1 && (
-                  <svg
-                    width="20"
-                    height="8"
-                    viewBox="0 0 20 8"
-                    fill="none"
-                    className="text-hairline flex-shrink-0"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M0 4H18M18 4L14 1M18 4L14 7"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
-              </div>
-            ))}
-          </div>
+          <div className="bg-paper border border-hairline p-5 sm:p-6 lg:p-8 mb-8 overflow-hidden">
+            <div className="md:hidden space-y-0">
+              {mission.flow.map((step, index) => (
+                <div key={step}>
+                  <div className="flex items-center gap-3">
+                    <span className="font-geist-mono text-[10px] text-muted w-5">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-geist-mono text-xs uppercase tracking-label text-ink">
+                      {step}
+                    </span>
+                  </div>
+                  {index < mission.flow.length - 1 && (
+                    <div className="pl-[9px] py-1.5" aria-hidden="true">
+                      <div className="w-px h-4 bg-hairline" />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="hidden md:flex items-center gap-3 flex-wrap">
+              {mission.flow.map((step, index) => (
+                <div key={step} className="flex items-center gap-3">
+                  <span className="font-geist-mono text-xs uppercase tracking-label text-ink whitespace-nowrap">
+                    {step}
+                  </span>
+                  {index < mission.flow.length - 1 && (
+                    <svg
+                      width="20"
+                      height="8"
+                      viewBox="0 0 20 8"
+                      fill="none"
+                      className="text-hairline flex-shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M0 4H18M18 4L14 1M18 4L14 7"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </FadeIn>
 

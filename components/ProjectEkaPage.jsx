@@ -186,9 +186,9 @@ export default function ProjectEkaPage() {
             {RESOURCES.map(({ value, label, detail }) => (
               <div
                 key={label}
-                className="bg-paper p-6 lg:p-8 text-left"
+                className="bg-paper p-4 sm:p-6 lg:p-8 text-left min-w-0"
               >
-                <div className="font-geist-mono text-3xl md:text-4xl font-medium mb-1">
+                <div className="font-geist-mono text-2xl sm:text-3xl md:text-4xl font-medium mb-1">
                   {value}
                 </div>
                 <div className="font-geist-mono text-xs uppercase tracking-label text-soket-blue mb-2">

@@ -6,14 +6,15 @@ import { homeContent } from "@/data/content";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [bannerDismissed, setBannerDismissed] = useState(true); // Start hidden to prevent flash
+  const [bannerDismissed, setBannerDismissed] = useState(true);
   const [bannerLoaded, setBannerLoaded] = useState(false);
-  const dropdownRef = useRef(null);
+  const headerRef = useRef(null);
 
   const { nav } = homeContent;
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen((open) => !open);
+    setOpenDropdown(null);
   };
 
   const closeMobileMenu = () => {
@@ -21,14 +22,14 @@ export default function Header() {
     setOpenDropdown(null);
   };
 
-  const toggleDropdown = (label) => {
-    setOpenDropdown(openDropdown === label ? null : label);
+  const toggleDropdown = (label, event) => {
+    event?.stopPropagation();
+    setOpenDropdown((current) => (current === label ? null : label));
   };
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
         setOpenDropdown(null);
       }
     };
@@ -37,12 +38,18 @@ export default function Header() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  // Check if banner was previously dismissed - only on client side
   useEffect(() => {
     const dismissed = localStorage.getItem("hiring-banner-dismissed");
     setBannerDismissed(!!dismissed);
     setBannerLoaded(true);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
 
   const dismissBanner = () => {
     setBannerDismissed(true);
@@ -50,22 +57,28 @@ export default function Header() {
   };
 
   return (
-    <>
-      {/* Hiring Banner - only show after client-side check */}
+    <div ref={headerRef}>
       {bannerLoaded && !bannerDismissed && (
         <div className="bg-ink text-white py-2.5 px-4 relative">
-          <div className="container-content flex items-center justify-center gap-3 text-sm">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" aria-hidden="true" />
-            <span className="font-geist text-white/90">{nav.banner.text}</span>
-            <Link
-              href={nav.banner.href}
-              className="font-geist-mono text-xs uppercase tracking-label text-white font-medium hover:text-soket-blue transition-colors underline underline-offset-2"
-            >
-              {nav.banner.cta} →
-            </Link>
+          <div className="container-content flex items-start sm:items-center justify-center gap-2 pr-8">
+            <span
+              className="w-2 h-2 bg-green-400 rounded-full animate-pulse shrink-0 mt-1.5 sm:mt-0"
+              aria-hidden="true"
+            />
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 min-w-0">
+              <span className="font-geist text-white/90 text-sm leading-snug">
+                {nav.banner.text}
+              </span>
+              <Link
+                href={nav.banner.href}
+                className="font-geist-mono text-xs uppercase tracking-label text-white font-medium hover:text-soket-blue transition-colors underline underline-offset-2 whitespace-nowrap"
+              >
+                {nav.banner.cta} →
+              </Link>
+            </div>
             <button
               onClick={dismissBanner}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white p-1 transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white p-2 transition-colors"
               aria-label="Dismiss banner"
             >
               <svg
@@ -87,12 +100,14 @@ export default function Header() {
         </div>
       )}
 
-      {/* Main Header */}
       <header className="bg-paper/95 backdrop-blur-sm border-b border-hairline sticky top-0 z-50">
         <div className="container-content">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <Link href="/" onClick={closeMobileMenu} className="flex-shrink-0 flex items-center gap-3">
+            <Link
+              href="/"
+              onClick={closeMobileMenu}
+              className="flex-shrink-0 flex items-center gap-3"
+            >
               <Image
                 priority
                 src="/images/Soket-Logo.svg"
@@ -103,17 +118,14 @@ export default function Header() {
               />
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav
-              className="hidden lg:flex items-center"
-              ref={dropdownRef}
-            >
+            <nav className="hidden lg:flex items-center">
               <div className="flex items-center gap-1 bg-paper border border-hairline rounded-full px-2 py-1">
                 {nav.links.map((link) =>
                   link.dropdown ? (
                     <div key={link.label} className="relative">
                       <button
-                        onClick={() => toggleDropdown(link.label)}
+                        type="button"
+                        onClick={(event) => toggleDropdown(link.label, event)}
                         className="flex items-center gap-1.5 px-4 py-2 rounded-full text-ink hover:bg-hairline/50 transition-colors font-geist text-sm"
                         aria-expanded={openDropdown === link.label}
                       >
@@ -164,7 +176,6 @@ export default function Header() {
               </div>
             </nav>
 
-            {/* CTA Button */}
             <Link
               href={nav.cta.href}
               className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 bg-ink text-white hover:bg-soket-blue transition-colors font-geist text-sm rounded-full"
@@ -172,8 +183,8 @@ export default function Header() {
               {nav.cta.label}
             </Link>
 
-            {/* Mobile Menu Button */}
             <button
+              type="button"
               className="lg:hidden p-2 text-ink"
               onClick={toggleMobileMenu}
               aria-label="Toggle menu"
@@ -206,16 +217,17 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="lg:hidden bg-paper border-t border-hairline">
+          <nav className="lg:hidden bg-paper border-t border-hairline max-h-[calc(100dvh-4rem)] overflow-y-auto">
             <div className="container-content py-4 space-y-1">
               {nav.links.map((link) =>
                 link.dropdown ? (
                   <div key={link.label}>
                     <button
-                      onClick={() => toggleDropdown(link.label)}
+                      type="button"
+                      onClick={(event) => toggleDropdown(link.label, event)}
                       className="flex items-center justify-between w-full py-3 text-ink font-geist"
+                      aria-expanded={openDropdown === link.label}
                     >
                       {link.label}
                       <svg
@@ -237,7 +249,7 @@ export default function Header() {
                       </svg>
                     </button>
                     {openDropdown === link.label && (
-                      <div className="pl-4 space-y-1 border-l border-hairline ml-2">
+                      <div className="pl-4 space-y-1 border-l border-hairline ml-2 mb-2">
                         {link.dropdown.map((item) => (
                           <Link
                             key={item.label}
@@ -275,6 +287,6 @@ export default function Header() {
           </nav>
         )}
       </header>
-    </>
+    </div>
   );
 }

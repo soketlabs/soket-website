@@ -30,7 +30,7 @@ export default function LoopPage() {
             </p>
             
             {/* Install Command */}
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-8 w-full">
               <CopyCommand command={LOOP_HERO.install} />
             </div>
             

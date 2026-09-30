@@ -21,7 +21,6 @@ export const homeContent = {
           { label: "Inference", href: "/inference" },
         ],
       },
-      { label: "Solutions", href: "/contact" },
       { label: "Blog", href: "/blogs" },
       { label: "Careers", href: "/careers/jobs" },
     ],

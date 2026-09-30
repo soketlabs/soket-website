@@ -14,8 +14,8 @@ export default function CopyCommand({ command }) {
   };
 
   return (
-    <div className="relative inline-flex items-center bg-ink text-white font-geist-mono text-sm border border-white/10 max-w-full">
-      <div className="flex items-center gap-3 px-4 py-3 overflow-x-auto">
+    <div className="relative flex items-center bg-ink text-white font-geist-mono text-xs sm:text-sm border border-white/10 w-full max-w-2xl">
+      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-3 overflow-x-auto min-w-0">
         <span className="text-emerald-400 select-none shrink-0">$</span>
         <code className="whitespace-nowrap">{command}</code>
       </div>

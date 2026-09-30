@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { homeContent } from "@/data/content";
 import DerivationTrace from "./DerivationTrace";
+import AshokaChakra from "@/components/icons/AshokaChakra";
 
 const HeroSection = () => {
   const { hero } = homeContent;
@@ -12,12 +13,12 @@ const HeroSection = () => {
           {/* Left Content */}
           <div className="lg:col-span-6 xl:col-span-5">
             {/* Eyebrow */}
-            <p className="font-geist-mono text-xs uppercase tracking-label text-muted mb-6">
+            <p className="font-geist-mono text-[11px] sm:text-xs uppercase tracking-label text-muted mb-5 sm:mb-6 leading-relaxed">
               {hero.eyebrow}
             </p>
 
             {/* H1 - The only h1 on the page */}
-            <h1 className="text-4xl md:text-5xl lg:text-h1 font-medium text-ink mb-6 tracking-tight">
+            <h1 className="text-[2rem] leading-[1.15] sm:text-4xl md:text-5xl lg:text-h1 font-medium text-ink mb-5 sm:mb-6 tracking-tight">
               {hero.headline}
             </h1>
 
@@ -50,22 +51,25 @@ const HeroSection = () => {
         </div>
 
         {/* Proof Strip */}
-        <div className="mt-16 lg:mt-20 pt-8 border-t border-hairline">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0">
+        <div className="mt-10 sm:mt-16 lg:mt-20 pt-6 sm:pt-8 border-t border-hairline">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-0">
             {hero.proofStrip.map((item, index) => (
               <div
                 key={index}
                 className={`${
                   index > 0 ? "lg:border-l lg:border-hairline lg:pl-6" : ""
-                } ${index === 2 ? "col-span-2 lg:col-span-1" : ""}`}
+                }`}
               >
                 {item.label && (
                   <p className="font-geist-mono text-xs uppercase tracking-label text-muted mb-1">
                     {item.label}
                   </p>
                 )}
-                <p className="font-geist-mono text-sm text-ink font-medium">
-                  {item.value}
+                <p className="font-geist-mono text-sm text-ink font-medium flex items-center gap-2 break-words">
+                  {item.value === "INDIAAI MISSION" && (
+                    <AshokaChakra size={14} className="text-soket-blue shrink-0" />
+                  )}
+                  <span>{item.value}</span>
                 </p>
               </div>
             ))}
