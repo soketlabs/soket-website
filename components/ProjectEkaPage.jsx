@@ -268,41 +268,31 @@ export default function ProjectEkaPage() {
       {/* Languages - Dark Section */}
       <section className="section-gap bg-ink text-white">
         <div className="container-content">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="font-geist-mono text-xs uppercase tracking-label text-white/50 mb-4">
-                // LANGUAGE COVERAGE
-              </p>
-              <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-6">
-                60+ languages — not an afterthought
-              </h2>
-              <p className="text-white/70 mb-8 leading-relaxed">
-                Most frontier labs optimize for English. EKA runs two parallel
-                verticals: frontier math, code, and reasoning models for
-                rigorous technical work — alongside sovereign multilingual
-                modeling with efficient tokenization and curated corpora.
-              </p>
-              <ul className="space-y-6">
-                {LANGUAGE_GROUPS.map(({ label, examples }) => (
-                  <li key={label}>
-                    <h3 className="font-geist-mono text-xs uppercase tracking-label text-emerald-400 mb-2">
-                      {label}
-                    </h3>
-                    <p className="text-white/60 text-sm leading-relaxed">
-                      {examples}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="relative h-[280px] md:h-[360px] lg:h-[400px]">
-              <Image
-                src="/images/project_eka_abstract.png"
-                alt="Project EKA visual"
-                fill
-                className="object-contain object-center lg:object-right"
-              />
-            </div>
+          <p className="font-geist-mono text-xs uppercase tracking-label text-white/50 mb-4">
+            // LANGUAGE COVERAGE
+          </p>
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-12">
+            <h2 className="lg:col-span-5 text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight">
+              60+ languages — not an afterthought
+            </h2>
+            <p className="lg:col-span-7 text-white/70 leading-relaxed self-end">
+              Most frontier labs optimize for English. EKA runs two parallel
+              verticals: frontier math, code, and reasoning models for
+              rigorous technical work — alongside sovereign multilingual
+              modeling with efficient tokenization and curated corpora.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-px bg-white/10">
+            {LANGUAGE_GROUPS.map(({ label, examples }) => (
+              <div key={label} className="bg-ink p-6 lg:p-8">
+                <h3 className="font-geist-mono text-xs uppercase tracking-label text-emerald-400 mb-3">
+                  {label}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  {examples}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
