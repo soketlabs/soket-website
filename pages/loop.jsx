@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import CopyCommand from "@/components/CopyCommand";
+import LoopDemoVideo from "@/components/LoopDemoVideo";
 import SectionLabel from "@/components/sections/SectionLabel";
 import { LOOP_HERO, LOOP_FEATURES, LOOP_CTA } from "@/data/loop-content";
 
@@ -17,7 +18,7 @@ export default function LoopPage() {
 
       <main className="bg-paper text-ink">
         {/* Hero */}
-        <section className="section-gap text-center">
+        <section className="pt-16 sm:pt-24 lg:pt-32 pb-8 sm:pb-10 text-center">
           <div className="container-content">
             <p className="font-geist-mono text-xs uppercase tracking-label text-muted mb-4">
               {LOOP_HERO.label}
@@ -49,33 +50,10 @@ export default function LoopPage() {
           </div>
         </section>
 
-        {/* Video Walkthrough */}
-        <section className="py-16 lg:py-20 border-t border-hairline">
+        {/* Demo video — autoplaying background, no controls */}
+        <section className="pb-8 sm:pb-16 lg:pb-20">
           <div className="container-content">
-            <SectionLabel>// WALKTHROUGH</SectionLabel>
-            <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-8">
-              See Loop in action
-            </h2>
-            <div className="aspect-video bg-ink/5 border border-hairline flex items-center justify-center">
-              <div className="text-center text-muted">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="mx-auto mb-4 opacity-50"
-                >
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-                  <path
-                    d="M10 8.5L15.5 12L10 15.5V8.5Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <p className="font-geist-mono text-xs uppercase tracking-label">
-                  Demo video coming soon
-                </p>
-              </div>
-            </div>
+            <LoopDemoVideo />
           </div>
         </section>
 

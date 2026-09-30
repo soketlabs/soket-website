@@ -51,10 +51,8 @@ export const LOOP_FEATURES = [
 ];
 
 export const LOOP_VIDEO = {
-  label: "// WALKTHROUGH",
-  title: "See Loop in action",
-  embedId: null, // To be added when video is ready
-  placeholder: "/images/loop-demo-placeholder.png",
+  src: "/videos/loop-demo.mp4",
+  poster: "/images/loop-demo-poster.png",
 };
 
 export const LOOP_CTA = {
