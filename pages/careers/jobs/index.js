@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { useCallback, useMemo, useState } from "react";
 import SocialMeta from "@/components/SocialMeta";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { jobs } from "@/data/jobs";
 import styles from "@/styles/CareersJobsIndex.module.scss";
 
@@ -41,7 +39,6 @@ export default function CareersJobsIndex() {
         description="Join our team building frontier AI from India. Open roles in research, infrastructure, and applied ML."
         path="/careers/jobs"
       />
-      <Header />
       <main className={styles.careers_index}>
         <div className={styles.header}>
           <p className={styles.label}>// CAREERS</p>
@@ -128,7 +125,6 @@ export default function CareersJobsIndex() {
           );
         })}
       </main>
-      <Footer />
     </>
   );
 }

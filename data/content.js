@@ -10,6 +10,7 @@ export const homeContent = {
 
   nav: {
     links: [
+      { label: "Home", href: "/" },
       { label: "Research", href: "/research" },
       {
         label: "Products",
@@ -53,13 +54,13 @@ export const homeContent = {
         domain: "Finance",
         problem: "Verify: Q3 revenue variance exceeds 5% threshold",
         steps: [
-          { text: "Load Q3 actuals: $12.4M", verified: true },
-          { text: "Load Q3 forecast: $11.8M", verified: true },
-          { text: "Compute variance: (12.4 - 11.8) / 11.8", verified: true },
+          { text: "Load Q3 actuals: ₹124 Cr", verified: true },
+          { text: "Load Q3 forecast: ₹118 Cr", verified: true },
+          { text: "Compute variance: (124 - 118) / 118", verified: true },
           { text: "Result: 5.08%", verified: true },
           { text: "Compare: 5.08% > 5% threshold", verified: true },
           { text: "Flag: MATERIAL_VARIANCE", verified: true },
-          { text: "Cite: GAAP ASC 280, internal policy §4.2", verified: true },
+          { text: "Cite: Ind AS 108, internal policy §4.2", verified: true },
         ],
         summary: { steps: 7, sources: 3 },
       },

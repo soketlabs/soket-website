@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import styles from "@/styles/BlogIndex.module.scss";
 
 const blogs = [
@@ -57,9 +55,7 @@ const blogs = [
 
 export default function BlogIndex() {
   return (
-    <>
-      <Header />
-      <main className={styles.blog_index}>
+    <main className={styles.blog_index}>
         <div className={styles.header}>
           <p className={styles.label}>// BLOG</p>
           <h1 className={styles.title}>Research & updates</h1>
@@ -116,8 +112,6 @@ export default function BlogIndex() {
             </Link>
           ))}
         </div>
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }

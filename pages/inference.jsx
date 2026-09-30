@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import SectionLabel from "@/components/sections/SectionLabel";
 import {
   INFERENCE_HERO,
@@ -22,9 +20,7 @@ export default function InferencePage() {
         />
       </Head>
 
-      <Header />
-
-      <main className="bg-paper text-ink min-h-screen">
+      <main className="bg-paper text-ink">
         {/* Hero */}
         <section className="section-gap text-center">
           <div className="container-content">
@@ -183,8 +179,6 @@ export default function InferencePage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </>
   );
 }
