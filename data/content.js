@@ -16,8 +16,8 @@ export const homeContent = {
         href: "#",
         dropdown: [
           { label: "Project EKA", href: "/project-eka" },
-          { label: "Loop", href: "https://github.com/soketlabs/loop" },
-          { label: "Inference", href: "/contact" },
+          { label: "Loop", href: "/loop" },
+          { label: "Inference", href: "/inference" },
         ],
       },
       { label: "Solutions", href: "/contact" },
@@ -148,13 +148,13 @@ export const homeContent = {
         number: "02",
         name: "Loop",
         subtitle: "the agent harness",
-        tag: "RESEARCH PREVIEW",
+        tag: "OPEN SOURCE",
         description:
           "Tool use, evaluation and control in one loop. Run models on serious work, on your infrastructure.",
         spec: "TOOLS · EVALS · GUARDRAILS · LOGS",
         link: {
           label: "Check out Loop",
-          href: "https://github.com/soketlabs/loop",
+          href: "/loop",
         },
         primary: false,
       },
@@ -166,7 +166,7 @@ export const homeContent = {
         description:
           "Serve, route and evaluate EKA and selected open models, on-premise, air-gapped or in your cloud.",
         spec: "ON-PREM · AIR-GAPPED · VPC",
-        link: { label: "Learn more", href: "/contact" },
+        link: { label: "Learn more", href: "/inference" },
         primary: false,
       },
     ],
@@ -307,8 +307,8 @@ export const homeContent = {
         title: "Products",
         links: [
           { label: "Project EKA", href: "/project-eka" },
-          { label: "Loop", href: "https://github.com/soketlabs/loop" },
-          { label: "Inference", href: "/contact" },
+          { label: "Loop", href: "/loop" },
+          { label: "Inference", href: "/inference" },
         ],
       },
       {

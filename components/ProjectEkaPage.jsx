@@ -1,102 +1,105 @@
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/Button";
-import ArrowLink from "@/components/ArrowLink";
+import SectionLabel from "@/components/sections/SectionLabel";
 
 const CAPABILITIES = [
   {
+    number: "01",
     title: "Math",
     description:
       "Advanced mathematical reasoning, proofs, and symbolic computation — models tuned for rigorous step-by-step logic.",
   },
   {
+    number: "02",
     title: "Code",
     description:
       "Multi-language code generation, debugging, and optimization across 20+ programming languages.",
   },
   {
+    number: "03",
     title: "Reasoning",
     description:
       "Logical deduction, complex analysis, and long-horizon problem solving for high-stakes workflows.",
   },
   {
+    number: "04",
     title: "Multilingual",
     description:
-      "22 Indian languages, 20+ Global South languages, and English — a dedicated vertical for sovereign text and speech, with curated data and tokenization built for linguistic diversity.",
+      "22 Indian languages, 20+ Global South languages, and English — sovereign text and speech with curated data and tokenization.",
   },
 ];
 
 const RESOURCES = [
   {
-    value: "1536",
-    label: "NVIDIA H100 GPUs",
-    detail: "Sovereign compute via the IndiaAI Mission",
+    value: "1,536",
+    label: "H100 GPUs",
+    detail: "Sovereign compute via IndiaAI Mission",
   },
   {
     value: "25T",
     label: "Tokens curated",
-    detail: "High-quality pre-training corpus to date",
+    detail: "High-quality pre-training corpus",
   },
   {
     value: "120B+",
-    label: "Parameters (Sparse MoE)",
+    label: "Parameters",
     detail: "Frontier-scale architecture in training",
   },
   {
     value: "60+",
     label: "Languages",
-    detail: "Indian, Global South, and programming languages",
+    detail: "Indian, Global South, and programming",
   },
 ];
 
 const RESEARCH_DIRECTIONS = [
   {
     num: "01",
-    title: "High-quality data for pre- and post-training",
+    title: "High-quality data pipelines",
     description:
-      "Curation, filtering, and synthesis pipelines for Indic and Global South text, code, math, and speech — built for both pre-training and alignment stages.",
+      "Curation, filtering, and synthesis for Indic and Global South text, code, math, and speech.",
   },
   {
     num: "02",
-    title: "Efficient model architecture for language variance",
+    title: "Efficient model architecture",
     description:
-      "Sparse MoE and routing strategies that handle extreme token-efficiency and morphological diversity across scripts and domains.",
+      "Routing strategies for token-efficiency and morphological diversity across scripts.",
   },
   {
     num: "03",
     title: "Efficient tokenization",
     description:
-      "Building one of the most token-efficient vocabularies for Indian and Global South languages — minimizing bytes-per-token for Indic scripts and enabling longer context at lower compute cost.",
+      "Token-efficient vocabularies for Indian languages — minimizing bytes-per-token for Indic scripts.",
   },
   {
     num: "04",
     title: "Post-training methods",
     description:
-      "SFT and preference optimization for math, code, and reasoning models; separate alignment pipelines for multilingual foundations and regulated-sector workflows.",
+      "SFT and preference optimization for math, code, and reasoning; alignment for regulated sectors.",
   },
   {
     num: "05",
-    title: "Efficient inference & algorithmic design",
+    title: "Efficient inference",
     description:
-      "Kernel fusion, speculative decoding, quantization, and systems co-design from training through production serving.",
+      "Kernel fusion, speculative decoding, quantization, and systems co-design.",
   },
   {
     num: "06",
-    title: "Sustainable & efficient AI research",
+    title: "Sustainable AI research",
     description:
-      "Optimal power and water usage for large-scale training — measuring and minimizing the environmental cost of frontier runs.",
+      "Optimal power and water usage — minimizing environmental cost of frontier runs.",
   },
   {
     num: "07",
     title: "AI for critical sectors",
     description:
-      "Applied research for defence, cybersecurity, military and civilian intelligence, finance, banking, and information technology — with auditable, on-premise deployment paths.",
+      "Defence, cybersecurity, finance, banking — with auditable, on-premise deployment.",
   },
   {
     num: "08",
     title: "Ethical AI",
     description:
-      "Safety, alignment, bias mitigation, and responsible deployment — embedding ethical constraints into data curation, training, evaluation, and release for sovereign and high-stakes use cases.",
+      "Safety, alignment, bias mitigation — embedding constraints from data to deployment.",
   },
 ];
 
@@ -104,148 +107,188 @@ const LANGUAGE_GROUPS = [
   {
     label: "22 Indian languages",
     examples:
-      "Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam, Odia, Punjabi, Assamese, Urdu, Sanskrit, and more",
+      "Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam, Odia, Punjabi, Assamese, Urdu, Sanskrit",
   },
   {
     label: "20+ Global South languages",
     examples:
-      "Arabic, Indonesian, Thai, Vietnamese, Burmese, Kazakh, Portuguese, Spanish, and more",
+      "Arabic, Indonesian, Thai, Vietnamese, Burmese, Kazakh, Portuguese, Spanish",
   },
   {
     label: "20+ programming languages",
-    examples: "Python, Rust, Go, TypeScript, C++, Java, SQL, Julia, and more",
+    examples: "Python, Rust, Go, TypeScript, C++, Java, SQL, Julia",
+  },
+];
+
+const RELEASES = [
+  {
+    title: "Pragna-1B",
+    description: "1.25B-parameter open multilingual model — Hindi, English, Gujarati, Bengali.",
+    link: { label: "Hugging Face", href: "https://huggingface.co/soketlabs/pragna-1b" },
+  },
+  {
+    title: "Dhrith ASR",
+    description: "Emotion-aware speech recognition for India's multilingual voices.",
+    link: { label: "Read the blog", href: "/blogs/dhrith" },
+  },
+  {
+    title: "EKA Tokenizer",
+    description: "Token-efficient vocabularies for Indian and Global South languages.",
+    link: null,
   },
 ];
 
 export default function ProjectEkaPage() {
   return (
-    <div className="text-[#1e1e1e]">
+    <div className="bg-paper text-ink">
       {/* Hero */}
-      <section className="pt-28 pb-16 md:pt-26 md:pb-44 text-center px-4">
-        <p className="text-sm font-geist-mono text-gray-600 mb-4">
-          // PROJECT EKΛ
-        </p>
-        <p className="inline-flex items-center gap-2 text-sm font-geist-mono text-[#1B41FF] mb-6 px-4 py-2 rounded-full border border-[#1B41FF]/20 bg-[#1B41FF]/5">
-          <span
-            className="w-2 h-2 rounded-full bg-[#1B41FF]"
-            aria-hidden="true"
-          />
-          Backed by the IndiaAI Mission
-        </p>
-        <h1 className="text-4xl md:text-6xl lg:text-[64px] font-space-grotesk font-medium tracking-tight mb-6 max-w-4xl mx-auto leading-tight">
-          Sovereign models for reasoning &amp; multilingual AI
-        </h1>
-        <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Project EKΛ is Soket&apos;s flagship research program — advancing
-          frontier math, code, and reasoning models in parallel with sovereign
-          multilingual AI for Indian and Global South languages.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <Button href="/careers/jobs" variant="black">
-            VIEW OPEN ROLES
-          </Button>
-        </div>
-      </section>
-
-      {/* What is EKA */}
-      <section className="py-12 lg:py-20 bg-soket-gray">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
-            <div className="text-left">
-              <p className="text-sm font-geist-mono text-gray-600 mb-4">
-                // WHAT WE&apos;RE BUILDING
-              </p>
-              <h2 className="text-3xl md:text-5xl font-space-grotesk mb-6">
-                Foundation models built for Bharat &amp; the Global South
-              </h2>
-              <p className="text-base text-gray-800 mb-6 leading-relaxed">
-                Project EKΛ is Soket’s boldest vision — building AI for a
-                billion, from the heart of India. Our mission is to create
-                world-class models that master math, code, and reasoning, while
-                speaking the languages of Bharat and the Global South. We
-                believe talent and ambition from India can shape the very
-                frontier of AI. We work at the edge of research in architecture,
-                large-scale training, and language resources — reimagining
-                what’s possible for low-resource and diverse languages. Join us
-                at the vanguard — and help put India at the center of global AI
-                innovation. Project EKΛ is dedicated to producing fundamental
-                advances in both the science and engineering of AI.
-              </p>
-              <p className="text-base text-gray-800 leading-relaxed">
-                We open-source where we can, train on sovereign compute, and
-                publish research that advances Indic NLP, systems for ML, and
-                efficient inference.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {RESOURCES.map(({ value, label, detail }) => (
-                <div
-                  key={label}
-                  className="bg-white rounded-lg p-6 shadow-sm text-left"
-                >
-                  <div className="text-3xl md:text-4xl font-space-grotesk font-medium mb-1">
-                    {value}
-                  </div>
-                  <div className="text-sm font-geist-mono font-medium mb-2">
-                    {label}
-                  </div>
-                  <p className="text-sm text-black/60">{detail}</p>
-                </div>
-              ))}
-            </div>
+      <section className="section-gap text-center">
+        <div className="container-content">
+          <p className="font-geist-mono text-xs uppercase tracking-label text-muted mb-4">
+            // PROJECT EKA
+          </p>
+          <div className="inline-flex items-center gap-2 text-sm font-geist-mono text-soket-blue mb-8 px-4 py-2 border border-soket-blue/20 bg-soket-blue/5">
+            <span
+              className="w-2 h-2 bg-soket-blue"
+              aria-hidden="true"
+            />
+            Backed by the IndiaAI Mission
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-h1 font-medium tracking-tight mb-6 max-w-4xl mx-auto leading-tight">
+            Sovereign models for reasoning &amp; multilingual AI
+          </h1>
+          <p className="text-17 text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+            Project EKA is Soket&apos;s flagship research program — advancing
+            frontier math, code, and reasoning models in parallel with sovereign
+            multilingual AI for Indian and Global South languages.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/careers/jobs"
+              className="inline-flex items-center justify-center px-6 py-3 bg-ink text-white font-geist text-sm hover:bg-soket-blue transition-colors"
+            >
+              View open roles
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 border border-ink text-ink font-geist text-sm hover:border-soket-blue hover:text-soket-blue transition-colors"
+            >
+              Talk to us
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Capabilities */}
-      <section className="py-12 lg:py-20">
-        <div className="container mx-auto px-4">
-          <p className="text-sm font-geist-mono text-gray-600 mb-4 text-left">
-            // CORE CAPABILITIES
-          </p>
-          <h2 className="text-3xl md:text-5xl font-space-grotesk mb-12 text-left">
-            Two tracks: technical reasoning &amp; multilingual AI
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {CAPABILITIES.map(({ title, description }) => (
+      {/* Resources Stats */}
+      <section className="py-16 lg:py-20 border-t border-hairline">
+        <div className="container-content">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-hairline">
+            {RESOURCES.map(({ value, label, detail }) => (
               <div
-                key={title}
-                className="bg-soket-gray rounded-lg p-6 lg:pt-12 text-left"
+                key={label}
+                className="bg-paper p-6 lg:p-8 text-left"
               >
-                <h3 className="text-2xl font-space-grotesk mb-4">{title}</h3>
-                <p className="text-base text-black/70">{description}</p>
+                <div className="font-geist-mono text-3xl md:text-4xl font-medium mb-1">
+                  {value}
+                </div>
+                <div className="font-geist-mono text-xs uppercase tracking-label text-soket-blue mb-2">
+                  {label}
+                </div>
+                <p className="text-sm text-muted">{detail}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Languages */}
-      <section className="py-12 lg:py-20 bg-black text-white">
-        <div className="container mx-auto px-4">
+      {/* What is EKA */}
+      <section className="section-gap border-t border-hairline">
+        <div className="container-content">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+            <div>
+              <SectionLabel>// WHAT WE'RE BUILDING</SectionLabel>
+              <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-6">
+                Foundation models built for Bharat &amp; the Global South
+              </h2>
+              <div className="space-y-4 text-muted">
+                <p>
+                  Project EKA is Soket's boldest vision — building AI for a
+                  billion, from the heart of India. Our mission is to create
+                  world-class models that master math, code, and reasoning, while
+                  speaking the languages of Bharat and the Global South.
+                </p>
+                <p>
+                  We work at the edge of research in architecture,
+                  large-scale training, and language resources — reimagining
+                  what's possible for low-resource and diverse languages.
+                </p>
+                <p>
+                  We open-source where we can, train on sovereign compute, and
+                  publish research that advances Indic NLP, systems for ML, and
+                  efficient inference.
+                </p>
+              </div>
+            </div>
+            <div className="relative h-[300px] lg:h-auto">
+              <Image
+                src="/images/project_eka_abstract.png"
+                alt="Project EKA visual"
+                fill
+                className="object-contain object-center"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Capabilities */}
+      <section className="section-gap border-t border-hairline">
+        <div className="container-content">
+          <SectionLabel>// CORE CAPABILITIES</SectionLabel>
+          <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-12">
+            Two tracks: technical reasoning &amp; multilingual AI
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline">
+            {CAPABILITIES.map(({ number, title, description }) => (
+              <div
+                key={title}
+                className="bg-paper p-6 lg:p-8"
+              >
+                <span className="font-geist-mono text-xs text-soket-blue mb-4 block">
+                  {number}
+                </span>
+                <h3 className="text-xl font-medium mb-3">{title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Languages - Dark Section */}
+      <section className="section-gap bg-ink text-white">
+        <div className="container-content">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-left">
-              <p className="text-sm font-geist-mono text-gray-400 mb-4">
+            <div>
+              <p className="font-geist-mono text-xs uppercase tracking-label text-white/50 mb-4">
                 // LANGUAGE COVERAGE
               </p>
-              <h2 className="text-3xl md:text-5xl font-space-grotesk mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-6">
                 60+ languages — not an afterthought
               </h2>
-              <p className="text-gray-300 mb-8 leading-relaxed">
-                Most frontier labs optimize for English. EKΛ runs two parallel
+              <p className="text-white/70 mb-8 leading-relaxed">
+                Most frontier labs optimize for English. EKA runs two parallel
                 verticals: frontier math, code, and reasoning models for
                 rigorous technical work — alongside sovereign multilingual
-                modeling for Indian and Global South languages, with efficient
-                tokenization and curated corpora per script for regional text,
-                speech, and domain-specific use cases.
+                modeling with efficient tokenization and curated corpora.
               </p>
               <ul className="space-y-6">
                 {LANGUAGE_GROUPS.map(({ label, examples }) => (
                   <li key={label}>
-                    <h3 className="font-geist-mono text-sm text-[#7BA3FF] mb-2">
+                    <h3 className="font-geist-mono text-xs uppercase tracking-label text-emerald-400 mb-2">
                       {label}
                     </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
+                    <p className="text-white/60 text-sm leading-relaxed">
                       {examples}
                     </p>
                   </li>
@@ -265,32 +308,30 @@ export default function ProjectEkaPage() {
       </section>
 
       {/* Research directions */}
-      <section className="py-12 lg:py-20">
-        <div className="container mx-auto px-4">
-          <p className="text-sm font-geist-mono text-gray-600 mb-4 text-left">
-            // RESEARCH DIRECTIONS
-          </p>
-          <h2 className="text-3xl md:text-5xl font-space-grotesk mb-4 text-left">
+      <section className="section-gap border-t border-hairline">
+        <div className="container-content">
+          <SectionLabel>// RESEARCH DIRECTIONS</SectionLabel>
+          <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-4">
             Problems we&apos;re actively working on
           </h2>
-          <p className="text-base text-gray-700 max-w-2xl mb-12 text-left leading-relaxed">
+          <p className="text-muted max-w-2xl mb-12 leading-relaxed">
             If you care about data systems, training at scale, tokenizers,
             post-training, or ethical AI — these are the threads where your work
-            ships into a national-scale model, not a side project.
+            ships into a national-scale model.
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {RESEARCH_DIRECTIONS.map(({ num, title, description }) => (
               <article
                 key={num}
-                className="group border border-black/10 rounded-lg p-6 md:p-8 text-left hover:border-[#1B41FF]/30 hover:bg-[#1B41FF]/[0.02] transition-colors"
+                className="group border border-hairline p-6 md:p-8 hover:border-soket-blue transition-colors"
               >
-                <span className="font-geist-mono text-sm text-[#1B41FF] mb-3 block">
+                <span className="font-geist-mono text-xs text-soket-blue mb-3 block">
                   {num}
                 </span>
-                <h3 className="text-xl font-space-grotesk mb-3 group-hover:text-[#1B41FF] transition-colors">
+                <h3 className="text-lg font-medium mb-3 group-hover:text-soket-blue transition-colors">
                   {title}
                 </h3>
-                <p className="text-base text-black/65 leading-relaxed">
+                <p className="text-sm text-muted leading-relaxed">
                   {description}
                 </p>
               </article>
@@ -299,70 +340,68 @@ export default function ProjectEkaPage() {
         </div>
       </section>
 
-      {/* Related work */}
-      <section className="py-12 lg:py-16 bg-soket-gray">
-        <div className="container mx-auto px-4">
-          <p className="text-sm font-geist-mono text-gray-600 mb-8 text-left">
-            // RELATED RELEASES
-          </p>
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-white rounded-lg p-6 text-left">
-              <h3 className="text-xl font-space-grotesk mb-2">Pragna-1B</h3>
-              <p className="text-sm text-black/60 mb-4">
-                1.25B-parameter open multilingual model — Hindi, English,
-                Gujarati, Bengali.
-              </p>
-              <ArrowLink href="https://huggingface.co/soketlabs/pragna-1b">
-                Hugging Face
-              </ArrowLink>
-            </div>
-            <div className="bg-white rounded-lg p-6 text-left">
-              <h3 className="text-xl font-space-grotesk mb-2">Dhrith ASR</h3>
-              <p className="text-sm text-black/60 mb-4">
-                Speech recognition for Indic and voice-first markets.
-              </p>
-              <ArrowLink href="/blogs/dhrith">Read the blog</ArrowLink>
-            </div>
-            <div className="bg-white rounded-lg p-6 text-left">
-              <h3 className="text-xl font-space-grotesk mb-2">EKA tokenizer</h3>
-              <p className="text-sm text-black/60">
-                Among the most token-efficient vocabularies for Indian and
-                Global South languages — built in-house to cut sequence length
-                and training cost versus mainstream open tokenizers.
-              </p>
-            </div>
+      {/* Related Releases */}
+      <section className="py-16 lg:py-20 border-t border-hairline">
+        <div className="container-content">
+          <SectionLabel>// RELATED RELEASES</SectionLabel>
+          <div className="grid md:grid-cols-3 gap-4 mt-8">
+            {RELEASES.map(({ title, description, link }) => (
+              <div key={title} className="border border-hairline p-6 hover:border-soket-blue transition-colors">
+                <h3 className="text-lg font-medium mb-2">{title}</h3>
+                <p className="text-sm text-muted mb-4">{description}</p>
+                {link && (
+                  <Link
+                    href={link.href}
+                    className="inline-flex items-center gap-2 font-geist-mono text-xs uppercase tracking-label text-ink hover:text-soket-blue transition-colors group"
+                  >
+                    {link.label}
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      className="transition-transform group-hover:translate-x-1"
+                    >
+                      <path
+                        d="M3 8H13M13 8L9 4M13 8L9 12"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Link>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-soket-blue text-white">
-        <div className="container mx-auto px-4 py-16 md:py-20">
+      <section className="bg-ink text-white py-16 lg:py-20">
+        <div className="container-content">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div className="text-left max-w-xl">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-2 h-2 bg-white shrink-0" aria-hidden="true" />
-                <h2 className="text-2xl md:text-3xl font-space-grotesk">
-                  Help us train India&apos;s frontier models
-                </h2>
-              </div>
-              <p className="text-white/75 text-base leading-relaxed">
+            <div className="max-w-xl">
+              <h2 className="text-2xl md:text-3xl font-medium mb-4">
+                Help us train India&apos;s frontier models
+              </h2>
+              <p className="text-white/60 leading-relaxed">
                 We&apos;re hiring researchers and engineers across data,
                 training, inference, and applied ML. If you want hard systems
                 problems at sovereign scale — we&apos;d like to hear from you.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-              <Button
+              <Link
                 href="/careers/jobs"
-                variant="white"
-                borderTopColor="#1B41FF"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white text-ink font-geist text-sm hover:bg-soket-blue hover:text-white transition-colors"
               >
-                OPEN ROLES
-              </Button>
+                Open roles
+              </Link>
               <Link
                 href="mailto:careers@soket.ai"
-                className="inline-flex items-center justify-center px-6 py-4 font-geist-mono text-sm font-medium underline underline-offset-4 hover:text-white/80"
+                className="inline-flex items-center justify-center px-6 py-3 border border-white/30 text-white font-geist text-sm hover:border-white transition-colors"
               >
                 careers@soket.ai
               </Link>
