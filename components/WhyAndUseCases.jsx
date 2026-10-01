@@ -38,7 +38,7 @@ const WhyAndUseCases = () => {
                 </span>
               ))}
             </div>
-            <p className={`${hero.headline} ${styles.headline}`}>Use Cases</p>
+            <p className={`${hero.headline} ${styles.headline}`}>Sectors</p>
           </div>
         </article>
       </div>

@@ -86,10 +86,10 @@ const AboutSoket = () => {
                 />
                 <div className="bg-[#F6F4F1] p-6 rounded-lg">
                   <div className="text-5xl font-medium mb-2 text-black text-left">
-                    120B+
+                    Frontier scale
                   </div>
                   <p className="text-sm text-black/80 text-left">
-                    parameters, Sparse MoE—India's brain for scalable,
+                    India's brain for scalable,
                     efficient, and sovereign AI.
                   </p>
                 </div>

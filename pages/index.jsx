@@ -31,9 +31,8 @@ export default function Home() {
           <h1 className="lg:text-[72px] tracking-tightest mb-4 leading-tight tracking-tight font-space-grotesk font-medium">
           Building at the frontiers of AI
           </h1>
-          <p className="px-4 lg:px-10 lg:w-1/2 mx-auto text-center mb-10 text-lg">
-          Foundation models and stack for math, code, and reasoning that can run under your control.
-
+          <p className="px-4 lg:px-10 lg:w-1/2 mx-auto text-center mb-10 text-xl lg:text-2xl">
+          Powering mission-critical workloads with trusted, ethical and sovereign AI
           </p>
           <div className="mb-12 flex flex-wrap justify-center gap-4 lg:mb-16">
             <Button href="/project-eka" variant="black">
@@ -43,9 +42,9 @@ export default function Home() {
               TALK TO US
             </Button>
           </div>
-          <div className="my-8 lg:my-12">
+          {/* <div className="my-8 lg:my-12">
             <HeroStats />
-          </div>
+          </div> */}
         </section>
         <OurPillars />
         <AboutSoket />

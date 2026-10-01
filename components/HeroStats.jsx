@@ -1,98 +1,51 @@
+import { Fragment } from "react";
+
 import styles from "@/styles/HeroStats.module.scss";
 
 const LANGUAGE_PILLS = ["हिन्दी", "বাংলা", "தமிழ்", "Python"];
 
 const CELLS = [
   {
-    theme: "dark",
-    decoration: "dots",
-    title: "IndiaAI Mission",
-    description: "Selected foundation-model lab",
-    badge: "Selected lab",
-  },
-  {
+    id: "languages",
     theme: "gray",
     decoration: "rings",
-    title: "1536",
-    unit: "H100s",
-    description: "Sovereign compute allocation",
+    pills: LANGUAGE_PILLS,
+    values: ["22", "20+", "20+"],
+    description: "Indian, Global South, and programming languages",
   },
   {
-    theme: "blue",
-    decoration: "pixels",
-    pixelColor: "rgba(255, 255, 255, 0.28)",
-    title: "25T",
-    description: "Tokens curated for pre-training",
-  },
-  {
-    theme: "blueMono",
-    decoration: "pixels",
-    pixelColor: "#1B41FF",
-    title: "24B",
-    description: "Upcoming model for coding and reasoning",
-  },
-  {
-    theme: "dark",
-    decoration: "dots",
-    title: "120B+",
-    description: "Sparse MoE architecture in training",
-  },
-  {
+    id: "research",
     theme: "gray",
     decoration: "rings",
-    title: "22 · 20+ · 20+",
-    description: "Indian, Global South and programming languages",
-    languages: true,
+    values: ["Math", "Code", "Reasoning"],
+    wordHeadline: true,
+    description:
+      "Frontier research to have precise, stable, long-horizon agentic workflows.",
+  },
+  {
+    id: "control",
+    theme: "gray",
+    decoration: "rings",
+    title: "Under your control",
+    description: "On-prem, private cloud or air-gapped deployment",
   },
 ];
 
-function PixelCluster({ color }) {
-  const squares = [
-    { x: 72, y: 72, s: 48 },
-    { x: 40, y: 72, s: 28 },
-    { x: 72, y: 40, s: 28 },
-    { x: 16, y: 84, s: 18 },
-    { x: 84, y: 16, s: 18 },
-    { x: 48, y: 48, s: 16 },
-    { x: 4, y: 96, s: 12 },
-    { x: 96, y: 4, s: 12 },
-    { x: 28, y: 58, s: 10 },
-    { x: 58, y: 28, s: 10 },
-  ];
-
+function DottedHeadline({ values, compact }) {
   return (
-    <svg
-      className={styles.pixels}
-      viewBox="0 0 120 120"
-      aria-hidden="true"
-      focusable="false"
+    <div
+      className={`${styles.langHeadline} ${compact ? styles.words : ""}`.trim()}
     >
-      {squares.map((square, i) => (
-        <rect
-          key={i}
-          x={square.x}
-          y={square.y}
-          width={square.s}
-          height={square.s}
-          fill={color}
-        />
+      {values.map((value, index) => (
+        <Fragment key={value}>
+          {index > 0 && (
+            <span className={styles.langDot} aria-hidden="true">
+              ·
+            </span>
+          )}
+          <span className={styles.langValue}>{value}</span>
+        </Fragment>
       ))}
-    </svg>
-  );
-}
-
-function LanguageHeadline() {
-  return (
-    <div className={styles.langHeadline}>
-      <span className={styles.langValue}>22</span>
-      <span className={styles.langDot} aria-hidden="true">
-        ·
-      </span>
-      <span className={styles.langValue}>20+</span>
-      <span className={styles.langDot} aria-hidden="true">
-        ·
-      </span>
-      <span className={styles.langValue}>20+</span>
     </div>
   );
 }
@@ -102,30 +55,17 @@ export default function HeroStats() {
     <div className={styles.grid}>
       {CELLS.map((cell) => (
         <article
-          key={cell.title}
+          key={cell.id}
           className={`${styles.card} ${styles[cell.theme]}`}
         >
           {cell.decoration === "rings" && (
             <div className={styles.rings} aria-hidden="true" />
           )}
-          {cell.decoration === "dots" && (
-            <div className={styles.dots} aria-hidden="true" />
-          )}
-          {cell.decoration === "pixels" && (
-            <PixelCluster color={cell.pixelColor} />
-          )}
 
           <div className={styles.body}>
-            {cell.badge && (
-              <div className={styles.badge}>
-                <span className={styles.badgeDot} aria-hidden="true" />
-                {cell.badge}
-              </div>
-            )}
-
-            {cell.languages && (
+            {cell.pills && (
               <div className={styles.pills}>
-                {LANGUAGE_PILLS.map((pill) => (
+                {cell.pills.map((pill) => (
                   <span key={pill} className={styles.pill}>
                     {pill}
                   </span>
@@ -133,13 +73,15 @@ export default function HeroStats() {
               </div>
             )}
 
-            {cell.languages ? (
-              <LanguageHeadline />
+            {cell.values ? (
+              <DottedHeadline
+                values={cell.values}
+                compact={cell.wordHeadline}
+              />
             ) : (
-              <>
-                <p className={styles.headline}>{cell.title}</p>
-                {cell.unit && <span className={styles.unit}>{cell.unit}</span>}
-              </>
+              <p className={styles.langHeadline}>
+                <span className={styles.langValue}>{cell.title}</span>
+              </p>
             )}
 
             <p className={styles.description}>{cell.description}</p>
