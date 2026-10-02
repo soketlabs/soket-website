@@ -8,6 +8,7 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [bannerDismissed, setBannerDismissed] = useState(true);
   const [bannerLoaded, setBannerLoaded] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef(null);
 
   const { nav } = homeContent;
@@ -51,13 +52,30 @@ export default function Header() {
     };
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const updateHeight = () => {
+      const mobileMenu = el.querySelector("[data-mobile-menu]");
+      const menuHeight = mobileMenu?.offsetHeight ?? 0;
+      setHeaderHeight(el.offsetHeight - menuHeight);
+    };
+    updateHeight();
+
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [bannerLoaded, bannerDismissed]);
+
   const dismissBanner = () => {
     setBannerDismissed(true);
     localStorage.setItem("hiring-banner-dismissed", "true");
   };
 
   return (
-    <div ref={headerRef}>
+    <>
+    <div ref={headerRef} className="fixed top-0 left-0 right-0 z-50">
       {bannerLoaded && !bannerDismissed && (
         <div className="bg-ink text-white py-2.5 px-4 relative">
           <div className="container-content flex items-start sm:items-center justify-center gap-2 pr-8">
@@ -100,7 +118,7 @@ export default function Header() {
         </div>
       )}
 
-      <header className="bg-paper/95 backdrop-blur-sm border-b border-hairline sticky top-0 z-50">
+      <header className="bg-paper/70 backdrop-blur-md border-b border-hairline">
         <div className="container-content">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <Link
@@ -176,12 +194,22 @@ export default function Header() {
               </div>
             </nav>
 
-            <Link
-              href={nav.cta.href}
-              className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 bg-ink text-white hover:bg-soket-blue transition-colors font-geist text-sm rounded-full"
-            >
-              {nav.cta.label}
-            </Link>
+            <div className="hidden lg:flex items-center gap-3">
+              <a
+                href={nav.console.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-5 py-2.5 border border-ink text-ink hover:border-soket-blue hover:text-soket-blue transition-colors font-geist text-sm rounded-full"
+              >
+                {nav.console.label}
+              </a>
+              <Link
+                href={nav.cta.href}
+                className="inline-flex items-center justify-center px-5 py-2.5 bg-ink text-white hover:bg-soket-blue transition-colors font-geist text-sm rounded-full"
+              >
+                {nav.cta.label}
+              </Link>
+            </div>
 
             <button
               type="button"
@@ -218,7 +246,10 @@ export default function Header() {
         </div>
 
         {isMobileMenuOpen && (
-          <nav className="lg:hidden bg-paper border-t border-hairline max-h-[calc(100dvh-4rem)] overflow-y-auto">
+          <nav
+            data-mobile-menu
+            className="lg:hidden bg-paper/95 backdrop-blur-md border-t border-hairline max-h-[calc(100dvh-4rem)] overflow-y-auto"
+          >
             <div className="container-content py-4 space-y-1">
               {nav.links.map((link) =>
                 link.dropdown ? (
@@ -274,7 +305,16 @@ export default function Header() {
                   </Link>
                 )
               )}
-              <div className="pt-4 border-t border-hairline mt-4">
+              <div className="pt-4 border-t border-hairline mt-4 space-y-3">
+                <a
+                  href={nav.console.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full px-5 py-3 bg-ink text-white hover:bg-soket-blue transition-colors font-geist"
+                  onClick={closeMobileMenu}
+                >
+                  {nav.console.label}
+                </a>
                 <Link
                   href={nav.cta.href}
                   className="inline-flex items-center justify-center w-full px-5 py-3 border border-ink text-ink hover:border-soket-blue hover:text-soket-blue transition-colors font-geist"
@@ -288,5 +328,7 @@ export default function Header() {
         )}
       </header>
     </div>
+    <div aria-hidden="true" style={{ height: headerHeight }} />
+    </>
   );
 }

@@ -24,6 +24,7 @@ export const homeContent = {
       { label: "Blog", href: "/blogs" },
       { label: "Careers", href: "/careers/jobs" },
     ],
+    console: { label: "Console", href: "https://console.soket.ai" },
     cta: { label: "Talk to us", href: "/contact" },
     banner: {
       text: "We're hiring researchers and engineers.",
@@ -246,7 +247,7 @@ export const homeContent = {
           "Optimized architectures and tuned kernels: more capability per GPU-hour and per watt.",
       },
     ],
-    link: { label: "Our approach to trust & safety", href: "/project-eka" },
+    link: { label: "Our approach to trust & safety (SOON)", href: "#" },
   },
 
   research: {
@@ -255,14 +256,14 @@ export const homeContent = {
     items: [
       {
         slug: "coshe_eval",
-        date: "2024",
+        date: "2025",
         title: "CoSHE-Eval",
         summary: "A 30-hour Hindi–English code-switching ASR benchmark.",
         href: "/blogs/coshe_eval",
       },
       {
         slug: "dhrith",
-        date: "2024",
+        date: "2025",
         title: "Dhrith",
         summary:
           "Emotion-aware speech recognition for India's multilingual voices.",
