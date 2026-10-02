@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { homeContent } from "@/data/content";
+import MagneticBento from "@/components/MagneticBento";
 import SectionLabel from "./SectionLabel";
 
 const ResearchCard = ({ item }) => {
   return (
     <Link
       href={item.href}
-      className="group block p-6 border border-hairline bg-paper hover:border-soket-blue transition-colors"
+      className="group block p-6 border border-hairline"
     >
       {/* Date */}
       <p className="font-geist-mono text-xs text-muted mb-3">
@@ -40,11 +41,11 @@ const ResearchSection = () => {
         </h2>
 
         {/* 3 Research Cards */}
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
+        <MagneticBento className="grid md:grid-cols-3 gap-4 mb-8">
           {research.items.map((item) => (
             <ResearchCard key={item.slug} item={item} />
           ))}
-        </div>
+        </MagneticBento>
 
         {/* Link */}
         <Link

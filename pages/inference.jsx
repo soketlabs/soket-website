@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import MagneticBento from "@/components/MagneticBento";
 import SectionLabel from "@/components/sections/SectionLabel";
 import {
   INFERENCE_HERO,
@@ -71,11 +72,11 @@ export default function InferencePage() {
             <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-12">
               Enterprise-grade inference
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <MagneticBento className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {INFERENCE_FEATURES.map(({ number, title, description }) => (
                 <article
                   key={number}
-                  className="border border-hairline p-6 hover:border-soket-blue transition-colors group"
+                  className="border border-hairline p-6 group"
                 >
                   <span className="font-geist-mono text-xs text-soket-blue mb-4 block">
                     {number}
@@ -88,7 +89,7 @@ export default function InferencePage() {
                   </p>
                 </article>
               ))}
-            </div>
+            </MagneticBento>
           </div>
         </section>
 

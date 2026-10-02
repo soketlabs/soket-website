@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import MagneticBento from "@/components/MagneticBento";
 import SectionLabel from "@/components/sections/SectionLabel";
 import KolamDivider from "@/components/decorative/KolamDivider";
 import {
@@ -46,11 +47,11 @@ export default function ResearchPage() {
             <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-12">
               What we work on
             </h2>
-            <div className="space-y-6">
+            <MagneticBento className="grid gap-6">
               {RESEARCH_AREAS.map(({ number, title, description, topics }) => (
                 <article
                   key={number}
-                  className="grid lg:grid-cols-12 gap-6 p-6 lg:p-8 border border-hairline hover:border-soket-blue transition-colors group"
+                  className="grid lg:grid-cols-12 gap-6 p-6 lg:p-8 border border-hairline group"
                 >
                   <div className="lg:col-span-1">
                     <span className="font-geist-mono text-xs text-soket-blue">
@@ -81,7 +82,7 @@ export default function ResearchPage() {
                   </div>
                 </article>
               ))}
-            </div>
+            </MagneticBento>
           </div>
         </section>
 
@@ -95,12 +96,12 @@ export default function ResearchPage() {
             <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-8">
               Publications & releases
             </h2>
-            <div className="grid md:grid-cols-3 gap-4">
+            <MagneticBento className="grid md:grid-cols-3 gap-4">
               {RESEARCH_PUBLICATIONS.map(({ title, year, description, href }) => (
                 <Link
                   key={title}
                   href={href}
-                  className="border border-hairline p-6 hover:border-soket-blue transition-colors group"
+                  className="border border-hairline p-6 group"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-lg font-medium group-hover:text-soket-blue transition-colors">
@@ -113,7 +114,7 @@ export default function ResearchPage() {
                   <p className="text-sm text-muted">{description}</p>
                 </Link>
               ))}
-            </div>
+            </MagneticBento>
             <div className="mt-8">
               <Link
                 href="/blogs"

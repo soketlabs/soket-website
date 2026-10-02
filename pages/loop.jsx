@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import CopyCommand from "@/components/CopyCommand";
 import LoopDemoVideo from "@/components/LoopDemoVideo";
+import MagneticBento from "@/components/MagneticBento";
 import SectionLabel from "@/components/sections/SectionLabel";
 import { LOOP_HERO, LOOP_FEATURES, LOOP_CTA } from "@/data/loop-content";
 
@@ -69,11 +70,11 @@ export default function LoopPage() {
             <h2 className="text-3xl md:text-4xl lg:text-h2 font-medium tracking-tight mb-12">
               Built for agents
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <MagneticBento className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {LOOP_FEATURES.map(({ number, title, description, soon }) => (
                 <article
                   key={number}
-                  className="border border-hairline p-6 hover:border-soket-blue transition-colors group"
+                  className="border border-hairline p-6 group"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <span className="font-geist-mono text-xs text-soket-blue">
@@ -93,7 +94,7 @@ export default function LoopPage() {
                   </p>
                 </article>
               ))}
-            </div>
+            </MagneticBento>
           </div>
         </section>
 

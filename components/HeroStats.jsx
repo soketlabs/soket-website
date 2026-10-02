@@ -28,14 +28,14 @@ const CELLS = [
     theme: "blueMono",
     decoration: "pixels",
     pixelColor: "#1B41FF",
-    title: "24B",
-    description: "Upcoming model for coding and reasoning",
+    title: "EKA-26B",
+    description: "Upcoming model",
   },
   {
     theme: "dark",
     decoration: "dots",
     title: "120B+",
-    description: "Sparse MoE architecture in training",
+    description: "Scale for critial sectors",
   },
   {
     theme: "gray",

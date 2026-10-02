@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import MagneticBento from "@/components/MagneticBento";
 import SectionLabel from "@/components/sections/SectionLabel";
 
 const CAPABILITIES = [
@@ -309,11 +310,11 @@ export default function ProjectEkaPage() {
             post-training, or ethical AI — these are the threads where your work
             ships into a national-scale model.
           </p>
-          <div className="grid md:grid-cols-2 gap-4">
+          <MagneticBento className="grid md:grid-cols-2 gap-4">
             {RESEARCH_DIRECTIONS.map(({ num, title, description }) => (
               <article
                 key={num}
-                className="group border border-hairline p-6 md:p-8 hover:border-soket-blue transition-colors"
+                className="group border border-hairline p-6 md:p-8"
               >
                 <span className="font-geist-mono text-xs text-soket-blue mb-3 block">
                   {num}
@@ -326,7 +327,7 @@ export default function ProjectEkaPage() {
                 </p>
               </article>
             ))}
-          </div>
+          </MagneticBento>
         </div>
       </section>
 
@@ -334,9 +335,9 @@ export default function ProjectEkaPage() {
       <section className="py-16 lg:py-20 border-t border-hairline">
         <div className="container-content">
           <SectionLabel>// RELATED RELEASES</SectionLabel>
-          <div className="grid md:grid-cols-3 gap-4 mt-8">
+          <MagneticBento className="grid md:grid-cols-3 gap-4 mt-8">
             {RELEASES.map(({ title, description, link }) => (
-              <div key={title} className="border border-hairline p-6 hover:border-soket-blue transition-colors">
+              <div key={title} className="border border-hairline p-6">
                 <h3 className="text-lg font-medium mb-2">{title}</h3>
                 <p className="text-sm text-muted mb-4">{description}</p>
                 {link && (
@@ -364,7 +365,7 @@ export default function ProjectEkaPage() {
                 )}
               </div>
             ))}
-          </div>
+          </MagneticBento>
         </div>
       </section>
 

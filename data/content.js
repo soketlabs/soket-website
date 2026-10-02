@@ -141,7 +141,7 @@ export const homeContent = {
         tag: "IN TRAINING",
         description:
           "Sovereign models for math, code and reasoning, fluent in 60+ Indian, Global South and programming languages.",
-        spec: "120B+ PARAMS · 24B CODE & REASONING (COMING SOON)",
+        spec: "EKA-26B CODE & REASONING (COMING SOON)",
         link: { label: "Explore Project EKA", href: "/project-eka" },
         primary: true,
       },

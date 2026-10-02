@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { homeContent } from "@/data/content";
+import MagneticBento from "@/components/MagneticBento";
 import SectionLabel from "./SectionLabel";
 
 // Simple line icons for each domain
@@ -66,7 +67,7 @@ const DomainCard = ({ domain }) => {
   return (
     <Link
       href={domain.href}
-      className="group block p-6 border border-hairline bg-paper hover:border-soket-blue transition-colors"
+      className="group block p-6 border border-hairline"
     >
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 p-2 border border-hairline group-hover:border-soket-blue transition-colors">
@@ -103,11 +104,11 @@ const DomainsSection = () => {
         </p>
 
         {/* 3x2 Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <MagneticBento className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {domains.items.map((domain) => (
             <DomainCard key={domain.name} domain={domain} />
           ))}
-        </div>
+        </MagneticBento>
       </div>
     </section>
   );
