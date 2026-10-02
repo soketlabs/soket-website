@@ -1,35 +1,52 @@
 @use "variables";
 
+// Design system colors
+$paper: #FAFAF7;
+$ink: #0A0A0A;
+$soket-blue: #1F48FF;
+$hairline: #E4E4E0;
+$muted: #5B5B57;
+
 .blog_index {
-  margin-top: 120px;
-  padding: 0 8%;
+  margin-top: 100px;
+  padding: 0 24px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 100px;
-  color: variables.$text_default_color;
+  color: $ink;
+  background: $paper;
 
   .header {
     text-align: center;
     margin-bottom: 80px;
 
+    .label {
+      font-family: "Geist Mono", monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: $muted;
+      margin-bottom: 16px;
+    }
+
     .title {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 4.5rem;
-      font-weight: 900;
-      margin: 0 0 24px 0;
+      font-size: 3.5rem;
+      font-weight: 500;
+      margin: 0 0 16px 0;
       line-height: 1.1;
-      color: variables.$text_default_color;
+      color: $ink;
       letter-spacing: -0.02em;
     }
 
     .subtitle {
       font-family: "Geist", sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.0625rem;
       line-height: 1.6;
-      color: variables.$text_default_color;
+      color: $muted;
       margin: 0 auto;
-      max-width: 700px;
+      max-width: 500px;
       font-weight: 400;
     }
   }
@@ -37,32 +54,33 @@
   .blogs_list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 16px;
     grid-auto-rows: min-content;
   }
 
   .blog_card {
     display: block;
     text-decoration: none;
-    color: variables.$text_default_color;
-    padding: 40px;
-    border: 2px solid #e5e5e5;
-    transition: all 0.3s ease;
+    color: $ink;
+    padding: 32px;
+    border: 1px solid $hairline;
+    transition: all 0.2s ease;
     position: relative;
-    background: white;
+    background: $paper;
 
     &:hover {
-      border-color: #1b41ff;
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(27, 65, 255, 0.1);
+      border-color: $soket-blue;
 
       .read_more {
-        color: #1b41ff;
-        transform: translateX(8px);
+        color: $soket-blue;
+
+        .arrow {
+          transform: translateX(4px);
+        }
       }
 
       .blog_title {
-        color: #1b41ff;
+        color: $soket-blue;
       }
     }
 
@@ -76,28 +94,27 @@
 
     .blog_cover {
       position: relative;
-      width: 100%;
-      height: 240px;
-      margin: -40px -40px 32px -40px;
+      width: calc(100% + 64px);
+      height: 200px;
+      margin: -32px -32px 24px -32px;
       overflow: hidden;
-      background: #f7f7f7;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-bottom: 1px solid $hairline;
 
       .cover_image {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center center;
       }
     }
 
-    &.blog_card_narrow {
+    &.blog_card_wide {
       .blog_cover {
-        // height: 200px;
-        width: 120%;
-        margin: -40px -40px 24px -40px;
+        height: 240px;
       }
     }
 
@@ -105,135 +122,133 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
 
       .blog_date {
         font-family: "Geist Mono", monospace;
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         font-weight: 500;
-        color: #666;
+        color: $muted;
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
 
       .blog_number {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 1.5rem;
-        font-weight: 900;
-        color: #e5e5e5;
+        font-family: "Geist Mono", monospace;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: $hairline;
         line-height: 1;
       }
     }
 
     .blog_title {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin: 0 0 20px 0;
-      line-height: 1.2;
-      color: variables.$text_default_color;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 0 0 12px 0;
+      line-height: 1.3;
+      color: $ink;
       letter-spacing: -0.01em;
-      transition: color 0.3s ease;
+      transition: color 0.2s ease;
     }
 
-    &.blog_card_narrow {
+    &.blog_card_wide {
       .blog_title {
         font-size: 2rem;
-      }
-
-      .blog_description {
-        font-size: 1rem;
       }
     }
 
     .blog_description {
       font-family: "Geist", sans-serif;
-      font-size: 1.125rem;
-      line-height: 1.75;
-      color: #4a4a4a;
-      margin: 0 0 20px 0;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      color: $muted;
+      margin: 0 0 16px 0;
       font-weight: 400;
     }
 
     .read_more {
-      font-family: "Geist", sans-serif;
-      font-size: 1rem;
+      font-family: "Geist Mono", monospace;
+      font-size: 0.75rem;
       font-weight: 500;
-      color: variables.$text_default_color;
-      display: inline-block;
-      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: $ink;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+
+      .arrow {
+        transition: transform 0.2s ease;
+      }
     }
   }
 }
 
 @media (max-width: variables.$md) {
   .blog_index {
-    margin-top: 100px;
-    padding: 0 24px;
+    margin-top: 80px;
+    padding: 0 16px;
+    margin-bottom: 80px;
 
     .header {
-      margin-bottom: 60px;
+      margin-bottom: 48px;
+
+      .label {
+        margin-bottom: 12px;
+      }
 
       .title {
-        font-size: 3rem;
+        font-size: 2.5rem;
         line-height: 1.2;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
       }
 
       .subtitle {
-        font-size: 1.125rem;
-        padding: 0 10px;
+        font-size: 1rem;
       }
     }
 
     .blogs_list {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 12px;
     }
 
     .blog_card {
-      padding: 32px 24px;
+      padding: 24px;
 
       &.blog_card_wide,
       &.blog_card_narrow {
         grid-column: span 1;
       }
 
-      &:hover {
-        transform: translateY(-2px);
-      }
-
       .blog_cover {
-        height: 180px;
-        margin: -32px -24px 24px -24px;
+        width: calc(100% + 48px);
+        height: 160px;
+        margin: -24px -24px 20px -24px;
       }
 
       .blog_meta {
-        margin-bottom: 20px;
+        margin-bottom: 12px;
+      }
 
-        .blog_date {
-          font-size: 0.8rem;
-        }
+      .blog_title {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+      }
 
-        .blog_number {
+      &.blog_card_wide {
+        .blog_title {
           font-size: 1.25rem;
         }
       }
 
-      .blog_title {
-        font-size: 1.75rem;
-        line-height: 1.3;
-        margin-bottom: 16px;
-      }
-
       .blog_description {
-        font-size: 1rem;
-        line-height: 1.7;
-        margin-bottom: 16px;
-      }
-
-      .read_more {
-        font-size: 0.95rem;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        margin-bottom: 12px;
       }
     }
   }
@@ -241,40 +256,43 @@
 
 @media (min-width: variables.$md) and (max-width: variables.$lg) {
   .blog_index {
-    padding: 0 6%;
-    max-width: 1000px;
+    padding: 0 32px;
+    max-width: 960px;
 
     .header {
+      margin-bottom: 60px;
+
       .title {
-        font-size: 3.5rem;
+        font-size: 3rem;
       }
     }
 
     .blogs_list {
-      gap: 32px;
+      gap: 16px;
     }
 
     .blog_card {
-      padding: 32px;
+      padding: 28px;
 
       .blog_cover {
-        height: 220px;
-        margin: -32px -32px 28px -32px;
+        width: calc(100% + 56px);
+        height: 180px;
+        margin: -28px -28px 20px -28px;
       }
 
       &.blog_card_wide {
-        .blog_title {
-          font-size: 2.25rem;
-        }
-      }
-
-      &.blog_card_narrow {
         .blog_title {
           font-size: 1.75rem;
         }
 
         .blog_cover {
-          height: 180px;
+          height: 220px;
+        }
+      }
+
+      &.blog_card_narrow {
+        .blog_title {
+          font-size: 1.25rem;
         }
       }
     }

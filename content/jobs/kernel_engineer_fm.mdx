@@ -1,0 +1,47 @@
+import JobPostLayout from "@/components/JobPostLayout";
+import { jobsBySlug } from "@/data/jobs";
+
+<JobPostLayout job={jobsBySlug["kernel_engineer_fm"]}>
+# Workloads you would be involved in
+
+- Design, develop, and optimise high-performance CUDA kernels for large-scale foundation model training and inference workloads.
+- Build and tune kernels specifically for modern NVIDIA GPU architectures including Hopper and Blackwell.
+- Develop efficient GPU compute primitives for transformer operations including attention, GEMM, softmax, normalisation, and MoE workloads.
+- Optimise model execution pipelines through kernel fusion, warp specialisation, asynchronous execution, and memory hierarchy optimisation.
+- Design and implement high-throughput kernels for inference acceleration and low-latency serving systems.
+- Work on efficient attention implementations, FlashAttention-style kernels, KV-cache management, and sequence-parallel inference pipelines.
+- Develop and optimise quantisation and dequantisation kernels across 1-bit, 4-bit, and 8-bit precision schemes.
+- Improve training and inference throughput through memory access optimisation, tensor core utilisation, occupancy tuning, and launch configuration optimisation.
+- Benchmark, profile, and debug GPU kernels across distributed training and inference environments.
+- Analyse bottlenecks at the kernel, compiler, and hardware levels using low-level GPU profiling and debugging tooling.
+- Implement and optimise kernels using CUDA, Triton, and TileLang while ensuring portability and performance across architectures.
+- Work closely with model training and systems teams to integrate custom kernels into large-scale foundation model pipelines and runtime systems.
+- Contribute to performance-critical components within training frameworks, inference engines, and compiler/runtime stacks.
+
+# You are a good fit if you:
+
+- Have 3+ years of experience in GPU kernel engineering, HPC systems, compiler optimisation, or high-performance ML infrastructure.
+- Have deep understanding of NVIDIA GPU hardware architecture, including SM design, memory hierarchy, tensor cores, warp scheduling, and execution pipelines.
+- Have strong expertise in CUDA programming and GPU performance optimisation.
+- Understand modern kernel optimisation techniques including kernel fusion, warp specialisation, persistent kernels, pipelining, and asynchronous execution.
+- Enjoy working close to hardware and solving performance bottlenecks at the systems and compiler level.
+- Have strong debugging, profiling, and benchmarking skills for performance-critical GPU workloads.
+- Possess strong algorithmic understanding of deep learning workloads and transformer execution patterns.
+- Love squeezing every microsecond of performance from kernels and understanding _why_ a kernel performs the way it does.
+
+# You are a strong candidate if you have experience with:
+
+- CUDA kernel development and optimisation for Hopper, Blackwell, or comparable GPU architectures.
+- GPU programming frameworks and DSLs including CUDA, Triton, and TileLang.
+- Low-level GPU profiling and debugging tools such as **Nsight Systems**, **Nsight Compute**, **cuda-gdb**, **CUPTI**, and **nvprof**.
+- PTX and low-level GPU ISA design, with the ability to read, analyse, and hand-optimise PTX code.
+- Memory optimisation techniques including shared memory tuning, register pressure optimisation, cache-aware design, coalesced memory access, and bank-conflict reduction.
+- Tensor Core programming, WMMA operations, mixed-precision compute, and BF16/FP8 optimisation.
+- Kernel scheduling and execution optimisation techniques including occupancy tuning, instruction-level parallelism, stream overlap, and launch optimisation.
+- Training and inference compiler stacks such as **CUTLASS**, **cuBLAS**, **cuDNN**, **TensorRT**, **TorchInductor**, or **XLA**.
+- Efficient transformer and inference algorithms including FlashAttention, paged attention, speculative decoding, KV-cache compression, and sequence batching.
+- Quantisation methods including INT8, INT4, FP8, GPTQ, AWQ, and custom quantisation pipelines.
+- Distributed training and inference systems where kernel performance directly impacts cluster-scale efficiency.
+- Benchmarking and performance modelling using roofline analysis, latency/throughput profiling, and bottleneck decomposition.
+
+</JobPostLayout>
