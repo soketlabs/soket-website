@@ -127,6 +127,18 @@ export const jobs = [
     summary:
       "Build and scale the platform powering Tensorstudio — Soket's AI API and developer platform.",
   },
+  {
+    slug: "ai_solutions_partnerships_architect",
+    team: "Partnerships and Business Development",
+    title: "AI Solutions & Partnerships Architect",
+    location: "Bengaluru, India",
+    employmentType: "Full-time",
+    postedDate: "Oct 9, 2026",
+    applyUrl:
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/3d7a59ed-5403-4737-949a-23995f3f21b3",
+    summary:
+      "Be the technical and strategic bridge between what Soket builds and what its stakeholders need, from AI solution architecture to long-term partnerships.",
+  },
 ];
 
 export const jobsBySlug = jobs.reduce((accumulator, job) => {

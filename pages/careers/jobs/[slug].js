@@ -6,6 +6,7 @@ import KernelEngineerFm from "@/content/jobs/kernel_engineer_fm.mdx";
 import ResearchScientistDataFm from "@/content/jobs/research_scientist_data_fm.mdx";
 import ResearchScientistPretrainingFm from "@/content/jobs/research_scientist_pretraining_fm.mdx";
 import FullStackDeveloper from "@/content/jobs/full_stack_developer.mdx";
+import AiSolutionsPartnershipsArchitect from "@/content/jobs/ai_solutions_partnerships_architect.mdx";
 import SocialMeta from "@/components/SocialMeta";
 import { jobs, jobsBySlug } from "@/data/jobs";
 import { jobShareDescription } from "@/lib/site";
@@ -19,6 +20,7 @@ const jobComponents = {
   kernel_engineer_fm: KernelEngineerFm,
   research_scientist_data_fm: ResearchScientistDataFm,
   full_stack_developer: FullStackDeveloper,
+  ai_solutions_partnerships_architect: AiSolutionsPartnershipsArchitect,
 };
 
 export default function JobPostingPage({ job }) {
