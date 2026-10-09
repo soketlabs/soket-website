@@ -1,7 +1,10 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import styles from "@/styles/JobPost.module.scss";
 
-export default function JobPostLayout({ job, children }) {
+// `about` and `whyWork` are optional arrays of paragraphs. A role passes them
+// to replace the default "About Soket AI" / "Why work with Soket?" text.
+export default function JobPostLayout({ job, about, whyWork, children }) {
   return (
     <>
       <article className={styles.job_post}>
@@ -91,39 +94,52 @@ export default function JobPostLayout({ job, children }) {
             <h1 id="about-soket-heading" className={styles.section_title}>
               About Soket AI
             </h1>
-            <p className={styles.about_lead}>
-              Soket is an AI research firm headquartered in Bengaluru with a
-              mission to build efficient and generalized intelligence for
-              humanity. We are focused on advancing frontier AI research through
-              the development of large-scale foundation models in math, code and
-              reasoning that are open, energy-efficient, multilingual, and
-              responsible by design. Funded and supported by the{" "}
-              <Link
-                href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2227612&reg=3&lang=2"
-                target="_blank"
-                style={{ textDecoration: "underline" }}
-              >
-                IndiaAI Mission
-              </Link>
-              , Government of India. Our work places a strong emphasis on India
-              and the Global South, where access to high-quality AI systems
-              remains limited despite immense linguistic and cultural diversity.
-            </p>
-            {/* </section> */}
+            {about ? (
+              about.map((paragraph, index) => (
+                <Fragment key={index}>
+                  <p className={styles.about_lead}>{paragraph}</p>
+                  <br />
+                </Fragment>
+              ))
+            ) : (
+              <>
+                <p className={styles.about_lead}>
+                  Soket is an AI research firm headquartered in Bengaluru with a
+                  mission to build efficient and generalized intelligence for
+                  humanity. We are focused on advancing frontier AI research
+                  through the development of large-scale foundation models in
+                  math, code and reasoning that are open, energy-efficient,
+                  multilingual, and responsible by design. Funded and supported
+                  by the{" "}
+                  <Link
+                    href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2227612&reg=3&lang=2"
+                    target="_blank"
+                    style={{ textDecoration: "underline" }}
+                  >
+                    IndiaAI Mission
+                  </Link>
+                  , Government of India. Our work places a strong emphasis on
+                  India and the Global South, where access to high-quality AI
+                  systems remains limited despite immense linguistic and
+                  cultural diversity.
+                </p>
+                {/* </section> */}
 
-            <br />
+                <br />
 
-            <p className={styles.about_lead}>
-              At Soket, we believe the future of AI should be accessible,
-              scalable, and aligned with real-world societal needs. Our teams
-              work across large language models, multimodal systems, speech
-              technologies, reasoning systems, and large-scale AI
-              infrastructure, with a strong focus on open research and practical
-              deployment. We are deeply passionate about pushing the boundaries
-              of AI research while building systems that are useful,
-              trustworthy, and globally impactful.
-            </p>
-            <br />
+                <p className={styles.about_lead}>
+                  At Soket, we believe the future of AI should be accessible,
+                  scalable, and aligned with real-world societal needs. Our
+                  teams work across large language models, multimodal systems,
+                  speech technologies, reasoning systems, and large-scale AI
+                  infrastructure, with a strong focus on open research and
+                  practical deployment. We are deeply passionate about pushing
+                  the boundaries of AI research while building systems that are
+                  useful, trustworthy, and globally impactful.
+                </p>
+                <br />
+              </>
+            )}
 
             {job.salary && (
               <>
@@ -154,32 +170,48 @@ export default function JobPostLayout({ job, children }) {
             <h1 id="about-soket-heading" className={styles.section_title}>
               Why work with Soket?
             </h1>
-            <p className={styles.about_lead}>
-              At Soket, you will get the chance to work on problems that only a
-              handful of teams in the world are solving today - building
-              frontier foundation models at scale. You will see first-hand how
-              intelligence is baked into large models and work across the entire
-              stack that powers modern AI systems. You will work with
-              supercomputing-scale GPU clusters and tackle challenging problems
-              in petabyte scale data aggregation and processing, distributed
-              training, model architectures, infrastructure, inference
-              optimization, and large-scale AI deployment. <br />
-              <br />
-              One day you might be debugging CUDA kernels or NCCL issues,
-              another day optimizing throughput for multi-GPU training runs,
-              building new infrastructure tooling, or experimenting with ideas
-              that make training faster and more efficient. We are a deeply
-              research-driven and engineering-focused team that loves nerding
-              out about systems, scaling laws, training stacks, and AI research.
-              If you enjoy going deep into technical problems and learning from
-              highly talented researchers and engineers, you will feel right at
-              home here. Most importantly, we are building efficient, open, and
-              accessible AI systems for India, the Global South, and ultimately
-              for humanity as a whole.
-              <br />
-              <br />
-              If this sounds exciting to you, come build the future with us.
-            </p>
+            {whyWork ? (
+              <p className={styles.about_lead}>
+                {whyWork.map((paragraph, index) => (
+                  <Fragment key={index}>
+                    {index > 0 && (
+                      <>
+                        <br />
+                        <br />
+                      </>
+                    )}
+                    {paragraph}
+                  </Fragment>
+                ))}
+              </p>
+            ) : (
+              <p className={styles.about_lead}>
+                At Soket, you will get the chance to work on problems that only
+                a handful of teams in the world are solving today - building
+                frontier foundation models at scale. You will see first-hand how
+                intelligence is baked into large models and work across the
+                entire stack that powers modern AI systems. You will work with
+                supercomputing-scale GPU clusters and tackle challenging
+                problems in petabyte scale data aggregation and processing,
+                distributed training, model architectures, infrastructure,
+                inference optimization, and large-scale AI deployment. <br />
+                <br />
+                One day you might be debugging CUDA kernels or NCCL issues,
+                another day optimizing throughput for multi-GPU training runs,
+                building new infrastructure tooling, or experimenting with ideas
+                that make training faster and more efficient. We are a deeply
+                research-driven and engineering-focused team that loves nerding
+                out about systems, scaling laws, training stacks, and AI
+                research. If you enjoy going deep into technical problems and
+                learning from highly talented researchers and engineers, you
+                will feel right at home here. Most importantly, we are building
+                efficient, open, and accessible AI systems for India, the Global
+                South, and ultimately for humanity as a whole.
+                <br />
+                <br />
+                If this sounds exciting to you, come build the future with us.
+              </p>
+            )}
 
             <section
               className={styles.apply_card}

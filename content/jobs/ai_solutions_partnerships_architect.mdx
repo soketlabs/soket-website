@@ -1,11 +1,27 @@
 import JobPostLayout from "@/components/JobPostLayout";
 import { jobsBySlug } from "@/data/jobs";
 
-<JobPostLayout job={jobsBySlug["ai_solutions_partnerships_architect"]}>
+export const about = [
+  "Soket is a research-first firm headquartered in Bengaluru, with a mission to innovate and advance the frontiers of technology, responsibly. We are developing large-scale foundation AI models in mathematics, code, and reasoning that are multilingual, inclusive, and responsible by design. Our systems are designed to ensure that the most sensitive intelligence remains under the ownership and authority of the institutions that generate and depend on it.",
+  "Our work spans large language models, multimodal systems, speech technologies, reasoning and agentic systems, and large-scale AI infrastructure, with a strong focus on open research and practical deployment. We believe AI should be accessible, scalable, and aligned with real-world societal needs—and are committed to building systems that are useful, trustworthy, and globally impactful.",
+];
+
+export const whyWork = [
+  "At Soket, you will work on problems that only a handful of teams in the world are solving today—building and delivering carefully crafted AI solutions for high-stakes stakeholders from a frontier foundation-model development company. You will see first-hand how intelligence is built into large models, how the stacks powering modern AI systems are designed, and how that intelligence can be packaged into practical solutions for real-world clients.",
+  "As part of a lean organisation, you will work closely with researchers, engineers, and domain experts while interacting with a diverse set of external stakeholders. For some, you may be their first point of contact with Soket. One day, you might be defining a cybersecurity solution for a financial-sector client in close coordination with the LLM team; the next, you might be working with a government department Secretary to shape a feasible AI solution and close a pilot engagement.",
+  "We are a deeply research-driven and engineering-focused team that loves nerding out about systems, scaling laws, training stacks, AI research, and solution engineering. If you enjoy going deep into technical problems, navigating challenging partnership conversations, and learning from highly talented researchers and engineers, you will feel right at home here. Most importantly, we are building efficient, open, and accessible AI systems from India, for humanity as a whole.",
+  "If this sounds exciting to you, come build the future with us.",
+];
+
+<JobPostLayout
+  job={jobsBySlug["ai_solutions_partnerships_architect"]}
+  about={about}
+  whyWork={whyWork}
+>
 
 # What this role is
 
-This is a **highly cross-functional role at the intersection of AI solution architecture, strategic partnerships, and stakeholder management**. You will be the technical and strategic bridge between what Soket builds and what our stakeholders need—working closely with research, engineering, deployed engineering, and sales teams to translate complex requirements into technically feasible AI solutions and build the partnerships required to take them from initial conversation to successful deployment and long-term relationships.
+This is a highly cross-functional role at the intersection of AI solution architecture, strategic partnerships, and stakeholder management. You will be the technical and strategic bridge between what Soket builds and what our stakeholders need—working closely with research, engineering, deployed engineering, and sales teams to translate complex requirements into technically feasible AI solutions and build the partnerships required to take them from initial conversation to successful deployment and long-term relationships.
 
 You will engage with stakeholders across governments, enterprises, startups, system integrators, cloud providers, academia, and non-profits. The role requires technical depth across foundation models and agentic systems, commercial judgement to identify viable partnership models, and the ability to navigate complex stakeholder environments and bring diverse parties towards alignment.
 
