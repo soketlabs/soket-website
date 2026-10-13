@@ -125,7 +125,7 @@ export const jobs = [
     applyUrl:
       "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/1591df77-1e21-4317-80b1-a9856a284a3f",
     summary:
-      "Build and scale the platform powering Tensorstudio — Soket's AI API and developer platform.",
+      "Build and scale the platform powering Soket's Console — Our API and developer platform.",
   },
   {
     slug: "ai_solutions_partnerships_architect",
@@ -138,6 +138,18 @@ export const jobs = [
       "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/3d7a59ed-5403-4737-949a-23995f3f21b3",
     summary:
       "Be the technical and strategic bridge between what Soket builds and what its stakeholders need, from AI solution architecture to long-term partnerships.",
+  },
+  {
+    slug: "cybersecurity_agentic",
+    team: "Expert Systems & Alignment",
+    title: "Agentic Cybersecurity Engineer - Foundation Models",
+    location: "Bengaluru, India",
+    employmentType: "Full-time",
+    postedDate: "Oct 13, 2026",
+    applyUrl:
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/0a7acbc5-a5f3-421e-a54e-583c3af2a744",
+    summary:
+      "Be the cybersecurity domain expert behind Soket's frontier model, curating data, designing agentic workflows, and building evals for offensive and defensive security.",
   },
 ];
 

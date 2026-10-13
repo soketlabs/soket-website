@@ -1,0 +1,44 @@
+import JobPostLayout from "@/components/JobPostLayout";
+import { jobsBySlug } from "@/data/jobs";
+
+<JobPostLayout job={jobsBySlug["cybersecurity_agentic"]}>
+
+# Workloads you would be involved in
+
+- Work closely with the frontier team at Soket on a cybersecurity frontier model, acting as the in-house domain expert for offensive and defensive security capabilities.
+- Define the capability taxonomy for agentic cybersecurity, mapped to MITRE ATT&CK tactics and techniques, the cyber kill chain, and CWE/CVE classes.
+- Curate high-signal datasets for pretraining and post-training: exploit write-ups, CVE advisories and patches, CTF solutions, pentest reports, IR playbooks, detection rules, and annotated tool traces.
+- Design multi-step agentic workflows spanning recon, enumeration, exploitation, privilege escalation, lateral movement, persistence, and post-exploitation, as well as detection, triage, and incident response.
+- Build reproducible attack and defence environments: vulnerable-by-design targets, AD labs, web/API/cloud/container misconfigurations, and network topologies for execution-grounded training and evaluation.
+- Design isolation and sandboxing for safe agent execution using containers, microVMs, namespaces, cgroups, seccomp, and network egress controls, so offensive tooling can run without leaving the box.
+- Build evals and benchmarks for cyber capability: CTF-style tasks, vulnerability discovery and exploitation, patch generation, malware triage, log analysis, and detection engineering, with verifiable, programmatic graders.
+- Define reward signals and verification checks for RL on cyber tasks, such as flag capture, PoC reproduction, exploit success, patch validation, and rule-hit accuracy.
+- Review agent trajectories to separate genuine technique from lucky guesses or environment shortcuts, and feed failure modes back into targeted data interventions.
+- Provide expert review for safety, dual-use risk, and responsible-use guardrails across datasets and evals.
+- Mentor researchers and engineers on security fundamentals and translate real-world adversary tradecraft into training and evaluation specs.
+
+# You are a good fit if you:
+
+- Have 3–4 years of hands-on experience in offensive security, defensive security, or both (red team, pentesting, vulnerability research, SOC/IR, detection engineering, or AppSec).
+- Have working command of the Kali Linux toolchain and know how to chain tools into end-to-end attack workflows.
+- Understand offensive and defensive cyber capabilities across network, web, API, binary, cloud, and Active Directory environments.
+- Are strong in code analysis, covering manual source review, SAST/DAST, reverse engineering, and fuzzing, and can reason about root cause rather than just run scanners.
+- Are comfortable with sandboxing and isolation primitives and understand how to contain untrusted code and offensive tooling.
+- Write solid Python and Bash, and can read C/C++, Go, Rust, JavaScript/TypeScript, or Java when auditing code.
+- Are curious about how LLM agents can be taught to do real security work, and enjoy turning expert intuition into structured datasets, rubrics, and evals.
+- Hold a Bachelor's or Master's in Computer Science, Cybersecurity, or a related field, or equivalent practical proof of work.
+
+# You are a strong candidate if you have experience with:
+
+- _Offensive tooling:_ Nmap, Metasploit, Burp Suite, sqlmap, Hydra, John the Ripper, Hashcat, Impacket, Responder, BloodHound, Aircrack-ng, Nikto, Gobuster/ffuf, Cobalt Strike or Sliver-class C2.
+- _Binary analysis and RE:_ Ghidra, IDA, radare2, GDB (pwndbg/GEF), pwntools, ROP/heap exploitation, shellcode.
+- _Code analysis and vuln research:_ Semgrep, CodeQL, Bandit, AFL++, libFuzzer, Syzkaller, patch diffing, and root-cause analysis of CVEs.
+- _Defensive and detection stack:_ Wireshark, Zeek, Suricata, Wazuh, Velociraptor, Sigma, YARA, osquery, ELK/Splunk, memory and disk forensics (Volatility, Autopsy).
+- _Frameworks and standards:_ MITRE ATT&CK, CVE/CWE/CVSS, OWASP Top 10, NIST CSF, PTES/OSSTMM.
+- _Sandboxing and infra:_ Docker, Kubernetes, gVisor, Firecracker, nsjail, QEMU/KVM, Terraform, and container or cloud security (AWS/GCP/Azure IAM, K8s RBAC).
+- _Cyber evals and ranges:_ CTF experience (HackTheBox, TryHackMe, picoCTF, DEF CON/other CTFs), plus familiarity with Cybench, NYU CTF Bench, or CyberSecEval.
+- _Certifications (nice to have):_ OSCP, OSEP, OSCE, GPEN, GCIH, CRTO, or equivalent.
+- _Public proof of work:_ CVEs, bug bounty reports, CTF write-ups, open-source security tools, conference talks.
+- Familiarity with LLM agents, tool use, or prompt/agent security is a plus, but not required.
+
+</JobPostLayout>

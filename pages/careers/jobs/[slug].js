@@ -7,6 +7,7 @@ import ResearchScientistDataFm from "@/content/jobs/research_scientist_data_fm.m
 import ResearchScientistPretrainingFm from "@/content/jobs/research_scientist_pretraining_fm.mdx";
 import FullStackDeveloper from "@/content/jobs/full_stack_developer.mdx";
 import AiSolutionsPartnershipsArchitect from "@/content/jobs/ai_solutions_partnerships_architect.mdx";
+import CybersecurityAgentic from "@/content/jobs/cybersecurity_agentic.mdx";
 import SocialMeta from "@/components/SocialMeta";
 import { jobs, jobsBySlug } from "@/data/jobs";
 import { jobShareDescription } from "@/lib/site";
@@ -21,6 +22,7 @@ const jobComponents = {
   research_scientist_data_fm: ResearchScientistDataFm,
   full_stack_developer: FullStackDeveloper,
   ai_solutions_partnerships_architect: AiSolutionsPartnershipsArchitect,
+  cybersecurity_agentic: CybersecurityAgentic,
 };
 
 export default function JobPostingPage({ job }) {
