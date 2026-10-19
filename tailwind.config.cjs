@@ -60,6 +60,8 @@ module.exports = {
       animation: {
         'fade-up': 'fadeUp 250ms ease-out forwards',
         'check-appear': 'checkAppear 200ms ease-out forwards',
+        'banner-in': 'bannerIn 500ms ease-out forwards',
+        'banner-out': 'bannerOut 500ms ease-in forwards',
       },
       keyframes: {
         fadeUp: {
@@ -69,6 +71,14 @@ module.exports = {
         checkAppear: {
           '0%': { opacity: '0', transform: 'scale(0.8)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        bannerIn: {
+          '0%': { opacity: '0', transform: 'translateX(100%)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        bannerOut: {
+          '0%': { opacity: '1', transform: 'translateX(0)' },
+          '100%': { opacity: '0', transform: 'translateX(-100%)' },
         },
       },
     },

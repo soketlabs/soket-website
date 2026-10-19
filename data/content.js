@@ -26,11 +26,24 @@ export const homeContent = {
     ],
     console: { label: "Console", href: "https://console.soket.ai" },
     cta: { label: "Talk to us", href: "/contact" },
-    banner: {
-      text: "We're hiring researchers and engineers.",
-      cta: "See open roles",
-      href: "/careers/jobs",
-    },
+    // Top announcement bar: shows these in order, each for `duration` seconds.
+    // `dismissible` messages get a close (×) button. Closing is remembered in the
+    // visitor's browser and hides every dismissible message; the rest keep showing.
+    banners: [
+      {
+        text: "New: Loop, an open-source agentic terminal. Fastest median task time of 10 harnesses we benchmarked.",
+        cta: "Try Loop",
+        href: "https://loop.soket.ai/introduction",
+        duration: 6,
+      },
+      {
+        text: "We're hiring researchers and engineers.",
+        cta: "See open roles",
+        href: "/careers/jobs",
+        duration: 4,
+        dismissible: true,
+      },
+    ],
   },
 
   hero: {

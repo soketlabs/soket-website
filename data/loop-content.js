@@ -64,6 +64,6 @@ export const LOOP_CTA = {
   },
   secondaryAction: {
     label: "Documentation",
-    href: "https://github.com/soketlabs/loop#readme",
+    href: "https://loop.soket.ai/introduction",
   },
 };

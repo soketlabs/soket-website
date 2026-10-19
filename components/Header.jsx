@@ -6,12 +6,21 @@ import { homeContent } from "@/data/content";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [bannerDismissed, setBannerDismissed] = useState(true);
+  const [hiringDismissed, setHiringDismissed] = useState(true);
   const [bannerLoaded, setBannerLoaded] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
+  // `previous` is the message sliding out; null before the first rotation
+  const [bannerSlide, setBannerSlide] = useState({ active: 0, previous: null });
+  const [bannerPaused, setBannerPaused] = useState(false);
   const headerRef = useRef(null);
 
   const { nav } = homeContent;
+  const banners = nav.banners.filter(
+    (banner) => !(banner.dismissible && hiringDismissed),
+  );
+  const bannerCount = banners.length;
+  const activeBanner = banners[bannerSlide.active];
+  const activeDuration = activeBanner?.duration;
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((open) => !open);
@@ -41,9 +50,23 @@ export default function Header() {
 
   useEffect(() => {
     const dismissed = localStorage.getItem("hiring-banner-dismissed");
-    setBannerDismissed(!!dismissed);
+    setHiringDismissed(!!dismissed);
     setBannerLoaded(true);
   }, []);
+
+  // Move to the next banner message after the current one's duration;
+  // hold while the bar is hovered or focused
+  useEffect(() => {
+    if (bannerPaused || bannerCount < 2 || !activeDuration) return;
+
+    const timer = setTimeout(() => {
+      setBannerSlide(({ active }) => ({
+        active: (active + 1) % bannerCount,
+        previous: active,
+      }));
+    }, activeDuration * 1000);
+    return () => clearTimeout(timer);
+  }, [bannerSlide.active, bannerPaused, bannerCount, activeDuration]);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
@@ -66,34 +89,82 @@ export default function Header() {
     const observer = new ResizeObserver(updateHeight);
     observer.observe(el);
     return () => observer.disconnect();
-  }, [bannerLoaded, bannerDismissed]);
+  }, [bannerLoaded, hiringDismissed]);
 
+  // Hides the hiring message only; the remaining messages keep showing
   const dismissBanner = () => {
-    setBannerDismissed(true);
+    setHiringDismissed(true);
+    setBannerSlide({ active: 0, previous: null });
     localStorage.setItem("hiring-banner-dismissed", "true");
   };
 
   return (
     <>
     <div ref={headerRef} className="fixed top-0 left-0 right-0 z-50">
-      {bannerLoaded && !bannerDismissed && (
-        <div className="bg-ink text-white py-2.5 px-4 relative">
-          <div className="container-content flex items-start sm:items-center justify-center gap-2 pr-8">
-            <span
-              className="w-2 h-2 bg-green-400 rounded-full animate-pulse shrink-0 mt-1.5 sm:mt-0"
-              aria-hidden="true"
-            />
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 min-w-0">
-              <span className="font-geist text-white/90 text-sm leading-snug">
-                {nav.banner.text}
-              </span>
-              <Link
-                href={nav.banner.href}
-                className="font-geist-mono text-xs uppercase tracking-label text-white font-medium hover:text-soket-blue transition-colors underline underline-offset-2 whitespace-nowrap"
-              >
-                {nav.banner.cta} →
-              </Link>
-            </div>
+      {bannerLoaded && bannerCount > 0 && (
+        <div
+          className="bg-ink text-white py-2.5 px-4 relative overflow-hidden"
+          onMouseEnter={() => setBannerPaused(true)}
+          onMouseLeave={() => setBannerPaused(false)}
+          onFocus={(event) => {
+            // Pause for keyboard focus only: after a mouse click the link keeps
+            // focus, which would otherwise stop the rotation indefinitely
+            try {
+              if (event.target.matches(":focus-visible")) setBannerPaused(true);
+            } catch {
+              // Older browsers without :focus-visible support
+            }
+          }}
+          onBlur={() => setBannerPaused(false)}
+        >
+          {/* All messages share one grid cell, so the bar keeps the height of the tallest */}
+          <div className="grid">
+            {banners.map((banner, index) => {
+              const isActive = index === bannerSlide.active;
+              const isLeaving = index === bannerSlide.previous;
+              const isExternal = banner.href.startsWith("http");
+
+              let slideClass = "invisible";
+              if (isActive) {
+                slideClass =
+                  bannerSlide.previous === null
+                    ? ""
+                    : "animate-banner-in motion-reduce:animate-none";
+              } else if (isLeaving) {
+                slideClass = "animate-banner-out motion-reduce:invisible";
+              }
+
+              return (
+                <div
+                  key={banner.href}
+                  className={`col-start-1 row-start-1 self-center container-content flex items-start sm:items-center justify-center gap-2 pr-8 ${slideClass}`}
+                  aria-hidden={!isActive}
+                >
+                  <span
+                    className="w-2 h-2 bg-green-400 rounded-full animate-pulse shrink-0 mt-1.5 sm:mt-0"
+                    aria-hidden="true"
+                  />
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 min-w-0">
+                    <span className="font-geist text-white/90 text-sm leading-snug">
+                      {banner.text}
+                    </span>
+                    <Link
+                      href={banner.href}
+                      tabIndex={isActive ? undefined : -1}
+                      {...(isExternal && {
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                      })}
+                      className="font-geist-mono text-xs uppercase tracking-label text-white font-medium hover:text-soket-blue transition-colors underline underline-offset-2 whitespace-nowrap"
+                    >
+                      {banner.cta} →
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {activeBanner?.dismissible && (
             <button
               onClick={dismissBanner}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white p-2 transition-colors"
@@ -114,7 +185,7 @@ export default function Header() {
                 />
               </svg>
             </button>
-          </div>
+          )}
         </div>
       )}
 
@@ -199,13 +270,28 @@ export default function Header() {
                 href={nav.console.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-5 py-2.5 border border-ink text-ink hover:border-soket-blue hover:text-soket-blue transition-colors font-geist text-sm rounded-full"
+                className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-ink text-white hover:bg-soket-blue transition-colors font-geist text-sm rounded-full"
               >
                 {nav.console.label}
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 8L8 2M3.5 2H8V6.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </a>
               <Link
                 href={nav.cta.href}
-                className="inline-flex items-center justify-center px-5 py-2.5 bg-ink text-white hover:bg-soket-blue transition-colors font-geist text-sm rounded-full"
+                className="inline-flex items-center justify-center px-5 py-2.5 border border-ink text-ink hover:border-soket-blue hover:text-soket-blue transition-colors font-geist text-sm rounded-full"
               >
                 {nav.cta.label}
               </Link>
@@ -310,10 +396,25 @@ export default function Header() {
                   href={nav.console.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full px-5 py-3 bg-ink text-white hover:bg-soket-blue transition-colors font-geist"
+                  className="inline-flex items-center justify-center gap-1.5 w-full px-5 py-3 bg-ink text-white hover:bg-soket-blue transition-colors font-geist"
                   onClick={closeMobileMenu}
                 >
                   {nav.console.label}
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 8L8 2M3.5 2H8V6.5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </a>
                 <Link
                   href={nav.cta.href}
