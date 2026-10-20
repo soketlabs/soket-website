@@ -7,7 +7,7 @@ export const jobs = [
     employmentType: "Full-time",
     postedDate: "May 1, 2026",
     applyUrl:
-      "https://northstarz.ai/ats/#/careers/911af2cf-d032-4ea1-8e39-d2f018241408/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/ecc1c880-83af-47f4-ae05-04979727f82e",
     summary: "Manage and maintain a large-scale SLURM cluster",
     salary: {
       min: 1000000,
@@ -22,7 +22,7 @@ export const jobs = [
     employmentType: "Full-time",
     postedDate: "May 25, 2026",
     applyUrl:
-      "https://northstarz.ai/ats/#/careers/aeb783a9-5942-450a-880d-32382f63eaa3/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/a619352a-217f-4106-afaf-d3765daec4cb",
     summary:
       "Design, curate, validate, and continuously improve high-quality datasets powering large-scale AI systems.",
     salary: {
@@ -38,7 +38,7 @@ export const jobs = [
     employmentType: "Full-time",
     postedDate: "May 1, 2026",
     applyUrl:
-      "https://northstarz.ai/ats/#/careers/cd88e92c-2c61-4626-bafd-8e9dde70c9a3/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/af3b48bf-b9d8-4a4a-a10b-548fc9df1b48",
     summary:
       "Build and maintain scalable, production-grade data pipelines for foundation models training data.",
     salary: {
@@ -55,7 +55,7 @@ export const jobs = [
     employmentType: "Full-time",
     postedDate: "May 24, 2026",
     applyUrl:
-      "https://northstarz.ai/ats/#/careers/d56e23ba-eaf8-475b-bdf2-0876de086088/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/4e27a4a7-0224-4f54-986b-81f513e66908",
     summary:
       "Lead capability-driven data strategy for frontier foundation model development across pretraining and post-training stages.",
     salary: {
@@ -72,7 +72,7 @@ export const jobs = [
     employmentType: "Full-time",
     postedDate: "May 24, 2026",
     applyUrl:
-      "https://northstarz.ai/ats/#/careers/24dda8b4-7e8f-4720-8d99-3917a11367f3/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/8130b02b-763a-40fc-aeab-0c5092e158e7",
     summary:
       "Drive research and development across both pretraining and post-training pipelines for large-scale foundation models.",
     salary: {
@@ -89,7 +89,7 @@ export const jobs = [
     employmentType: "Full-time",
     postedDate: "May 25, 2026",
     applyUrl:
-      "https://northstarz.ai/ats/#/careers/ab00cc27-c864-499f-b706-0c8c78bec5ea/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/34ef132c-2477-4f83-8f43-ecd86b9e22cc",
     summary:
       "Design, implement, and optimize large-scale pretraining and post-training pipelines for foundation models.",
     salary: {
@@ -106,7 +106,7 @@ export const jobs = [
     employmentType: "Full-time",
     postedDate: "May 25, 2026",
     applyUrl:
-      "https://northstarz.ai/ats/#/careers/2c9f5bfe-0c9e-4c6b-8c7a-4cddc2574e9b/23faafdd-88b9-4687-9a1b-6b1ba5e6d2c0",
+      "https://in.northstarz.ai/job/candidate/63a14975-ee9f-4449-84e0-9b533dcaf056/16394e40-df7f-44b5-9eb7-fb952f931b77",
     summary:
       "Design, develop, and optimise high-performance CUDA kernels for large-scale foundation model training and inference workloads.",
     salary: {
