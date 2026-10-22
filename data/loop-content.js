@@ -12,7 +12,7 @@ export const LOOP_FEATURES = [
     number: "01",
     title: "Open source",
     description:
-      "MIT licensed. Inspect every line of code, contribute, and run it anywhere.",
+      "Apache 2.0 licensed. Inspect every line of code, contribute, and run it anywhere.",
     icon: "code",
     soon: false,
   },
@@ -57,7 +57,7 @@ export const LOOP_VIDEO = {
 
 export const LOOP_CTA = {
   title: "Ready to try Loop?",
-  description: "One command to install. Open source. MIT licensed.",
+  description: "One command to install. Open source. Apache 2.0 licensed.",
   primaryAction: {
     label: "View on GitHub",
     href: "https://github.com/soketlabs/loop",
