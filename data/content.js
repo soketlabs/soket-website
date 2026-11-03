@@ -25,6 +25,7 @@ export const homeContent = {
       { label: "Careers", href: "/careers/jobs" },
     ],
     console: { label: "Console", href: "https://console.soket.ai" },
+    earlyAccess: { label: "Early access", href: "/early-access" },
     cta: { label: "Talk to us", href: "/contact" },
     // Top announcement bar: shows these in order, each for `duration` seconds.
     // `dismissible` messages get a close (×) button. Closing is remembered in the
@@ -35,6 +36,12 @@ export const homeContent = {
         cta: "Try Loop",
         href: "https://loop.soket.ai/introduction",
         duration: 6,
+      },
+      {
+        text: "Waitlist and early access for EKA-1 are now open.",
+        cta: "Join the waitlist",
+        href: "/early-access",
+        duration: 5,
       },
       {
         text: "We're hiring researchers and engineers.",

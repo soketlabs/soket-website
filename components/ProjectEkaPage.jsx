@@ -165,8 +165,14 @@ export default function ProjectEkaPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/careers/jobs"
+              href="/early-access"
               className="inline-flex items-center justify-center px-6 py-3 bg-ink text-white font-geist text-sm hover:bg-soket-blue transition-colors"
+            >
+              Get early access
+            </Link>
+            <Link
+              href="/careers/jobs"
+              className="inline-flex items-center justify-center px-6 py-3 border border-ink text-ink font-geist text-sm hover:border-soket-blue hover:text-soket-blue transition-colors"
             >
               View open roles
             </Link>
