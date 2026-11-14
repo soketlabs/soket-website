@@ -4,6 +4,24 @@ import styles from "@/styles/BlogIndex.module.scss";
 
 const blogs = [
   {
+    slug: "procedural_execution",
+    title:
+      "When LLMs Stop Following Steps: A Diagnostic Study of Procedural Execution in Language Models",
+    date: "1st May, 2026",
+    description:
+      "EACL 2027 Main Conference. A diagnostic study of how well language models execute step-by-step procedures.",
+    span: 1,
+  },
+  {
+    slug: "task_specificity_score",
+    title:
+      "Task–Specificity Score: Measuring How Much Instructions Really Matter for Supervision",
+    date: "3rd February, 2026",
+    description:
+      "EMNLP 2026. Measuring how much instructions really matter for supervision.",
+    span: 1,
+  },
+  {
     slug: "coshe_eval",
     title:
       "CoSHE-Eval: A Code-Switching ASR Benchmark for Hindi–English Speech",

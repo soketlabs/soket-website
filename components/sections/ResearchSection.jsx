@@ -40,7 +40,7 @@ const ResearchSection = () => {
           {research.headline}
         </h2>
 
-        {/* 3 Research Cards */}
+        {/* Research Cards */}
         <MagneticBento className="grid md:grid-cols-3 gap-4 mb-8">
           {research.items.map((item) => (
             <ResearchCard key={item.slug} item={item} />

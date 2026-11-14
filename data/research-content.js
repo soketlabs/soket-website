@@ -70,6 +70,20 @@ export const RESEARCH_AREAS = [
 
 export const RESEARCH_PUBLICATIONS = [
   {
+    title: "When LLMs Stop Following Steps",
+    year: "2027",
+    description:
+      "EACL 2027 Main Conference. A diagnostic study of how well language models execute step-by-step procedures.",
+    href: "/blogs/procedural_execution",
+  },
+  {
+    title: "Task–Specificity Score",
+    year: "2026",
+    description:
+      "EMNLP 2026. Measuring how much instructions really matter for supervision.",
+    href: "/blogs/task_specificity_score",
+  },
+  {
     title: "CoSHE-Eval",
     year: "2025",
     description: "A 30-hour Hindi–English code-switching ASR benchmark.",

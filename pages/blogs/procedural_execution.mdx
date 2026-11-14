@@ -1,0 +1,208 @@
+import Head from "next/head";
+import styles from "@/styles/Blogs.module.scss";
+
+<Head>
+  <title>When LLMs Stop Following Steps: A Diagnostic Study of Procedural Execution</title>
+  <meta
+    name="description"
+    content="A controlled benchmark for arithmetic procedural execution: average first-answer accuracy drops from 63% on 5-step procedures to 20% on 95-step procedures across 15 language models."
+  />
+  <meta
+    name="keywords"
+    content="procedural execution, LLM reasoning, state tracking, arithmetic benchmark, EACL 2027"
+  />
+  <meta name="author" content="Soket AI Labs" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+  <meta name="yandexbot" content="index, follow" />
+</Head>
+
+<div className={styles.Blogs}>
+
+`1st May, 2026`
+
+# When LLMs Stop Following Steps: A Diagnostic Study of Procedural Execution in Language Models
+
+**EACL 2027 Main Conference**
+
+Sailesh Panda, Pritam Kadasi, Abhishek Upperwal, Mayank Singh · IIT Gandhinagar & Soket AI
+
+📄 Paper: [**arXiv:2605.00817**](https://arxiv.org/abs/2605.00817)
+
+## Introduction and Motivation
+
+Large language models (LLMs) show strong performance on many reasoning tasks, including arithmetic, symbolic manipulation, multi-step question answering and code generation. But strong final-answer performance does not necessarily mean the model **faithfully executed the intended procedure**.
+
+This matters for procedure-following tasks, where a model must carry out a specified multi-step procedure, track intermediate states, apply operations in order and stop at the right point. Prior work shows LLMs often rely on shortcut heuristics or unstable computations, and can fail even when the complete procedure is given to them.
+
+We study **arithmetic procedural execution**: a model's ability to carry out an explicitly specified arithmetic procedure and return the correct final value. Because the reference output is deterministic, there is no ambiguity about the right answer, so execution can be studied under controlled conditions.
+
+We address two research questions:
+
+- **RQ1:** How does model accuracy change as procedures get longer and require deeper look-back dependencies?
+- **RQ2:** What generation-level failure modes emerge during execution, and how do they relate to final-answer accuracy?
+
+> Average first-answer accuracy drops from **63%** on 5-step procedures to **20%** on 95-step procedures.
+
+---
+
+## Task Formulation
+
+Each example gives the model a step-wise procedure and two numeric inputs, `x` and `y`. The procedure sets `S1 = x` and `S2 = y`, then defines each later variable from earlier ones using `+`, `−`, `×` or `÷`. The model must execute the procedure exactly and return only the final value.
+
+```
+function(x, y):
+    Let S1 = x
+    Let S2 = y
+    Step 1: S3 = S1 + S2
+    Step 2: S4 = S3 - S2
+    Step 3: S5 = S4 / S2
+    Step 4: S6 = S5 * S3
+    Step 5: S7 = S6 - S4
+    Final Step: Return S7
+```
+
+Later steps reuse variables from several steps earlier. For example, Step 5 computes `S7` from `S6` and `S4`, so the model has to retrieve a value produced two steps before. This makes the task a test of **procedural state tracking**, not only arithmetic.
+
+---
+
+## Benchmark Design
+
+Complexity is increased along two axes while each individual operation stays simple:
+
+1. **Procedure length:** from 5 to 95 steps, in increments of 10.
+2. **Look-back dependency:** at each step, the two operands are drawn from the last `k` intermediate variables, with `k` from 1 to 7.
+
+| Attribute                | Setting                                                              |
+| ------------------------ | -------------------------------------------------------------------- |
+| **Input ranges**         | [0, 1], [1, 10], [10, 100]                                           |
+| **Data types**           | Floating point for [0, 1]; integer and floating point for the others |
+| **Operation variants**   | Addition, subtraction, multiplication, division only, and mixed      |
+| **Procedure lengths**    | 5 to 95 steps (100 examples per length)                              |
+| **Look-back depth**      | 1 to 7                                                               |
+| **Total**                | 55 datasets, 55,000 examples                                         |
+| **License**              | CC-BY 4.0                                                            |
+
+Reference outputs come from a deterministic executor that runs each step in order. Edge cases such as division by zero, infinities and NaNs are kept on purpose, to see whether models propagate or report them correctly.
+
+---
+
+## Models Evaluated
+
+We evaluate 15 open models, from 1.5B parameters to over 1T, grouped into five scales.
+
+| Scale                    | Models                                                                      |
+| ------------------------ | --------------------------------------------------------------------------- |
+| **Small (under 4B)**     | DeepSeek-R1-Distill-Qwen-1.5B, Qwen3-4B-Thinking-2507                       |
+| **Mid-scale (4B–8B)**    | Olmo-3-7B-Think, Mistral-7B-Instruct-v0.3, DeepSeek-R1-Distill-Qwen-7B, OpenThinker2-7B |
+| **Large (14B–18B)**      | Ministral-3-14B-Reasoning, DeepSeek-R1-Distill-Qwen-14B, Qwen3-14B          |
+| **Very large (20B–30B)** | Magistral-Small-2509, Sarvam-30B, NVIDIA-Nemotron-3-Nano-30B                |
+| **Frontier (over 100B)** | OpenAI-OSS-120B, DeepSeek-V3.2, Kimi-K2.5                                   |
+
+All models use the same prompt, deterministic decoding (temperature 0) and a 32,768-token generation limit. Models are asked to put the final value inside `<answer>` tags. The full evaluation took about 300 GPU hours on NVIDIA H200 GPUs.
+
+### Metrics
+
+| Metric                            | What it measures                                                    |
+| --------------------------------- | ------------------------------------------------------------------- |
+| **First-Answer Accuracy (FAA)**   | Whether the first answer the model gives is correct                 |
+| **Correct@Any (CAA)**             | Whether any answer in the output is correct                         |
+| **Parseable Answer Rate (PAR)**   | Share of outputs with at least one valid tagged answer              |
+| **Answer Position (AP)**          | How early in the output the first answer appears                    |
+| **Step-Following Behavior (SFB)** | Whether the model executes fewer, exactly as many, or more steps than asked |
+
+---
+
+## Results
+
+### Accuracy falls as procedures get longer
+
+Across models and settings, FAA declines steadily as the number of steps increases. Averaged across models, the gap between 5-step and 95-step procedures is about **43 percentage points**. Several models, including NM-30, DS-7, QW-4, KK-1T, OA-120 and DS-14, drop by more than 55 points.
+
+![FAA vs number of steps across models](/images/blog_procedural_execution/accuracy_vs_steps_across_models.png)
+
+_First-answer accuracy as a function of procedure length (5–95 steps). Performance declines with more steps for every model, even though each individual operation is simple._
+
+### Models rarely recover after a wrong first answer
+
+The mean difference between FAA and CAA is only about **0.0003**, so models almost never produce the correct answer later in the same output after an incorrect first one. A few smaller models show larger gaps, but this behavior is largely absent in larger reasoning models.
+
+<img src="/images/blog_procedural_execution/model_accuracy_FAA_vs_CAA.png" alt="FAA vs CAA across models" style={{ maxWidth: "600px", margin: "32px auto" }} />
+
+### Deeper look-back makes it harder
+
+Increasing dependency depth, from using only the previous variable to using variables up to seven steps back, lowers average accuracy by a further **23.85 percentage points**. Most models degrade more as the look-back depth grows, which points to difficulty retrieving and combining non-local intermediate states.
+
+<img src="/images/blog_procedural_execution/lookback_relative_degradation.png" alt="Relative FAA degradation by look-back depth" style={{ maxWidth: "585px", margin: "32px auto" }} />
+
+_Relative FAA drop on the mixed-operation benchmark, compared with each model's look-back 1 baseline. Larger values mean greater sensitivity to long-range dependencies._
+
+---
+
+## Input and Task Factors Don't Fully Explain It
+
+### Input range and data type
+
+FAA falls with step count across all input ranges. The [0, 1] range scores slightly higher, by **4.14%** on average. Integer and floating-point inputs follow nearly the same downward trend, with an average difference of only **2.26%**, though individual models lean one way or the other.
+
+<img src="/images/blog_procedural_execution/faa_ranges_with_dtype_inset.png" alt="FAA across input ranges and data types" style={{ maxWidth: "685px", margin: "32px auto" }} />
+
+### Operation type
+
+Addition and subtraction outperform multiplication and division by **34.74%** on average. Multiplication and division produce far more extreme values: multiplication outputs span over 10<sup>190</sup> in magnitude, and division blows up near zero denominators. Mixed-operation tasks lower FAA by a further **22.06%** compared with single-operation tasks, which suggests switching between operators adds difficulty.
+
+<img src="/images/blog_procedural_execution/accuracy_heatmap_model_task.png" alt="FAA heatmap across models and task types" style={{ maxWidth: "560px", margin: "32px auto" }} />
+
+Output magnitude may contribute to failures in some settings, especially multiplication and division, but it does not explain the broader decline as procedures get longer.
+
+---
+
+## Generation-Level Failure Modes
+
+### Missing answers
+
+Averaged across models, the Parseable Answer Rate drops by **24.63%** from 5-step to 95-step procedures: on long procedures, models more often fail to produce any valid tagged answer. OA-120, DS-685, KK-1T, OL-7 and QW-4 are the most robust; DS-7, SV-30, MG-24, NM-30 and DS-1.5 degrade the most.
+
+### When models commit to an answer
+
+OA-120 often answers very early in its output without writing out the intermediate steps. Other models, such as QW-4, NM-30 and SV-30, also answer early in relative terms, but only because they write all the steps first and then continue with a long trace afterwards. So answer position reflects generation style more than shortcut reasoning.
+
+![Answer position distribution across models](/images/blog_procedural_execution/answer_pos_violin_across_models.png)
+
+### Under-execution grows with length
+
+As procedures get longer, exact execution becomes less common and **under-execution**, stopping before all the steps are done, becomes more common.
+
+| Model  | Parseable answers drop | Exact execution drop | Under-execution rise |
+| ------ | ---------------------- | -------------------- | -------------------- |
+| DS-7   | 60.8                   | 57.0                 | 45.8                 |
+| QW-4   | 4.4                    | 54.0                 | 53.8                 |
+| MG-24  | 42.4                   | 38.1                 | 38.1                 |
+| MI-7   | 15.3                   | 34.1                 | 39.8                 |
+| OT-7   | 15.5                   | 23.4                 | 23.4                 |
+| KK-1T  | 12.1                   | 20.45                | 20.45                |
+| QW-14  | 16.6                   | 17.7                 | 17.6                 |
+| DS-685 | 12.5                   | 12.9                 | 12.9                 |
+| OA-120 | 13.3                   | 2.7                  | 2.7                  |
+
+_Change in percentage points from 5-step to 95-step procedures, for a selection of models. Figures from the paper._
+
+---
+
+## Conclusion and Future Work
+
+On a controlled benchmark for multi-step arithmetic execution, performance consistently falls as procedures get longer and as steps depend on values further back. Failures often come with missing answers, premature answers and under-executed traces, so arithmetic errors alone don't explain the decline. Apparent reasoning ability can hide real weaknesses in faithfully executing instructions.
+
+Next, we plan to extend the benchmark to branching procedures, symbolic transformations, natural-language workflows and tool-using agents.
+
+### Limitations
+
+The study uses synthetic arithmetic tasks, which may not generalize to all reasoning domains. It does not cover branching logic, semantic reasoning, tool use or interactive decision-making, and does not evaluate commercial frontier models.
+
+---
+
+Read the full paper on arXiv: [**When LLMs Stop Following Steps: A Diagnostic Study of Procedural Execution in Language Models**](https://arxiv.org/abs/2605.00817)
+
+</div>

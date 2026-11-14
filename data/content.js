@@ -275,6 +275,22 @@ export const homeContent = {
     headline: "Research, published.",
     items: [
       {
+        slug: "procedural_execution",
+        date: "2027",
+        title: "When LLMs Stop Following Steps",
+        summary:
+          "EACL 2027 Main Conference. A diagnostic study of how well language models execute step-by-step procedures.",
+        href: "/blogs/procedural_execution",
+      },
+      {
+        slug: "task_specificity_score",
+        date: "2026",
+        title: "Task–Specificity Score",
+        summary:
+          "EMNLP 2026. Measuring how much instructions really matter for supervision.",
+        href: "/blogs/task_specificity_score",
+      },
+      {
         slug: "coshe_eval",
         date: "2025",
         title: "CoSHE-Eval",
